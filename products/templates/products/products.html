@@ -19,23 +19,26 @@
 						All Products
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="women">
 						Women
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
 						Men
 					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
+						<!-- to make the button work as  herf, must put type=button -->
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" 
+					onclick="location.href='{% url 'products' %}?category=bags'" type="button" data-filter="bag">
 						Bag
+					</button> 
+
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" 
+					onclick="location.href='{% url 'products' %}?category=sunglasses'" type="button"data-filter=".shoes">
+						Sunglasses
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-						Shoes
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" 
+					onclick="location.href='{% url 'products' %}?category=watches'" type="button"data-filter=".watches">
 						Watches
 					</button>
 				</div>
@@ -56,13 +59,17 @@
 				
 				<!-- Search product -->
 				<div class="dis-none panel-search w-full p-t-10 p-b-15">
-					<div class="bor8 dis-flex p-l-15">
-						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-							<i class="zmdi zmdi-search"></i>
-						</button>
+					<form method="get" action="{% url 'products' %}">
 
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
-					</div>	
+						<div class="bor8 dis-flex p-l-15">
+							
+							<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
+								<i class="zmdi zmdi-search"></i>
+							</button>
+							
+							<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search" placeholder="Search">
+						</div>
+					</form>
 				</div>
 
 				<!-- Filter -->
@@ -260,16 +267,16 @@
     </div>
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row isotope-grid" style="position: relative; height: 100px;">
             <div class="col text-center mt-3">
-                <h2 class="logo-font">Products</h2>
+                <h2 class="logo-font" style="margin: 10px;">Products</h2>
                 <hr class="w-50 mb-1">
             </div>
         </div>
-        <div class="row">
+        <div class="row ">
             <div class="product-container col-10 offset-1">
                 <div class="row mt-1 mb-2"></div>
-                <div class="row">
+                <div class="row ">
                     {% for product in products %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100 border-0">
