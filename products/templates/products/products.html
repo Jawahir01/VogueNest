@@ -14,35 +14,6 @@
 	<div class="bg0 m-t-23 p-b-140">
 		<div class="container">
 			<div class="flex-w flex-sb-m p-b-52">
-				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						All Products
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="women">
-						Women
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						Men
-					</button>
-						<!-- to make the button work as  herf, must put type=button -->
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" 
-					onclick="location.href='{% url 'products' %}?category=bags'" type="button" data-filter="bag">
-						Bag
-					</button> 
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" 
-					onclick="location.href='{% url 'products' %}?category=sunglasses'" type="button"data-filter=".shoes">
-						Sunglasses
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" 
-					onclick="location.href='{% url 'products' %}?category=watches'" type="button"data-filter=".watches">
-						Watches
-					</button>
-				</div>
-
 				<div class="flex-w flex-c-m m-tb-10">
 					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
 						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
@@ -81,41 +52,45 @@
 							</div>
 
 							<ul>
+
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Default
+									<a href="{% url 'products' %}" class="filter-link stext-106 trans-04 filter-link-active">
+										All
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Popularity
+									<a href="{% url 'products' %}?category=women_shirts,women_jeans,women_shoes" 
+											class="filter-link stext-106 trans-04">
+										Women
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Average rating
+									<a href="{% url 'products' %}?category=men_shirts,men_jeans,men_shoes" 
+										class="filter-link stext-106 trans-04">
+										Men
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Newness
+									<a href="{% url 'products' %}?category=bags" class="filter-link stext-106 trans-04">
+										Bags
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Price: Low to High
+									<a href="{% url 'products' %}?category=sunglasses" class="filter-link stext-106 trans-04">
+										Sunglasses
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Price: High to Low
+									<a href="{% url 'products' %}?category=watches" class="filter-link stext-106 trans-04">
+										Watches
 									</a>
 								</li>
+
 							</ul>
 						</div>
 
@@ -125,11 +100,6 @@
 							</div>
 
 							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										All
-									</a>
-								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
@@ -160,6 +130,19 @@
 										$200.00+
 									</a>
 								</li>
+
+								<li class="p-b-6">
+									<a href="{% url 'products' %}?sort=price&direction=asc" class="filter-link stext-106 trans-04">
+										Price: Low to High
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="{% url 'products' %}?sort=price&direction=desc" class="filter-link stext-106 trans-04">
+										Price: High to Low
+									</a>
+								</li>
+
 							</ul>
 						</div>
 
@@ -184,7 +167,7 @@
 										<i class="zmdi zmdi-circle"></i>
 									</span>
 
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+									<a href="#" class="filter-link stext-106 trans-04">
 										Blue
 									</a>
 								</li>
