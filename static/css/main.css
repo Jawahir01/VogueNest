@@ -1792,7 +1792,7 @@ button.mfp-close {
   cursor: pointer;
 }
 
-.num-product {
+.quantity {
   width: calc(100% - 90px);
   height: 100%;
   border-left: 1px solid #e6e6e6;
@@ -1800,14 +1800,14 @@ button.mfp-close {
   background-color: #f7f7f7;
 }
 
-input.num-product {
+input.quantity {
   -moz-appearance: textfield;
   appearance: none;
   -webkit-appearance: none;
 }
 
-input.num-product::-webkit-outer-spin-button,
-input.num-product::-webkit-inner-spin-button {
+input.quantity::-webkit-outer-spin-button,
+input.quantity::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0; 
 }
