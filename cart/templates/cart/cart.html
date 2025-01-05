@@ -37,22 +37,25 @@
 								<table class="table-shopping-cart">
 									<tr class="table_head">
 										<th class="column-1">Product</th>
-										<th class="column-2"></th>
-										<th class="column-3">Price</th>
-										<th class="column-4">Quantity</th>
-										<th class="column-5">Total</th>
+										<th class="column-2">Size </th>
+										<th class="column-3">Color </th>
+										<th class="column-4">Price</th>
+										<th class="column-5">Quantity</th>
+										<th class="column-6">Total</th>
 									</tr>
 									{% for item in cart_items %}
 									<tr class="table_row">
 										<td class="column-1">
 											<div class="how-itemcart1">
 												<img src="{{ item.product.image.url }}" alt="IMG">
+											<strong>{{ item.product.name }}</strong>
 											</div>
 										</td>
-										<td class="column-2"><strong>{{ item.product.name }}</strong></td>
-										<td class="column-3">£{{ item.product.price }}</td>
-										<td class="column-4">{{ item.quantity }}</td>
-										<td class="column-5">£{{ item.product.price }}</td>
+										<td class="column-2">{% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</td>
+										<td class="column-3">{% if item.product.has_colors %}{{ item.color }}{% else %}N/A{% endif %}</td>
+										<td class="column-4">£{{ item.product.price }}</td>
+										<td class="column-5">{{ item.quantity }}</td>
+										<td class="column-6">£{{ item.product.price }}</td>
 									</tr>
 									{% endfor %}
 								</table>
