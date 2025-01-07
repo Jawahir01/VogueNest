@@ -72,6 +72,8 @@
 								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
 							</p>
 							
+							<form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
+								{% csrf_token %}
 							<!--  -->
 							<div class="p-t-33">
 								{% with product.has_sizes as size %} 
@@ -82,12 +84,12 @@
 									</div>
 									<div class="size-204 respon6-next">
 											<div class="rs1-select2 bor8 bg0">
-												<select class="js-select2" name="time">
+												<select class="js-select2" name="product_size">
 													<option>Choose an option</option>
-													<option>Size S</option>
-													<option>Size M</option>
-													<option>Size L</option>
-													<option>Size XL</option>
+													<option value="s">Size S</option>
+													<option value="m">Size M</option>
+													<option value="l">Size L</option>
+													<option value="xl">Size XL</option>
 												</select>
 												<div class="dropDownSelect2"></div>
 											</div>
@@ -117,8 +119,7 @@
 									</div>
 								{% endif %}	
 
-								<form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
-									{% csrf_token %}
+								
 									<div class="flex-w flex-r-m p-b-10">
 										<div class="size-204 flex-w flex-m respon6-next">
 											<div class="form-group w-50">
@@ -136,8 +137,9 @@
 										{% endwith %}
 										{% endwith %}
 									</div>	
-								</form>
+								
 							</div>
+						</form>
 						</div>
 					</div>
 	

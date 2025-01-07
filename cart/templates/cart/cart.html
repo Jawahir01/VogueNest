@@ -51,7 +51,7 @@
 											<strong>{{ item.product.name }}</strong>
 											</div>
 										</td>
-										<td class="column-2">{% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</td>
+										<td class="column-2">{% if item.product.has_sizes %}Size: {{ item.size|upper }}{% else %}N/A{% endif %}</td>
 										<td class="column-3">{% if item.product.has_colors %}{{ item.color }}{% else %}N/A{% endif %}</td>
 										<td class="column-4">£{{ item.product.price }}</td>
 										<td class="column-5">{{ item.quantity }}</td>
