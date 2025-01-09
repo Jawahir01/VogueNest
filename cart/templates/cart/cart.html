@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load cart_tools %}
 
 {% block page_header %}
     <div class="container">
@@ -56,7 +57,7 @@
 											</td>
 										<td class="column-3">£{{ item.product.price }}</td>
 										<td class="column-4">
-											<form class="form update-form" method="POST" action="">
+											<form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
 												{% csrf_token %}
 												<div class="form-group w-50">
 													<div class="wrap-num-product flex-w m-r-20 m-tb-10">
@@ -93,10 +94,11 @@
 											</form>
 										</td>
 										<td class="column-5" >
-											<a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-size="{{ item.size }}" style="cursor: pointer;">
+											<a class="update-link text-info" style="cursor: pointer;"><small>Update</small></a>
+											<a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}" style="cursor: pointer;">
 												<small>Remove</small></a>
 										</td>
-										<td class="column-6">£{{ item.product.price }}</td>
+										<td class="column-6">£{{ item.product.price | calc_subtotal:item.quantity }}</td>
 									</tr>
 									{% endfor %}
 								</table>
@@ -117,9 +119,9 @@
 								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
 							</div>
 
-							<div class="flex-c-m stext-99 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
+							<a class=" update-link  flex-c-m stext-99 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
 								Update Cart
-							</div>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -197,4 +199,31 @@
 		</div>
 	</form>
 
+{% endblock %}
+
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'products/includes/quantity_input_script.html' %}
+
+<script type="text/javascript">
+	 // Update quantity on click
+	$('.update-link').click(function(e) {
+		var form = $(this).prev('.update-form');
+		form.submit();
+	})
+	// Remove item and reload on click
+	$('.remove-item').click(function(e) {
+		var csrfToken = "{{ csrf_token }}";
+		var itemId = $(this).attr('id').split('remove_')[1];
+		var size = $(this).data('product_size');
+		var url = `/cart/remove/${itemId}/`;
+		var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+		$.post(url, data)
+
+		.done(function() {
+			location.reload();
+		});
+	})
+</script>
 {% endblock %}
