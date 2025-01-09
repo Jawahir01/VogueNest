@@ -30,17 +30,17 @@
 	<form class="bg0 p-t-75 p-b-85">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-10 col-xl-7  m-b-50">
+				<div class="col-lg-11 col-xl-7  m-b-50">
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
 						{% if cart_items %}
 							<div class="wrap-table-shopping-cart">
 								<table class="table-shopping-cart">
 									<tr class="table_head">
 										<th class="column-1">Product</th>
-										<th class="column-2">Size </th>
-										<th class="column-3">Color </th>
-										<th class="column-4">Price</th>
-										<th class="column-5">Quantity</th>
+										<th class="column-2"></th>
+										<th class="column-3">Price</th>
+										<th class="column-4">Quantity</th>
+										<th class="column-5"></th>
 										<th class="column-6">Total</th>
 									</tr>
 									{% for item in cart_items %}
@@ -48,13 +48,54 @@
 										<td class="column-1">
 											<div class="how-itemcart1">
 												<img src="{{ item.product.image.url }}" alt="IMG">
-											<strong>{{ item.product.name }}</strong>
 											</div>
 										</td>
-										<td class="column-2">{% if item.product.has_sizes %}Size: {{ item.size|upper }}{% else %}N/A{% endif %}</td>
-										<td class="column-3">{% if item.product.has_colors %}Color: {{ item.color|upper  }}{% else %}N/A{% endif %}</td>
-										<td class="column-4">£{{ item.product.price }}</td>
-										<td class="column-5">{{ item.quantity }}</td>
+										<td class="column-2" ><strong>{{ item.product.name }}</strong>
+											<p>{% if item.product.has_sizes %}Size: {{ item.size|upper }}{% else %} {% endif %}</p>
+											<p>{% if item.product.has_colors %}Color: {{ item.color|upper  }}{% else %} {% endif %}</p>
+											</td>
+										<td class="column-3">£{{ item.product.price }}</td>
+										<td class="column-4">
+											<form class="form update-form" method="POST" action="">
+												{% csrf_token %}
+												<div class="form-group w-50">
+													<div class="wrap-num-product flex-w m-r-20 m-tb-10">
+														<div class="input-group">
+															<div class="input-group-prepend">
+																<button class="decrement-qty btn btn-black rounded-0" 
+																	data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+																	<span class="icon">
+																		<i class="fas fa-minus"></i>
+																	</span>
+																</button>
+															</div>
+	
+															<input class="mtext-104 cl3 txt-center quantity form-control qty_input" type="number" name="quantity" value="{{item.quantity}}" min="1" max="11" data-item_id="{{ item.item_id}}" id="id_qty_{{ item.item_id }}">
+															
+															<div class="input-group-append">
+																<button class="increment-qty btn btn-black rounded-0"
+																	data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+																	<span class="icon">
+																		<i class="fas fa-plus"></i>
+																	</span>
+																</button>
+															</div>
+	
+														</div>
+													</div>
+													{% if item.product.has_sizes %}
+                                                        <input type="hidden" name="product_size" value="{{ item.size }}">
+                                                    {% endif %}
+													{% if item.product.has_colors %}
+                                                        <input type="hidden" name="product_color" value="{{ item.color }}">
+                                                    {% endif %}
+												</div>	
+											</form>
+										</td>
+										<td class="column-5" >
+											<a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-size="{{ item.size }}" style="cursor: pointer;">
+												<small>Remove</small></a>
+										</td>
 										<td class="column-6">£{{ item.product.price }}</td>
 									</tr>
 									{% endfor %}
