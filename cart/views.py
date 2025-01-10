@@ -15,9 +15,9 @@ def add_to_cart(request, item_id):
 
     cart = request.session.get('cart', {})
 
-    if size:  # Product with sizes only
-        if item_id in cart:
-            if size in cart[item_id]['items_by_size']:
+    if size:  # Product with sizes only 
+        if item_id in list(cart.keys()):
+            if size in cart[item_id]['items_by_size'].keys():
                 cart[item_id]['items_by_size'][size] += quantity
             else:
                 cart[item_id]['items_by_size'][size] = quantity
@@ -25,8 +25,8 @@ def add_to_cart(request, item_id):
             cart[item_id] = {'items_by_size': {size: quantity}}
 
     elif color:  # Product with colors only
-        if item_id in cart:
-            if color in cart[item_id]['items_by_color']:
+        if item_id in list(cart.keys()):
+            if color in cart[item_id]['items_by_color'].keys():
                 cart[item_id]['items_by_color'][color] += quantity
             else:
                 cart[item_id]['items_by_color'][color] = quantity
@@ -34,7 +34,7 @@ def add_to_cart(request, item_id):
             cart[item_id] = {'items_by_color': {color: quantity}}
 
     else:  # Product with no size or color
-        if item_id in cart:
+        if item_id in list(cart.keys()):
             cart[item_id] += quantity
         else:
             cart[item_id] = quantity
@@ -46,20 +46,34 @@ def add_to_cart(request, item_id):
 
 
 def adjust_cart(request, item_id):
+    
     """Adjust the quantity of the specified product to the specified amount"""
     quantity = int(request.POST.get('quantity'))
     size = None
+    color = None
 
     if 'product_size' in request.POST:
         size = request.POST['product_size']
-    cart = request.session.get('cart', {})
+    
+    if 'product_color' in request.POST:
+        color = request.POST['product_color']
 
+    cart = request.session.get('cart', {})
+ 
     if size:
         if quantity > 0:
             cart[item_id]['items_by_size'][size] = quantity
         else:
             del cart[item_id]['items_by_size'][size]
             if not cart[item_id]['items_by_size']:
+                cart.pop(item_id)
+
+    if color:
+        if quantity > 0:
+            cart[item_id]['items_by_color'][color] = quantity
+        else:
+            del cart[item_id]['items_by_color'][color]
+            if not cart[item_id]['items_by_color']:
                 cart.pop(item_id)
     else:
         if quantity > 0:
@@ -68,6 +82,7 @@ def adjust_cart(request, item_id):
             cart.pop(item_id)
 
     request.session['cart'] = cart
+    print(request.session['cart'])  # Debugging purposes
     return redirect(reverse('view_cart'))
 
 

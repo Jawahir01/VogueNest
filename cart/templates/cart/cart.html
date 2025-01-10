@@ -28,7 +28,7 @@
 		
 
 	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85">
+	<div class="bg0 p-t-75 p-b-85">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-11 col-xl-7  m-b-50">
@@ -57,7 +57,7 @@
 											</td>
 										<td class="column-3">£{{ item.product.price }}</td>
 										<td class="column-4">
-											<form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
+											<form class="form update-form" action="{% url 'adjust_cart' item.item_id %}" method="POST">
 												{% csrf_token %}
 												<div class="form-group w-50">
 													<div class="wrap-num-product flex-w m-r-20 m-tb-10">
@@ -65,36 +65,34 @@
 															<div class="input-group-prepend">
 																<button class="decrement-qty btn btn-black rounded-0" 
 																	data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-																	<span class="icon">
-																		<i class="fas fa-minus"></i>
-																	</span>
+																	<span class="icon"><i class="fas fa-minus"></i></span>
 																</button>
 															</div>
-	
-															<input class="mtext-104 cl3 txt-center quantity form-control qty_input" type="number" name="quantity" value="{{item.quantity}}" min="1" max="11" data-item_id="{{ item.item_id}}" id="id_qty_{{ item.item_id }}">
-															
+											
+															<input class="mtext-104 cl3 txt-center form-control form-control-sm qty_input" 
+																type="number" name="quantity" value="{{ item.quantity }}" 
+																min="1" max="11" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+											
 															<div class="input-group-append">
 																<button class="increment-qty btn btn-black rounded-0"
 																	data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-																	<span class="icon">
-																		<i class="fas fa-plus"></i>
-																	</span>
+																	<span class="icon"><i class="fas fa-plus"></i></span>
 																</button>
 															</div>
-	
 														</div>
 													</div>
 													{% if item.product.has_sizes %}
-                                                        <input type="hidden" name="product_size" value="{{ item.size }}">
-                                                    {% endif %}
+														<input type="hidden" name="product_size" value="{{ item.size }}">
+													{% endif %}
 													{% if item.product.has_colors %}
-                                                        <input type="hidden" name="product_color" value="{{ item.color }}">
-                                                    {% endif %}
-												</div>	
+														<input type="hidden" name="product_color" value="{{ item.color }}">
+													{% endif %}
+												</div>
 											</form>
 										</td>
 										<td class="column-5" >
-											<a class="update-link text-info" style="cursor: pointer;"><small>Update</small></a>
+											<a class="update-link text-info" id="{{ item.item_id }}" 
+												style="cursor: pointer;"><small>Update</small></a>
 											<a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}" style="cursor: pointer;">
 												<small>Remove</small></a>
 										</td>
@@ -119,7 +117,7 @@
 								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
 							</div>
 
-							<a class=" update-link  flex-c-m stext-99 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
+							<a class="update-link flex-c-m stext-99 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
 								Update Cart
 							</a>
 						</div>
@@ -197,7 +195,7 @@
 				</div>
 			</div>
 		</div>
-	</form>
+	</div>
 
 {% endblock %}
 
@@ -207,23 +205,32 @@
 {% include 'products/includes/quantity_input_script.html' %}
 
 <script type="text/javascript">
-	 // Update quantity on click
-	$('.update-link').click(function(e) {
-		var form = $(this).prev('.update-form');
-		form.submit();
-	})
-	// Remove item and reload on click
-	$('.remove-item').click(function(e) {
-		var csrfToken = "{{ csrf_token }}";
-		var itemId = $(this).attr('id').split('remove_')[1];
-		var size = $(this).data('product_size');
-		var url = `/cart/remove/${itemId}/`;
-		var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
-		$.post(url, data)
+    // Update quantity on click
+    $('.update-link').click(function (e) {
+        e.preventDefault(); // Prevent default action
+        var form = $(this).prev('.update-form');
+        form.submit();
+    });
 
-		.done(function() {
-			location.reload();
-		});
-	})
+    // Remove item and reload on click
+    $('.remove-item').click(function (e) {
+        e.preventDefault(); // Prevent default action
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var size = $(this).data('product_size');
+        var color = $(this).data('product_color');
+        var url = `/cart/remove/${itemId}/`;
+        var data = {
+            'csrfmiddlewaretoken': csrfToken,
+            'product_size': size,
+            'product_color': color,
+        };
+
+        $.post(url, data).done(function () {
+            location.reload();
+        });
+    });
 </script>
+
+		
 {% endblock %}
