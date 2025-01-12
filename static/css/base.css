@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed;
+    background: url('/media/slide-03.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
@@ -17,31 +17,86 @@ body {
     justify-content: center;
     height: 1.5rem;
     width: 1.5rem;
+    font-size: 15px;
+    padding: 10px;
 }
 
 .logo-font {
     text-transform: uppercase;
 }
 
+
+.banner {
+    font-size: 12px;
+    line-height: 1.8;
+
+}
+
+.nav-bar{
+    margin: 0;
+    display: flex;
+}
+
+.navbar-nav{
+    position: relative;
+    padding: 1px 10px 1px 0px;
+    margin: 0px 4px 0px 14px;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.2rem 0.3rem;
+}
+
+.nav-font {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
 .main-logo-link {
     width: fit-content;
+}
+
+.label1{
+    position: relative;
+}
+.label1::after {
+    content: attr(data-label1);
+    font-family: Poppins-Regular;
+    font-size: 10px;
+    line-height: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    height: 15px;
+    min-width: 32px;
+    border-radius: 7px;
+    padding: 1 4px;
+    background-color: #f74877;
 }
 
 .shop-now-button {
     background: black;
     color: white;
-    min-width: 260px;
+    min-width: 200px; 
 }
 
 .btn-black {
     background: black;
     color: white;
+    border-radius: 22px;
 }
 
 .btn-outline-black {
     background: white;
     color: black !important; /* use important to override link colors for <a> elements */
     border: 1px solid black;
+    
 }
 
 .btn-outline-black:hover,
@@ -164,7 +219,7 @@ a.category-badge > span.badge:hover {
     border-bottom-color: #343a40 !important;
 }
 
-.bag-notification-wrapper {
+.cart-notification-wrapper {
     height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
