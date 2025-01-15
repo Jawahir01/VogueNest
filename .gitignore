@@ -10,3 +10,4 @@ cloudinary_python.txt
 *.sqlite3
 superuser: jawahir
 password: Jawanest999
+client_secret: 'sk_test_51QE7vqBOTgvORfXXHZCUGuqgd7qp9ZZpUo7zaUPQB6B7xG2Z9wc00MYgHKcmrrnNwTEzb3heS4a6cT8CSJiLemZZ00HS3g47JD'
