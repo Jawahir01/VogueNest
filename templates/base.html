@@ -14,6 +14,7 @@
     {% endblock %}
 
     {% block corecss %}
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
@@ -39,14 +40,14 @@
   <body>
     <header class="container-fluid fixed-top">
       <!-- Delivery Banner -->
-      <div id="delivery-banner" class="row text-left">
-          <div class="col bg-black text-white">
-              <p class="banner my-1">Free shipping for standard order over £{{ free_delivery_threshold }}</p>
+      <div id="delivery-banner" class="bg-black text-left">
+          <div class="col text-white">
+              <p class="banner">Free shipping for standard order over £{{ free_delivery_threshold }}</p>
           </div>
       </div>
   
       <!-- Top Navigation Bar -->
-      <div id="topnav" class="row   py-2">
+      <div id="topnav" class="row ">
           <!-- Title on the Left -->
           <div class="col-3 text-left">
               <a href="{% url 'home' %}" class="nav-link main-logo-link">
@@ -86,57 +87,60 @@
           <!-- Icons on the Right -->
           <div class="col-4  text-right">
               <ul class="list-inline icons list-unstyled my-0">
-                  <li class="list-inline-item">
-                    <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_cart' %}">
+                <li class="list-inline-item">
+                    <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="text-center">
-                            <br><i class="fa-solid fa-basket-shopping "></i><p class="my-0">
-                                {% if grand_total %}
-                                    £{{ grand_total|floatformat:2 }}
-                                {% else %}
-                                    £0.00
-                                {% endif %}
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                            <p class="my-0">
+                                 <span style="color: aliceblue;" >--</span> <!--user name -->
+                                <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                                    {% if request.user.is_authenticated %}
+                                        {% if request.user.is_superuser %}
+                                            <a href="#" class="dropdown-item">Product Management</a>
+                                        {% endif %}
+                                        <a href="#" class="dropdown-item">My Profile</a>
+                                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                    {% else %}
+                                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                    {% endif %}
+                                </div>
                             </p>
-                            
                         </div>
                     </a>
                 </li>
                   <li class="list-inline-item">
+                        <a class="{% if grand_total %}text-info {% else %}text-black{% endif %} nav-link" href="{% url 'view_cart' %}">
+                            <div class="text-center">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i><p class="my-0">
+                                    {% if grand_total %}
+                                        £{{ grand_total|floatformat:2 }}
+                                    {% else %}
+                                        £0.00
+                                    {% endif %}
+                                </p>
+                                
+                            </div>
+                        </a>
+                    </li>
+                  <li class="list-inline-item">
                       <a class="text-black nav-link" href="#">
                           <div class="text-center">
-                              <i class="fas fa-heart fa-lg"></i>
+                              <i class="fa fa-heart" aria-hidden="true"></i>
                               <p class="my-0">
                                   {% if wish_list %}
                                       {{ wish_list }}
                                   {% else %}
-                                       
+                                       0
                                   {% endif %}
                               </p>
                           </div>
                       </a>
                   </li>
-                  <li class="list-inline-item">
-                    <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="text-center">
-                            <i class="fas fa-user fa-lg"></i>
-                            <p class="my-0"> </p>
-                        </div>
-                    </a>
-                    <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                        {% if request.user.is_authenticated %}
-                            {% if request.user.is_superuser %}
-                                <a href="#" class="dropdown-item">Product Management</a>
-                            {% endif %}
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                        {% else %}
-                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                        {% endif %}
-                    </div>
-                </li>
-              </ul>
-          </div>
-      </div>
+                  
+                </ul>
+            </div>
+        </div>
     </header>
   
 

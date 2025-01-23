@@ -5,8 +5,8 @@ html {
 }
 
 body {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     color: #555;
     font-family: 'Lato';
 }
@@ -38,7 +38,7 @@ header {
     height: 1.5rem;
     width: 1.5rem;
     font-size: 12px;
-    padding: 10px;
+    
 }
 
 .logo-font {
@@ -46,12 +46,17 @@ header {
 }
 
 #topnav {
-    padding-top: 2px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
 .banner {
-    font-size: 12px;
-    line-height: 1.8;
+    font-size: 13px;
+    line-height: 2;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
 
 }
 
@@ -63,7 +68,7 @@ header {
 .navbar-nav{
     position: relative;
     padding: 1px 10px 1px 0px;
-    margin: 0px 4px 0px 14px;
+    margin: 0px 1px 0px 1px;
 }
 
 .nav-link {
