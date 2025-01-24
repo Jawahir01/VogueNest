@@ -2,11 +2,13 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category
+from profiles.models import UserProfile
 
 # Create your views here.
 
 def all_products(request):
 
+    
     products = Product.objects.all()
     query = None
     categories = None
@@ -49,6 +51,7 @@ def all_products(request):
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
+        'profile': request.user,
     }
 
     return render(request, 'products/products.html', context)
@@ -59,5 +62,6 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     context = {
         'product': product,
+        'profile': request.user,
     }
     return render(request, 'products/product_detail.html', context)
