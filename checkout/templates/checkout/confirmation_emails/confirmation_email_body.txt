@@ -1,0 +1,35 @@
+Dear {{ order.full_name }},
+
+Thank you for your order! We're thrilled you chose Vogue Nest for your shopping needs. Your items are on their way to making your day a little brighter!
+
+Order Details:
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Items Purchased:
+
+{% for item in cart_items %}
+                    
+    {{ item.product.name }}
+        Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}
+        Qty: {{ item.quantity }} £{{ item.product.price | calc_subtotal:item.quantity }}
+        ----------
+{% endfor %}
+
+Total Amount: {{ order.grand_total }}
+
+Shipping Information:
+Shipping Address:
+{{ order.street_address1 }}
+{{ order.street_address2 }}
+{{ order.town_or_city }}, {{ order.country }}
+
+
+We’ll send you another email once your order has been shipped, along with tracking information so you can follow your package every step of the way.
+
+If you have any questions or need assistance, feel free to reach out to our customer support team at {{ contact_email }} or customer service phone number 0123456789.
+
+Thank you for being a valued part of the Vogue Nest family. We can’t wait to serve you again soon!
+
+Warm regards,
+The Vogue Nest Team
