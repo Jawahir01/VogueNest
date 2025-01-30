@@ -1,1 +1,1 @@
-web: gunicorn vogue_nest.wsgi:application
+web: gunicorn vogue_nest.wsgi:app
