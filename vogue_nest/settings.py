@@ -28,8 +28,9 @@ SECRET_KEY = 'django-insecure-2d3a@lcu)_2f46###a^dd5@&n3jwq&vgi45cz7$vf84i1r52^4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-jawahir01-voguenest-ycptmbag659.ws.codeinstitute-ide.net',
-                    'https://vogue-nest-app-2e8a7569145b.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['vogue-nest-app-2e8a7569145b.herokuapp.com', 'localhost',
+                    '8000-jawahir01-voguenest-ycptmbag659.ws.codeinstitute-ide.net',
+            ]
 
 
 # Application definition
