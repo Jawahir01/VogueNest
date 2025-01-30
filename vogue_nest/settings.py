@@ -32,6 +32,11 @@ ALLOWED_HOSTS = ['vogue-nest-app-2e8a7569145b.herokuapp.com', 'localhost',
                     '8000-jawahir01-voguenest-ycptmbag659.ws.codeinstitute-ide.net',
             ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.codeinstitute-ide.net/',
+    'https://*.herokuapp.com'
+]
+
 
 # Application definition
 
