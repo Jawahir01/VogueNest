@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 
-ALLOWED_HOSTS = ['vogue-nest-app-2e8a7569145b.herokuapp.com', 'localhost',
+ALLOWED_HOSTS = ['https://vogue-nest-bb4c62d54744.herokuapp.com', 'localhost',
                     '8000-jawahir01-voguenest-ycptmbag659.ws.codeinstitute-ide.net',
             ]
 
