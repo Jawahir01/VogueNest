@@ -29,9 +29,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 
-ALLOWED_HOSTS = ['https://vogue-nest-bb4c62d54744.herokuapp.com', 'localhost',
-                    '8000-jawahir01-voguenest-ycptmbag659.ws.codeinstitute-ide.net',
-            ]
+ALLOWED_HOSTS = ['vogue-nest-bb4c62d54744.herokuapp.com', 'localhost',
+                    '8000-jawahir01-voguenest-ycptmbag659.ws.codeinstitute-ide.net']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.codeinstitute-ide.net/',
