@@ -28,6 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
+
 ALLOWED_HOSTS = ['vogue-nest-app-2e8a7569145b.herokuapp.com', 'localhost',
                     '8000-jawahir01-voguenest-ycptmbag659.ws.codeinstitute-ide.net',
             ]
@@ -191,7 +192,7 @@ STRIPE_CURRENCY = 'usd'
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')
-DEFAULT_FROM_EMAIL = 'your.order@voguenest.com'
+DEFAULT_FROM_EMAIL = 'info@voguenest.com'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
