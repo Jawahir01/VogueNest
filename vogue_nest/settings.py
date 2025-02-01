@@ -32,10 +32,10 @@ DEBUG = 'DEVELOPMENT' in os.environ
 ALLOWED_HOSTS = ['vogue-nest-bb4c62d54744.herokuapp.com', 'localhost',
                     '8000-jawahir01-voguenest-ycptmbag659.ws.codeinstitute-ide.net']
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://*.codeinstitute-ide.net/',
-    'https://*.herokuapp.com'
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     'https://*.codeinstitute-ide.net/',
+#     'https://*.herokuapp.com'
+# ]
 
 
 # Application definition
