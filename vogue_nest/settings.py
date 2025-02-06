@@ -174,8 +174,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
