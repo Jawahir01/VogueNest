@@ -33,6 +33,7 @@
     {% endblock %}
 
     {% block extra_js %}
+        <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cm6wzgmv50zbls5k2zp7ww4b0"></script>
     {% endblock %}
 
     <title>Vogue Nest {% block extra_title %}{% endblock %}</title>
@@ -161,6 +162,10 @@
             {% endfor %}
         </div>
     {% endif %}
+
+    <div class="container">
+        <iframe	style="width: 400px; height: 600px;" src="https://app.fastbots.ai/embed/cm6wzgmv50zbls5k2zp7ww4b0"></iframe>
+    </div>
 
     {% block page_header %}
     {% endblock %}
