@@ -21,21 +21,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+if os.path.exists("env.py"):
+    import env  
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', '')
+SECRET_KEY = os.environ.get("SECRET_KEY")
+if not SECRET_KEY:
+    raise ValueError("The SECRET_KEY environment variable is not set")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
 
-ALLOWED_HOSTS = ['vogue-nest-bb4c62d54744.herokuapp.com', 'localhost',
+ALLOWED_HOSTS = ['vogue-nest-bb4c62d54744.herokuapp.com', '127.0.0.1',
                     '8000-jawahir01-voguenest-ycptmbag659.ws.codeinstitute-ide.net']
 
-# CSRF_TRUSTED_ORIGINS = [
-#     'https://*.codeinstitute-ide.net/',
-#     'https://*.herokuapp.com'
-# ]
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.codeinstitute-ide.net/',
+    'https://*.herokuapp.com'
+]
 
 
 # Application definition

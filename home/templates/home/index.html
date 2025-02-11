@@ -10,18 +10,92 @@
 {% endblock %}
 
 {% block content %}
-    <div  >
-        <div class="row wrap-slick">
-            <div class="item-slick">
-                <h1 class="display-4 logo-font hero-title text-black">
-                    NEW ARRIVELS
-                </h1>
-                <div class="my-5">
-                    <h4>
-                        <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-20 text-uppercase py-3">Shop Now</a>
-                    </h4>
+    <!-- Carousel -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'media/slide-02.jpg' %}" class="d-block w-100" alt="Slide 1">
+                <div class="carousel-caption">
+                    <h1 class="display-4 logo-font hero-title text-black animate__animated animate__fadeInDown">NEW ARRIVALS</h1>
+                    <a href="{% url 'products' %}" class="btn btn-lg rounded-20 text-uppercase py-3 shop-now-button animate__animated animate__fadeInUp animate__delay-1s">Shop Now</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'media/slide-04.jpg' %}" class="d-block w-100" alt="Slide 2">
+                <div class="carousel-caption">
+                    <h1 class="display-4 logo-font hero-title text-black animate__animated animate__fadeInDown">NEW ARRIVALS</h1>
+                    <a href="{% url 'products' %}" class="btn btn-lg rounded-20 text-uppercase py-3 shop-now-button animate__animated animate__fadeInUp animate__delay-1s">Shop Now</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'media/slide-07.jpg' %}" class="d-block w-100" alt="Slide 3">
+                <div class="carousel-caption">
+                    <h1 class="display-4 logo-font hero-title text-black animate__animated animate__fadeInDown">NEW ARRIVALS</h1>
+                    <a href="{% url 'products' %}" class="btn btn-lg rounded-20 text-uppercase py-3 shop-now-button animate__animated animate__fadeInUp animate__delay-1s">Shop Now</a>
                 </div>
             </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
     </div>
+
+    <!-- Features Section -->
+    <div class="container text-center my-5">
+        <div class="row">
+            <div class="col-md-3">
+                <i class="fas fa-shipping-fast fa-3x text-primary"></i>
+                <h5 class="mt-2">Quick Delivery</h5>
+            </div>
+            <div class="col-md-3">
+                <i class="fas fa-dollar-sign fa-3x text-success"></i>
+                <h5 class="mt-2">Value for Money</h5>
+            </div>
+            <div class="col-md-3">
+                <i class="fas fa-star fa-3x text-warning"></i>
+                <h5 class="mt-2">Good Quality</h5>
+            </div>
+            <div class="col-md-3">
+                <i class="fas fa-store fa-3x text-info"></i>
+                <h5 class="mt-2">Easy Access</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our Story Section -->
+    <div class="container my-5 py-5 bg-light text-center">
+        <h2>Our Story</h2>
+        <p class="lead">We started with a vision to provide high-quality products with the best shopping experience. Our mission is to make every customer feel special with our carefully curated collection.</p>
+    </div>
+
+    {% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            let heroCarousel = document.querySelector("#heroCarousel");
+            let carousel = new bootstrap.Carousel(heroCarousel, {
+                interval: 3000,
+                ride: 'carousel'
+            });
+
+            // Pause on hover
+            heroCarousel.addEventListener("mouseenter", function() {
+                carousel.pause();
+            });
+
+            // Resume on mouse leave
+            heroCarousel.addEventListener("mouseleave", function() {
+                carousel.cycle();
+            });
+        });
+    </script>
+    {% endblock %}
 {% endblock %}
