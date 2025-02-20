@@ -2,11 +2,7 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+    
 {% endblock %}
 
 {% block content %}
@@ -60,7 +56,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row ">
                     {% for product in products %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100 border-0">
@@ -73,7 +69,7 @@
                                     <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                 </a>
                                 {% endif %}
-                                <div class="card-body pb-0">
+                                <div class="card-body">
                                     <p class="mb-0 text-left font-weight">{{ product.name }}</p>
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
@@ -94,8 +90,8 @@
                                             {% endif %} -->
                                         </div>
                                         <div class="col-md-6">
-                                            <p class="  text-muted mt-1 mb-0 text-right font-weight-bold">
-                                                <i class="fas fa-heart "></i> 
+                                            <p class="text-muted wishlist-icon-text mt-1 mb-0 font-weight-bold">
+                                                <i class="fas fa-heart wishlist-icon" data-product-id="{{ product.id }}" style="cursor: pointer;"></i> 
                                             </p>
                                         </div>
                                     </div>
@@ -164,4 +160,54 @@
             }
         })
     </script>
+    <script type="text/javascript">
+        // Wishlist array to store product IDs
+        let wishlist = [];
+    
+        // Check if there's already a wishlist in localStorage
+        if (localStorage.getItem('wishlist')) {
+            wishlist = JSON.parse(localStorage.getItem('wishlist'));
+            updateWishlistCounter();
+            highlightWishlistItems();
+        }
+    
+        // Function to update the wishlist counter in the header
+        function updateWishlistCounter() {
+            const counterElement = document.querySelector('.wishlist-counter');
+            if (counterElement) {
+                counterElement.textContent = wishlist.length; // Update the span with the wishlist length
+            }
+        }
+    
+        // Function to highlight wishlist items
+        function highlightWishlistItems() {
+            document.querySelectorAll('.wishlist-icon').forEach(icon => {
+                const productId = icon.getAttribute('data-product-id');
+                if (wishlist.includes(productId)) {
+                    icon.classList.add('text-danger'); // Change to red when in wishlist
+                }
+            });
+        }
+    
+        // Event listener for heart icon clicks
+        document.querySelectorAll('.wishlist-icon').forEach(icon => {
+            icon.addEventListener('click', function () {
+                const productId = this.getAttribute('data-product-id');
+                if (wishlist.includes(productId)) {
+                    // Remove from wishlist
+                    wishlist = wishlist.filter(id => id !== productId);
+                    this.classList.remove('text-danger');
+                } else {
+                    // Add to wishlist
+                    wishlist.push(productId);
+                    this.classList.add('text-danger');
+                }
+    
+                // Update localStorage and counter
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                updateWishlistCounter(); // Ensure the counter is updated properly
+            });
+        });
+    </script>
+    
 {% endblock %}
