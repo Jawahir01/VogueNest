@@ -2,11 +2,12 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from .models import Product, Category
+from .models import Product, Category, Review, ProductImage
+from django.db.models.functions import Lower
 from profiles.models import UserProfile
 from .forms import ProductForm
 
-# Create your views here.
+
 
 def all_products(request):
 
@@ -67,6 +68,27 @@ def product_detail(request, product_id):
     }
     return render(request, 'products/product_detail.html', context)
 
+@login_required
+def add_review(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    user = request.user
+
+    if request.method == 'POST':
+        rating = int(request.POST.get('rating', 0))
+        review_text = request.POST.get('review', '')
+
+        # Create a new review
+        Review.objects.create(
+            product=product,
+            user=request.user,
+            rating=rating,
+            review_text=review_text
+        )
+        review = Review.objects.create(product=product, user=user, rating=rating, review_text=review_text)
+    
+        return redirect('product_detail', product_id=product.id)
+
+    return render(request, 'product_detail.html', {'product': product})
 
 @login_required
 def add_product(request):
