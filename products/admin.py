@@ -1,7 +1,12 @@
 from django.contrib import admin
-from .models import Product, Category
+from .models import Product, Category, ProductImage, Review
 
-# Register your models here.
+# Inline admin for Product Images
+class ProductImageAdminInline(admin.TabularInline):
+    model = ProductImage
+    extra = 1  # Allows adding additional images
+
+# Product admin
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'sku',
@@ -9,17 +14,30 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'price',
         'rating',
-        'image',
     )
     ordering = ('sku',)
+    inlines = [
+        ProductImageAdminInline,  # Now it’s defined before use
+    ]
 
-
+# Category admin
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
         'name',
     )
 
+# Review admin
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = (
+        'product',
+        'user',
+        'rating',
+        'created_at',
+    )
 
-admin.site.register(Product, ProductAdmin )
+# Register models
+admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(ProductImage)
+admin.site.register(Review, ReviewAdmin)
