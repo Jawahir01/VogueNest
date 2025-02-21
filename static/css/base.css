@@ -11,8 +11,78 @@ body {
     font-family: 'Lato';
 }
 
-header {
-    display:contents ;
+#delivery-banner {
+    max-width: 100%;
+}
+
+.banner, p{
+    margin: 1px;
+    font-size: 15px;
+    padding: 2px;
+}
+
+.navbar {
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Sticky header on scroll */
+nav.scrolled {
+    background-color: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.navbar.scrolled {
+    background-color: white;
+}
+
+.logo-font {
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.2rem 0.3rem;
+}
+
+.nav-font {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.label1 {
+    position: relative;
+}
+
+.label1::after {
+    content: attr(data-label1);
+    font-family: Poppins-Regular;
+    font-size: 10px;
+    line-height: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    height: 15px;
+    min-width: 32px;
+    border-radius: 7px;
+    padding: 1 4px;
+    background-color: #f74877;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
 }
 
 /* Carousel Styles */
@@ -28,14 +98,12 @@ header {
 
 .carousel-caption {
     position: absolute;
-    top: 50%;
+    top: 70%;
     transform: translateY(-50%);
-    text-align: center;
+    text-align: left;
     width: 100%;
     z-index: 10;
-    background: rgba(0, 0, 0, 0.5);
     padding: 20px;
-    border-radius: 10px;
 }
 
 .hero-title {
@@ -46,7 +114,7 @@ header {
 }
 
 .shop-now-button {
-    background-color: #ff4500;
+    background-color: #000;
     color: #fff;
     padding: 12px 30px;
     font-size: 1.2rem;
@@ -55,9 +123,37 @@ header {
     text-decoration: none;
 }
 
-.shop-now-button:hover {
-    background-color: #e63e00;
+.shop-now-button:hover,
+.shop-now-button:focus,
+.shop-now-button:active {
+    background-color: #f74877;
+    color: #fff;
     transform: scale(1.05);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .icons {
+        left: 0;
+    }
+    .navbar-toggler{
+        left:0;
+    }
+    .carousel-caption {
+        top: 65%;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    .shop-now-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    .carousel-item img {
+        height: 500px;
+        object-fit: fill;
+    }
+
 }
 
 /* Features Section */
@@ -87,91 +183,149 @@ p.lead {
     color: #555;
 }
 
+/* General Animation */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-70px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes rotateInUp {
+    from {
+        opacity: 0;
+        transform: rotateX(90deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotateX(0);
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+       opacity: 0;
+       transform: translateY(-70px);
+    }
+    100% {
+       opacity: 1;
+       transform: translateY(0);
+    }
+ } 
+
+ @keyframes bounceIn {
+
+    0% { transform: scale(0); opacity: 0; }
+  
+    20% { transform: scale(1.1); opacity: 1; }
+  
+    40% { transform: scale(0.9); opacity: 1; }
+  
+    100% { transform: scale(1); opacity: 1; }
+  
+  } 
+
+  @keyframes bounce-in-right {
+    0% {
+      opacity: 0;
+      transform: translateX(2000px);
+    }
+    60% {
+      opacity: 1;
+      transform: translateX(-30px);
+    }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+  }
+  
+  @keyframes bounce-in {
+    0% {
+      opacity: 0;
+      transform: scale(.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    70% { transform: scale(.9); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+     }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+     }
+     
+ } 
+
+/* Different Animations Per Slide */
+.carousel-item:nth-child(1) .hero-title {
+    animation: slideInLeft 2.5s ease-in-out;
+}
+
+.carousel-item:nth-child(1) .shop-now-button {
+    animation: rotateInUp 2.5s ease-in-out;
+}
+
+.carousel-item:nth-child(2) .hero-title {
+    animation: fadeInDown 2.5s ease-in-out;
+}
+
+.carousel-item:nth-child(2) .shop-now-button {
+    animation: bounce-in-right 2.5s ease;
+}
+
+.carousel-item:nth-child(3) .hero-title {
+    animation: bounce-in 2.5s ease-in-out;
+}
+
+.carousel-item:nth-child(3) .shop-now-button {
+    animation: fadeInUp 2.5s ease;
+}
 
 /* from Bulma */
-.icon {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
-    font-size: 12px;
-    
-}
-
-.logo-font {
-    text-transform: uppercase;
-}
-
-#topnav {
-    padding: 0;
-    margin: 0;
-    width: 100%;
-}
-
-.banner {
-    font-size: 13px;
-    line-height: 2;
-    width: 100%;
-    margin: 0px;
+.card-body{
     padding: 0px;
-
 }
-
-.nav-bar{
-    margin: 0;
-    display: flex;
-}
-
-.navbar-nav{
-    position: relative;
-    padding: 1px 10px 1px 0px;
-    margin: 0px 1px 0px 1px;
-}
-
-.nav-link {
-    display: block;
-    padding: 0.2rem 0.3rem;
-}
-
-.nav-font {
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 0.8rem;
-}
-
-.main-logo-link {
-    width: fit-content;
-}
-
-.label1{
-    position: relative;
-
-}
-.label1::after {
-    content: attr(data-label1);
-    font-family: Poppins-Regular;
-    font-size: 10px;
-    line-height: 15px;
-    color: #fff;
-    text-transform: uppercase;
-    text-align: center;
-    display: block;
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    height: 15px;
-    min-width: 32px;
-    border-radius: 7px;
-    padding: 1 4px;
-    background-color: #f74877;
-}
-
-
 
 .card-footer{
     padding: 0px;
 }
+
+.wishlist-icon-text{
+    font-size: 0.8rem;
+    text-align: end;
+}
+
+#main-product-image {
+    width: 100%; /* Ensure it takes full column width */
+    max-height: 500px; /* Keep it a consistent size */
+    object-fit: cover; /* Ensure image is not stretched */
+}
+
+/* Indicator images */
+.indicator-image {
+    width: 80px; /* Smaller size for indicators */
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+    margin-bottom: 10px; /* Add spacing between indicator images */
+}
+
+/* Padding between indicator and main image */
+.indicator-images {
+    padding-right: 15px;
+}
+
 .btn-black {
     background: black;
     color: white;
@@ -182,7 +336,7 @@ p.lead {
     background: white;
     color: black !important; /* use important to override link colors for <a> elements */
     border: 1px solid black;
-    
+    border-radius: 22px;
 }
 
 .btn-outline-black:hover,
@@ -233,6 +387,30 @@ a.category-badge > span.badge:hover {
 .remove-item {
     cursor: pointer;
 }
+
+/* ------------------------------- Bootstrap 4.5.2 overrides */
+
+/* Override Bootstrap 4.5.2's default button styles */
+/* .btn {
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0;
+} */
+.rating-stars {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+.rating-stars label { 
+    color: #ddd;
+    font-size: 1.5em;
+    padding: 0 3px;
+    cursor: pointer;
+}
+.rating-stars input:checked ~ label { color: #ffd700; }
+.rating-stars label:hover,
+.rating-stars label:hover ~ label { color: #ffd700; }
 
 /* ------------------------------- bootstrap toasts */
 
@@ -380,54 +558,28 @@ input[name='q']::placeholder {
 
 /* -------------------------------- Media Queries */
 
-/* Slightly larger container on xl screens */
-@media (min-width: 1200px) {
-  .container {
-    max-width: 80%;
-  }
-}
-
-/* fixed top navbar only on medium and up */
-@media (min-width: 992px) {
-    .fixed-top-desktop-only {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #topnav {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
-    .header-container {
-        padding-top: 10px;
-        display: contents
+    .col-3, .col-6, .col-3 {
+        width: 100%;
+        text-align: center;
     }
+
+    .navbar-nav {
+        flex-direction: column;
+    }
+
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
-    .header-container {
-        padding-top: 116px;
-    }
-
-    body {
-        height: calc(100vh - 116px);
-    }
-
-    .display-4.logo-font.text-black {
-        font-size: 2rem;
-    }
-    .nav-link {
-        padding: 0.15rem;
-    }
-    .nav-link i.fa-lg {
-        font-size: 1rem;
-    }
-    .navbar-toggler {
-        padding: .6rem .6rem;
-        font-size: 1rem;
-    }
     #delivery-banner h4 {
-        font-size: .9rem;
+        font-size: .8rem;
     }
     .btn.btn-outline-black.rounded-0,
     .btn.btn-black.rounded-0 {
