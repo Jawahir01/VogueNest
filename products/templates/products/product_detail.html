@@ -7,34 +7,27 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-2 d-flex flex-column justify-content-center align-items-center indicator-images">
+        <div class="col-2 d-flex flex-column justify-content-center 
+                align-items-center indicator-images">
             {% for image in product.images.all %}
-                {% with image.image.url as image_url %}
                 <img class="img-fluid rounded border mb-2 indicator-image" 
-                     src="{{ image_url }}" 
-                     alt="{{ product.name }}" 
-                     onclick="changeMainImage(this)">
-                {% endwith %}
+                src="{{ image.image.url }}" 
+                data-fullsize="{{ image.image.url }}"
+                alt="{{ product.name }}" 
+                onclick="changeMainImage(this)">
             {% endfor %}
         </div>
 
         <div class="col-4">
             <div class="image-container my-5">
-                {% if product.images %}
-                    <a href="{{ product.images.0.url }}" target="_blank">
+                <a id="main-image-link" href="#" target="_blank">
+                    {% with product.images.all|first as first_image %}
                         <img id="main-product-image" 
                              class="img-fluid rounded" 
-                             src="{{ product.images.0.url }}" 
+                             src="{% if first_image %}{{ first_image.image.url }}{% else %}{{ MEDIA_URL }}noimage.png{% endif %}" 
                              alt="{{ product.name }}">
-                    </a>
-                {% else %}
-                    <a href="#">
-                        <img id="main-product-image" 
-                             class="img-fluid rounded" 
-                             src="{{ MEDIA_URL }}noimage.png" 
-                             alt="{{ product.name }}">
-                    </a>
-                {% endif %}
+                    {% endwith %}
+                </a>
             </div>
         </div>
 
@@ -207,5 +200,11 @@
     function changeMainImage(imgElement) {
         document.getElementById("main-product-image").src = imgElement.src;
     }
+    
+    function changeMainImage(thumbnail) {
+    const fullSizeUrl = thumbnail.dataset.fullsize;
+    document.getElementById('main-product-image').src = fullSizeUrl;
+    document.getElementById('main-image-link').href = fullSizeUrl;
+}
 </script>
 {% endblock %}

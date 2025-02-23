@@ -302,7 +302,7 @@ p.lead {
 }
 
 .wishlist-icon-text{
-    font-size: 0.8rem;
+    font-size: 1.3rem;
     text-align: end;
 }
 
@@ -388,15 +388,7 @@ a.category-badge > span.badge:hover {
     cursor: pointer;
 }
 
-/* ------------------------------- Bootstrap 4.5.2 overrides */
 
-/* Override Bootstrap 4.5.2's default button styles */
-/* .btn {
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 0;
-} */
 .rating-stars {
     direction: rtl;
     unicode-bidi: bidi-override;
