@@ -63,7 +63,8 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 5px;
     bottom: 0% !important;
     left: -10%;
-    color: #dc3546ae
+    color: #dc3546ae;
+    font-style: italic;
 }
 
 /* Category Cards */
@@ -121,6 +122,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 30px;
     font-weight: 600;
     transition: all 0.3s ease;
+    font-style: normal;
 }
 
 .btn-light {
@@ -131,6 +133,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-light:hover {
     background: var(--primary-color);
     color: var(--light-bg);
+    font-style: normal;
 }
 
 /* Responsive Breakpoints */
@@ -207,6 +210,36 @@ h1, h2, h3, h4, h5, h6 {
 .animate__delay-04s {
     animation-delay: 0.4s;
 }
+
+
+/* Footer */
+footer {
+    background: var(--dark-bg);
+    color: var(--secondary-color);
+}
+footer h5 {
+    color: #e4505f;
+}
+
+footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--accent-color);
+}
+
+.social-links i {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.social-links i:hover {
+    transform: translateY(-3px);
+}
+
 
 /* Cart Badge */
 .cart-badge {
