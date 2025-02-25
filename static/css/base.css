@@ -391,7 +391,13 @@ footer a:hover {
     transform: translateY(-3px);
 }
 
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    z-index: 999;
+    cursor: pointer;
 
+}
 /* Cart Badge */
 .cart-badge {
     position: absolute;
@@ -603,9 +609,9 @@ a.category-badge > span.badge:hover {
     right: 10px;
 }
 
-.btt-link,
+.btt-link, 
 .update-link,
-.remove-item {
+.remove-item {  /* to be removed later */
     cursor: pointer;
 }
 
