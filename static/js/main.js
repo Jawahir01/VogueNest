@@ -60,6 +60,15 @@ document.querySelectorAll('.product-image').forEach(image => {
     });
 });
 
+// Blog Read More Interactions
+document.querySelectorAll('.btn-read-more').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        console.log('Reading more about:', this.closest('.blog-card').querySelector('.blog-title').textContent);
+    });
+});
+
 
 (function ($) {
     "use strict";

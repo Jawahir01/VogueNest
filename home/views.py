@@ -8,3 +8,8 @@ def index(request):
     }
     return render(request, 'home/index.html', context)
 
+def blog(request):
+    """ A view to return the blog page """
+    return render(request, 'home/blog.html')
+
+

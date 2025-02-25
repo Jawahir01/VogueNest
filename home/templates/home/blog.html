@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    
+{% endblock %}
+
+{% block content %}
+    <main class="blog-container">
+        <h1 class="text-left mb-5"> Latest Blog Posts </h1>
+        <div class="blog-grid">
+            <!-- Article 1 -->
+            <article class="blog-card">
+                <div class="blog-image">
+                    <img src="/media/blog-01.jpg" alt="Fashion Trends">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">March 15, 2024</div>
+                    <h2 class="blog-title">5 Winter-to-Spring Fashion Trends to Try Now</h2>
+                    <p class="blog-excerpt">Discover how to transition your wardrobe seamlessly between seasons with these expert tips from Vogue Nest stylists...</p>
+                    <div class="blog-meta">
+                        <span>By Admin</span>
+                        <span><i class="far fa-comment"></i> 8 Comments</span>
+                    </div>
+                    <a href="#" class="read-more">Continue Reading →</a>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="blog-card">
+                <div class="blog-image">
+                    <img src="/media/about-02.jpg" alt="Winter Dresses">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">February 28, 2024</div>
+                    <h2 class="blog-title">Creative Ways to Style Dresses in Cold Weather</h2>
+                    <p class="blog-excerpt">Learn how to layer your favorite dresses for winter while maintaining style and comfort. Our fashion experts share...</p>
+                    <div class="blog-meta">
+                        <span>By Admin</span>
+                        <span><i class="far fa-comment"></i> 12 Comments</span>
+                    </div>
+                    <a href="#" class="read-more">Continue Reading →</a>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="blog-card">
+                <div class="blog-image">
+                    <img src="/media/blog-02.jpg" alt="Men's Fashion">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">February 10, 2024</div>
+                    <h2 class="blog-title">Essential Holiday Gift Guide for Fashion-Conscious Men</h2>
+                    <p class="blog-excerpt">Curated list of perfect gifts for the stylish man in your life. From accessories to wardrobe staples...</p>
+                    <div class="blog-meta">
+                        <span>By Admin</span>
+                        <span><i class="far fa-comment"></i> 5 Comments</span>
+                    </div>
+                    <a href="#" class="read-more">Continue Reading →</a>
+                </div>
+            </article>
+        </div>
+    </main>
+{% endblock %}
+
+
+{% block extra_js %}
+    <script type="text/javascript">
+        // Image hover effect
+        document.querySelectorAll('.blog-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+{% endblock %}
+
