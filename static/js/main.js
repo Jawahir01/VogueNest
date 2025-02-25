@@ -225,3 +225,78 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 }
 );
+
+document.addEventListener('DOMContentLoaded', function() {
+    const fileInput = document.getElementById('id_image');
+    const previewGrid = document.getElementById('preview-grid');
+    
+    // Create 4 preview slots
+    previewGrid.innerHTML = Array(4).fill().map((_, i) => `
+        <div class="preview-slot" data-index="${i + 1}"></div>
+    `).join('');
+
+    fileInput.addEventListener('change', function(e) {
+        const files = Array.from(e.target.files);
+        const previewSlots = previewGrid.querySelectorAll('.preview-slot');
+        
+        // Reset previews
+        previewSlots.forEach(slot => {
+            slot.innerHTML = '';
+            slot.classList.remove('filled');
+        });
+
+        // Validate file count
+        if(files.length !== 4) {
+            alert('Please select exactly 4 images');
+            fileInput.value = '';
+            return;
+        }
+
+        // Display previews
+        files.slice(0, 4).forEach((file, index) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const slot = previewSlots[index];
+                slot.innerHTML = `<img src="${e.target.result}" alt="Preview ${index + 1}">`;
+                slot.classList.add('filled');
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+
+    // Form validation
+    document.getElementById('product-form').addEventListener('submit', function(e) {
+        const files = fileInput.files;
+        if(files.length !== 4) {
+            e.preventDefault();
+            alert('Please select exactly 4 images');
+            fileInput.focus();
+        }
+    });
+
+    // Preview container
+    const previewContainer = document.getElementById('preview-container');
+
+    // Drag & drop functionality
+    previewContainer.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        previewContainer.style.borderColor = '#0d6efd';
+    });
+
+    previewContainer.addEventListener('dragleave', () => {
+        previewContainer.style.borderColor = '#dee2e6';
+    });
+
+    previewContainer.addEventListener('drop', (e) => {
+        e.preventDefault();
+        previewContainer.style.borderColor = '#dee2e6';
+        fileInput.files = e.dataTransfer.files;
+        fileInput.dispatchEvent(new Event('change'));
+    });
+});
+
+//  reload the page with the new category
+document.getElementById('id_category').addEventListener('change', function() {
+    
+    this.form.submit();
+});
