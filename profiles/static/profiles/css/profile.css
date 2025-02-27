@@ -1,21 +1,72 @@
-.order-history {
-    max-height: 416px; /* height of profile form + submit button */
-    overflow-y: auto;
+/* Profile Page Styles */
+.profile-card, .orders-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
-#profile-update-form .form-control {
-    color: #000;
+.profile-form .form-control {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
 }
 
-#profile-update-form input::placeholder {
-    color: #aab7c4;
+.profile-form .form-group {
+    margin-bottom: 0.3rem;
 }
 
-#id_default_country,
-#id_default_country option:not(:first-child) {
-    color: #000;
+.order-history .table {
+    font-size: 0.9rem;
 }
 
-#id_default_country option:first-child {
-    color: #aab7c4;
+.order-history thead th {
+    border-bottom: 2px solid #f0f0f0;
+    font-weight: 500;
+}
+
+.order-item:hover {
+    background: #f8f9fa;
+}
+
+.order-item td {
+    vertical-align: middle;
+    padding: 1rem 0.75rem;
+    border-color: #f8f9fa;
+}
+
+.order-history .link-dark {
+    transition: color 0.2s ease;
+}
+
+.order-history .link-dark:hover {
+    color: #333 !important;
+    text-decoration: underline;
+}
+
+.alert-info {
+    border-radius: 8px;
+    background: #f8f9fa;
+    border-color: #e0e0e0;
+    color: #666;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .profile-card, .orders-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .order-history .table {
+        font-size: 0.85rem;
+    }
+    
+    .order-item td {
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .order-history .table-responsive {
+        overflow-x: auto;
+    }
 }
