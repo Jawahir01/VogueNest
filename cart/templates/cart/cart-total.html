@@ -1,8 +1,23 @@
-<h6><strong>Cart Total: ${{ total|floatformat:2 }}</strong></h6>
-<h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
-<h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
-{% if free_delivery_delta > 0 %}
-    <p class="mb-1 text-danger">
-        You could get free delivery by spending just <strong>${{ free_delivery_delta }}</strong> more!
-    </p>
-{% endif %}
+<div class="cart-totals">
+    <div class="total-item d-flex justify-content-between mb-2">
+        <span class="text-muted">Subtotal:</span>
+        <span>${{ total|floatformat:2 }}</span>
+    </div>
+    
+    <div class="total-item d-flex justify-content-between mb-3">
+        <span class="text-muted">Delivery:</span>
+        <span>${{ delivery|floatformat:2 }}</span>
+    </div>
+
+    <div class="grand-total d-flex justify-content-between py-3 border-top">
+        <strong>Total:</strong>
+        <strong>${{ grand_total|floatformat:2 }}</strong>
+    </div>
+
+    {% if free_delivery_delta > 0 %}
+    <div class="delivery-alert alert alert-info mt-3">
+        <i class="fas fa-truck me-2"></i>
+        Spend <strong>${{ free_delivery_delta }}</strong> more for free delivery!
+    </div>
+    {% endif %}
+</div>
