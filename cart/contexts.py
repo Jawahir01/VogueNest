@@ -4,33 +4,43 @@ from django.shortcuts import get_object_or_404
 from products.models import Product
 
 def cart_contents(request):
-
+    cart = request.session.get('cart', {})
     cart_items = []
     total = 0
     product_count = 0
-    cart = request.session.get('cart', {})
 
     for item_id, item_data in cart.items():
-        if isinstance(item_data, int):
-            product = get_object_or_404(Product, pk=item_id)
-            total += item_data * product.price
-            product_count += item_data
-            cart_items.append({
-                'item_id': item_id,
-                'quantity': item_data,
-                'product': product,
-            })
-        else:
-            product = get_object_or_404(Product, pk=item_id)
-            for size, quantity in item_data['items_by_size'].items():
-                total += quantity * product.price
-                product_count += quantity
+        if isinstance(item_data, dict):
+            product = Product.objects.get(pk=item_id)
+            for variant_key, quantity in item_data['variants'].items():
+                size, color = None, None
+                if '_' in variant_key:
+                    size, color = variant_key.split('_', 1)
+                else:
+                    size = variant_key if product.sizes.exists() else None
+                    color = variant_key if product.colors.exists() else None
+                
                 cart_items.append({
                     'item_id': item_id,
-                    'quantity': quantity,
+                    'variant_key': variant_key,
                     'product': product,
+                    'quantity': quantity,
                     'size': size,
+                    'color': color,
                 })
+                total += quantity * product.price
+                product_count += quantity
+        else:
+            product = Product.objects.get(pk=item_id)
+            cart_items.append({
+                'item_id': item_id,
+                'product': product,
+                'quantity': item_data,
+                'size': None,
+                'color': None,
+            })
+            total += item_data * product.price
+            product_count += item_data
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
