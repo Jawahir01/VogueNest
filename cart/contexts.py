@@ -2,6 +2,7 @@ from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
+from .models import DiscountCode
 
 def cart_contents(request):
     cart = request.session.get('cart', {})
@@ -42,6 +43,22 @@ def cart_contents(request):
             total += item_data * product.price
             product_count += item_data
 
+    # Add discount calculation
+    discount_code = request.session.get('discount_code')
+    discount = None
+    if discount_code:
+        try:
+            code_obj = DiscountCode.objects.get(code=discount_code)
+            if code_obj.is_valid():
+                discount = {
+                    'code': code_obj.code,
+                    'percent': float(code_obj.discount_percent),
+                    'amount': round(total * float(code_obj.discount_percent) / 100, 2)
+                }
+                total -= discount['amount']
+        except DiscountCode.DoesNotExist:
+            pass
+
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
@@ -55,6 +72,8 @@ def cart_contents(request):
         'cart_items': cart_items,
         'total': total,
         'product_count': product_count,
+        'discount': discount,
+        'discount_code': discount_code,
         'delivery': delivery,
         'free_delivery_delta': free_delivery_delta,
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,

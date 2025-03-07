@@ -73,14 +73,33 @@
                             </div>
                         {% endfor %}
                         
-                    </div>
-                {% else %}
-                    <div class="empty-cart text-center py-5">
-                        <i class="fas fa-shopping-cart fa-3x text-muted mb-4"></i>
-                        <p class="lead mb-4">Your cart is empty</p>
-                        <a href="{% url 'products' %}" class="btn btn-primary btn-lg">
-                            <i class="fas fa-arrow-left me-2"></i>Continue Shopping
-                        </a>
+                        <hr class="my-0 border-light mt-2" />
+                        <!-- Discount Code Section -->
+                        <div class="row mt-4">
+                            <div class="col-12 col-md-6">
+                                {% if not discount %}
+                                <form method="POST" action="{% url 'apply_discount' %}">
+                                    {% csrf_token %}
+                                    <div class="input-group" style="max-width: 100%;">
+                                        <input type="text" 
+                                            name="discount_code" 
+                                            class="form-control" 
+                                            placeholder="Enter discount code"
+                                            aria-label="Discount code">
+                                        <input type="hidden" name="redirect_url" value="{% url 'view_cart' %}">
+                                        <button class="btn btn-outline-primary" type="submit">Apply</button>
+                                    </div>
+                                </form>
+                                {% else %}
+                                <div class="alert alert-success">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span>15% Discount Applied (Code: {{ discount.code }})</span>
+                                        <a href="{% url 'remove_discount' %}" class="btn btn-sm btn-link">Remove</a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
                 {% endif %}
             </div>
@@ -100,6 +119,14 @@
                     </p>
                 </div>
             </div>
+            {% else %}
+                    <div class="empty-cart text-center py-5">
+                        <i class="fas fa-shopping-cart fa-3x text-muted mb-4"></i>
+                        <p class="lead mb-4">Your cart is empty</p>
+                        <a href="{% url 'products' %}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-arrow-left me-2"></i>Continue Shopping
+                        </a>
+                    </div>
             {% endif %}
         </div>
     </div>

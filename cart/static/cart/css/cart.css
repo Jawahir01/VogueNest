@@ -30,10 +30,6 @@
     object-fit: cover;
 }
 
-.quantity-controls .input-group {
-    max-width: 120px;
-}
-
 .quantity-controls .btn-qty {
     border: 1px solid #e0e0e0;
     padding: 0.5rem 1rem;

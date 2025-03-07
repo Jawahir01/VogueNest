@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, HttpResponse, get_object
 from django.contrib import messages
 
 from products.models import Product
+from .models import DiscountCode
 
 # Create your views here.
 
@@ -9,6 +10,12 @@ def view_cart(request):
     """ A view that renders the cart contents page """
     context = {
         'profile': request.user,
+        'discount_code': request.session.get('discount_code', ''),
+        'cart': request.session.get('cart'),
+        'discount': request.session.get('discount'),
+        'discount_amount': request.session.get('discount_amount'),
+        'discount_percent': request.session.get('discount_percent'),
+        'discount_code': request.session.get('discount_code'),
         }
     return render(request, 'cart/cart.html', context)
 
@@ -54,6 +61,33 @@ def add_to_cart(request, item_id):
     except Exception as e:
         messages.error(request, f'Error adding item: {e}')
         return redirect(redirect_url)
+
+def apply_discount(request):
+    if request.method == 'POST':
+        code = request.POST.get('discount_code', '').strip().upper()
+        redirect_url = request.POST.get('redirect_url', 'cart/')
+        
+        try:
+            discount = DiscountCode.objects.get(code=code)
+            if discount.is_valid():
+                request.session['discount_code'] = code
+                discount.used_count += 1
+                discount.save()
+                messages.success(request, "Discount code applied successfully!")
+            else:
+                messages.error(request, "This discount code is no longer valid")
+        except DiscountCode.DoesNotExist:
+            messages.error(request, "Invalid discount code")
+            
+        return redirect(redirect_url)
+
+def remove_discount(request):
+    if 'discount_code' in request.session:
+        code = request.session.pop('discount_code')
+        messages.success(request, f"Discount code {code} removed successfully!")
+    else:
+        messages.error(request, "No discount code to remove")
+    return redirect('view_cart')
 
 
 def adjust_cart(request, item_id):
