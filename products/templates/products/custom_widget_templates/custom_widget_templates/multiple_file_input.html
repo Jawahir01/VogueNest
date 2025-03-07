@@ -1,0 +1,21 @@
+<div class="custom-file">
+    <input type="{{ widget.type }}" name="{{ widget.name }}" 
+           {% include "django/forms/widgets/attrs.html" %}>
+    <label class="custom-file-label" for="{{ widget.attrs.id }}">
+        Choose files...
+    </label>
+</div>
+{% if widget.is_initial %}
+<div class="current-files mt-3">
+    <p class="text-muted">Currently uploaded files:</p>
+    <div class="row">
+        {% for file in widget.value %}
+        <div class="col-md-3">
+            <div class="file-thumbnail">
+                <img src="{{ file.url }}" class="img-fluid">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

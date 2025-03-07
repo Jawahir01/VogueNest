@@ -44,7 +44,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" 
                                                    name="sizes" id="size_{{ value }}" value="{{ value }}"
-                                                   {% if value in form.sizes.value %}checked{% endif %}>
+                                                   {% if value|stringformat:"s" in form.sizes.value|stringformat:"s" %}checked{% endif %}>
                                             <label class="form-check-label" for="size_{{ value }}">
                                                 {{ text }}
                                             </label>
@@ -66,7 +66,7 @@
                                         <div class="color-pill position-relative">
                                             <input type="checkbox" class="btn-check" 
                                                    name="colors" id="color_{{ value }}" value="{{ value }}"
-                                                   {% if value in form.colors.value %}checked{% endif %}>
+                                                   {% if value|stringformat:"s" in form.colors.value|stringformat:"s" %}checked{% endif %}>
                                             <label class="btn btn-color rounded-pill" 
                                                    for="color_{{ value }}" 
                                                    style="background-color: {{ value }}">
@@ -82,30 +82,29 @@
                             </div>
 
                             <!-- Image Upload -->
+
                             <div class="form-group image-upload-group">
-                                <label for="id_image">Product Images (4 required)</label>
+                                {{ formset.management_form }}
+                                <label>Product Images (4 required)</label>
                                 <div class="custom-file-upload">
-                                    <input type="file" name="image" id="id_image" multiple
-                                           accept="image/*" 
-                                           data-max-files="4">
                                     <div class="upload-preview" id="image-preview">
                                         <div class="preview-instruction">
                                             <i class="fas fa-cloud-upload-alt fa-2x"></i>
                                             <p>Drag & drop 4 product images</p>
                                         </div>
                                         <div class="preview-grid" id="preview-grid">
-                                            {% for image in product.images.all|slice:":4" %}
-                                            <div class="preview-slot filled">
-                                                <img src="{{ image.image.url }}" alt="Current image {{ forloop.counter }}">
+                                            {% for form in formset %}
+                                            <div class="preview-slot">
+                                                {{ form.image }}
+                                                {% if form.instance.image %}
+                                                <img src="{{ form.instance.image.url }}" 
+                                                    alt="Current image {{ forloop.counter }}">
+                                                {% endif %}
                                             </div>
                                             {% endfor %}
                                         </div>
                                     </div>
-                                    <small class="form-text text-muted">Exactly 4 images required (800x800 recommended)</small>
                                 </div>
-                                {% for error in form.image.errors %}
-                                    <div class="invalid-feedback d-block">{{ error }}</div>
-                                {% endfor %}
                             </div>
                         </div>
 
@@ -176,14 +175,14 @@
         // Form validation
         document.getElementById('product-form').addEventListener('submit', function(e) {
             const files = fileInput.files;
-            const existingImages = product.images.count ;
+            const existingImages = {{ product.images.count }};
             
             if(files.length > 0 && (files.length + existingImages) < 4) {
                 e.preventDefault();
-                alert('You must have exactly 4 images. Current images: {{ product.images.count }} + new: ${files.length}');
+                alert(`You must have exactly 4 images. Current images: {{ product.images.count }} + new: ${files.length}`);
                 fileInput.focus();
             }
         });
-});
+    });
 </script>
 {% endblock %}

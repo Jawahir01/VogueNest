@@ -1,12 +1,15 @@
 from django.contrib import admin
-from .models import Product, Category, ProductImage, Review
+from .models import Category, Product, ProductImage, Size, Color
 
-# Inline admin for Product Images
-class ProductImageAdminInline(admin.TabularInline):
-    model = ProductImage
-    extra = 1  # Allows adding additional images
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'friendly_name',
+        'parent',
+    )
 
-# Product admin
+    ordering = ('name',)
+
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'sku',
@@ -15,29 +18,38 @@ class ProductAdmin(admin.ModelAdmin):
         'price',
         'rating',
     )
+
     ordering = ('sku',)
-    inlines = [
-        ProductImageAdminInline,  # Now it’s defined before use
-    ]
 
-# Category admin
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = (
-        'friendly_name',
-        'name',
-    )
-
-# Review admin
-class ReviewAdmin(admin.ModelAdmin):
+class ProductImageAdmin(admin.ModelAdmin):
     list_display = (
         'product',
-        'user',
-        'rating',
-        'created_at',
+        'image',
+        'order',
     )
 
-# Register models
-admin.site.register(Product, ProductAdmin)
+    ordering = ('product',)
+
+class SizeAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'friendly_name',
+        'order',
+    )
+
+    ordering = ('order',)
+
+class ColorAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'friendly_name',
+        'hex_code',
+    )
+
+    ordering = ('name',)
+
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(ProductImage)
-admin.site.register(Review, ReviewAdmin)
+admin.site.register(Product, ProductAdmin)
+admin.site.register(ProductImage, ProductImageAdmin)
+admin.site.register(Size, SizeAdmin)
+admin.site.register(Color, ColorAdmin)

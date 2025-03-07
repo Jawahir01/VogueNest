@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8">
                 <div class="admin-form-card shadow-sm">
-                    
+
                     <!-- Form Header -->
                     <div class="form-header mb-4">
                         <h1 class="h3 mb-2">Product Management</h1>
@@ -16,7 +16,7 @@
                     </div>
 
                     <!-- Product Form -->
-                    <form method="POST" action="{% url 'add_product' %}" class="product-form" enctype="multipart/form-data" id="product-form">
+                    <form method="POST" action="{% url 'add_product' %}" class="product-form" id="product-form">
                         {% csrf_token %}
                         
                         <!-- Form Fields -->
@@ -80,28 +80,32 @@
                                 {% endfor %}
                             </div>
 
-                            <!-- Image Upload -->
-                            <div class="form-group image-upload-group">
-                                <label for="id_image">Product Images (4 required)</label>
-                                <div class="custom-file-upload">
-                                    <input type="file" name="image" id="id_image" multiple
-                                           accept="image/*" required
-                                           data-max-files="4">
-                                    <div class="upload-preview" id="image-preview">
-                                        <div class="preview-instruction">
-                                            <i class="fas fa-cloud-upload-alt fa-2x"></i>
-                                            <p>Drag & drop 4 product images</p>
-                                        </div>
-                                        <div class="preview-grid" id="preview-grid">
-                                            
-                                        </div>
-                                    </div>
-                                    <small class="form-text text-muted">Exactly 4 images required (800x800 recommended)</small>
-                                </div>
-                                {% for error in form.image.errors %}
-                                    <div class="invalid-feedback d-block">{{ error }}</div>
-                                {% endfor %}
-                            </div>
+                            
+                            <!-- Image Upload Section -->
+<div class="form-group image-upload-group">
+    <label>Product Images (4 required)</label>
+    <div class="image-input-container">
+        <!-- File Upload -->
+        <div class="custom-file-upload mb-3">
+            {{ form.image }}
+            <div class="upload-preview" id="image-preview">
+                <div class="preview-instruction">
+                    <i class="fas fa-cloud-upload-alt fa-2x"></i>
+                    <p>Drag & drop images or click to upload</p>
+                </div>
+                <div class="preview-grid" id="preview-grid"></div>
+            </div>
+            <small class="form-text text-muted">Upload up to 4 images</small>
+        </div>
+
+        <!-- URL Input -->
+        <div class="url-input-group">
+            {{ form.image_urls.label_tag }}
+            {{ form.image_urls }}
+            <small class="form-text text-muted">Or enter image URLs (one per line)</small>
+        </div>
+    </div>
+</div>
                         </div>
 
                         <!-- Form Actions -->
