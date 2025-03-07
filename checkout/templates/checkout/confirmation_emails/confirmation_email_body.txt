@@ -11,7 +11,8 @@ Items Purchased:
 {% for item in cart_items %}
                     
     {{ item.product.name }}
-        Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}
+        Size: {% if item.size %}{{ item.size|upper }}{% else %}N/A{% endif %}
+        Color:{% if item.color %}{{ item.color|upper }}{% else %}N/A{% endif %}
         Qty: {{ item.quantity }} £{{ item.product.price | calc_subtotal:item.quantity }}
         ----------
 {% endfor %}

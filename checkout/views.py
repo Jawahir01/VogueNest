@@ -34,7 +34,11 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
+        size = request.POST.get('product_size')
+        color = request.POST.get('product_color')
         cart = request.session.get('cart', {})
+
+        variant_key = f"{size}_{color}" if size and color else str(size) if size else str(color)
 
         form_data = {
             'full_name': request.POST['full_name'],
@@ -66,11 +70,20 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data['items_by_size'].items():
+                        if size or color:
+                            if item_id in cart:
+                                if variant_key in cart[item_id]['variants']:
+                                    cart[item_id]['variants'][variant_key] += quantity
+                                else:
+                                    cart[item_id]['variants'][variant_key] = quantity
+                            else:
+                                cart[item_id] = {'variants': {variant_key: quantity}}
+    
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
-                                quantity=quantity,
+                                quantity=item_data['variants'][variant_key],
+                                product_color=color,
                                 product_size=size,
                             )
                             order_line_item.save()
