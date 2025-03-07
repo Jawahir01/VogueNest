@@ -28,24 +28,210 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
 </div>
 
-{% include "socialaccount/snippets/login_extra.html" %}
+<!-- {% include "socialaccount/snippets/login_extra.html" %} -->
 
 {% else %}
 <p>{% blocktrans %}If you have not created an account yet, then please
 <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 {% endif %}
 
-<form class="login" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  {{ form|crispy }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <a class="btn btn-outline-black rounded-0" href="{% url 'home' %}">Home</a>
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-  <p class="mt-2">
-    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  </p>
-</form>
+<div class="vn-login-container">
+  <div class="vn-login-card">
+      <form class="vn-login-form" method="POST" action="{% url 'account_login' %}">
+          <h2 class="vn-login-title">Access Your Account</h2>
+          <p class="vn-login-subtitle">Welcome back to Vogue Nest</p>
+          
+          {% csrf_token %}
+          
+          <div class="vn-form-group">
+              {{ form.login|as_crispy_field }}
+          </div>
+          
+          <div class="vn-form-group">
+              {{ form.password|as_crispy_field }}
+          </div>
+          
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          
+          <div class="vn-form-actions">
+              <button class="vn-signin-btn" type="submit">
+                  <span class="vn-btn-text">{% trans "Sign In" %}</span>
+                  <i class="fas fa-arrow-right"></i>
+              </button>
+              <a class="vn-forgot-password" href="{% url 'account_reset_password' %}">
+                  {% trans "Forgot Password?" %}
+              </a>
+          </div>
+          
+          <div class="vn-social-login">
+              <p class="vn-social-divider">Or continue with</p>
+              <div class="vn-social-buttons">
+                  <a href="#" class="vn-social-btn google">
+                      <i class="fab fa-google"></i>
+                  </a>
+                  <a href="#" class="vn-social-btn apple">
+                      <i class="fab fa-apple"></i>
+                  </a>
+                  <a href="#" class="vn-social-btn facebook">
+                      <i class="fab fa-facebook-f"></i>
+                  </a>
+              </div>
+          </div>
+          
+          <p class="vn-signup-link">
+              Don't have an account? <a href="{% url 'account_signup' %}">Join Vogue Nest</a>
+          </p>
+      </form>
+  </div>
+</div>
+
+<style>
+.vn-login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f9f9f9;
+  padding: 2rem;
+}
+
+.vn-login-card {
+  background: white;
+  padding: 3rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 440px;
+  transition: transform 0.3s ease;
+}
+
+.vn-login-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.vn-login-subtitle {
+  color: #666;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.vn-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.vn-form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.vn-form-group input:focus {
+  border-color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.vn-signin-btn {
+  background: #1a1a1a;
+  color: white;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vn-signin-btn:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.vn-forgot-password {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.vn-forgot-password:hover {
+  color: #1a1a1a;
+}
+
+.vn-social-divider {
+  color: #666;
+  text-align: center;
+  position: relative;
+  margin: 2rem 0;
+}
+
+.vn-social-divider::before,
+.vn-social-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e0e0e0;
+  margin: auto;
+}
+
+.vn-social-divider::before {
+  margin-right: 1rem;
+}
+
+.vn-social-divider::after {
+  margin-left: 1rem;
+}
+
+.vn-social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.vn-social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.vn-social-btn:hover {
+  background: #f5f5f5;
+}
+
+.vn-signup-link {
+  text-align: center;
+  margin-top: 2rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.vn-signup-link a {
+  color: #1a1a1a;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Add Font Awesome CDN in your base template */
+</style>
 
 {% endblock %}

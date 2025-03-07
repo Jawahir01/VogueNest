@@ -21,6 +21,10 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
+h1, h2 {
+    color: #dc3546ae;
+}
+
 /* Navigation */
 .navbar {
     transition: all 0.3s ease;
@@ -396,8 +400,19 @@ footer a:hover {
     bottom: 20px;
     z-index: 999;
     cursor: pointer;
+    width: 3rem;
+    background: var(--accent-color);
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+}
+
+#signup_form, .form-group {
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
 
 }
+
 /* Cart Badge */
 .cart-badge {
     position: absolute;
@@ -551,6 +566,10 @@ footer a:hover {
 /* Padding between indicator and main image */
 .indicator-images {
     padding-right: 15px;
+}
+
+select#sort-selector {
+    width: auto;
 }
 
 .btn-black {
@@ -973,6 +992,39 @@ admin-form-card {
     display: none;
 }
 
+.url-preview {
+    padding: 1rem;
+    text-align: center;
+    word-break: break-all;
+}
+
+.url-preview i {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.image-source {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+}
+
+.slot-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    color: #666;
+    z-index: -1;
+}
+
 /* Form Check Alignment */
 .form-check {
     margin-bottom: 0;
@@ -1061,7 +1113,6 @@ admin-form-card {
     right: 36px;
 }
 
-
 .cart-notification-wrapper {
     height: 100px;
     overflow-x: hidden;
@@ -1079,7 +1130,7 @@ input[name='q']::placeholder {
 }
 .allauth-form-inner-content input {
     border-color: #000;
-    border-radius: 0;
+    border-radius: 8px;
 }
 .allauth-form-inner-content label:not([for='id_remember']) {
     display: none;
@@ -1104,7 +1155,8 @@ input[name='q']::placeholder {
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: 0;
+    letter-spacing: 0.05em;
+    border-radius: 8px;
     /* standard bootstrap btn transitions */
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
