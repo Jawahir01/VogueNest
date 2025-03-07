@@ -1,0 +1,6 @@
+[
+    {"pk": 1, "model": "products.color", "fields": {"name": "White", "hex_code": "#FFFFFF", "categories": [1, 4, 7]}},
+    {"pk": 2, "model": "products.color", "fields": {"name": "Black", "hex_code": "#000000", "categories": [1, 4]}},
+    {"pk": 3, "model": "products.color", "fields": {"name": "Brown", "hex_code": "#A52A2A", "categories": [7]}}
+  ]
+  

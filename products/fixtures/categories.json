@@ -1,1 +1,11 @@
-[{"pk":1,"model":"products.category","fields":{"name":"women_shirts","friendly_name":"Women Shirts"}},{"pk":2,"model":"products.category","fields":{"name":"women_jeans","friendly_name":"Women Jeans"}},{"pk":3,"model":"products.category","fields":{"name":"women_shoes","friendly_name":"Women Shoes"}},{"pk":4,"model":"products.category","fields":{"name":"men_shirts","friendly_name":"Men Shirts"}},{"pk":5,"model":"products.category","fields":{"name":"men_jeans","friendly_name":"Men Jeans"}},{"pk":6,"model":"products.category","fields":{"name":"men_shoes","friendly_name":"Men Shoes"}},{"pk":7,"model":"products.category","fields":{"name":"bags","friendly_name":"Bags"}},{"pk":8,"model":"products.category","fields":{"name":"watches","friendly_name":"Watches"}},{"pk":9,"model":"products.category","fields":{"name":"sunglasses","friendly_name":"Sunglasses"}}]
+[
+    {"pk":1,"model":"products.category","fields":{"name":"women_shirts","friendly_name":"Women Shirts","slug":"women-shirts"}},
+    {"pk":2,"model":"products.category","fields":{"name":"women_jeans","friendly_name":"Women Jeans","slug":"women-jeans"}},
+    {"pk":3,"model":"products.category","fields":{"name":"women_shoes","friendly_name":"Women Shoes","slug":"women-shoes"}},
+    {"pk":4,"model":"products.category","fields":{"name":"men_shirts","friendly_name":"Men Shirts","slug":"men-shirts"}},
+    {"pk":5,"model":"products.category","fields":{"name":"men_jeans","friendly_name":"Men Jeans","slug":"men-jeans"}},
+    {"pk":6,"model":"products.category","fields":{"name":"men_shoes","friendly_name":"Men Shoes","slug":"men-shoes"}},
+    {"pk":7,"model":"products.category","fields":{"name":"bags","friendly_name":"Bags","slug":"bags"}},
+    {"pk":8,"model":"products.category","fields":{"name":"watches","friendly_name":"Watches","slug":"watches"}},
+    {"pk":9,"model":"products.category","fields":{"name":"sunglasses","friendly_name":"Sunglasses","slug":"sunglasses"}}
+]

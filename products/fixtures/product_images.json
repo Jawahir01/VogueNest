@@ -1,519 +1,629 @@
 [
     {
-      "pk": 1,
-      "model": "products.productimage",
-      "fields": {
-        "product": 1,
-        "image_url": "http://example.com/images/women_casual_shirt.jpg",
-        "image": "women_casual_shirt.jpg"
-      }
-    },
-    {
-      "pk": 2,
-      "model": "products.productimage",
-      "fields": {
-        "product": 1,
-        "image_url": "http://example.com/images/women_casual_shirt_2.jpg",
-        "image": "women_casual_shirt_2.jpg"
-      }
-    },
-    {
-      "pk": 3,
-      "model": "products.productimage",
-      "fields": {
-        "product": 1,
-        "image_url": "http://example.com/images/women_casual_shirt_3.jpg",
-        "image": "women_casual_shirt_3.jpg"
-      }
-    },
-    {
-      "pk": 4,
-      "model": "products.productimage",
-      "fields": {
-        "product": 1,
-        "image_url": "http://example.com/images/women_casual_shirt_4.jpg",
-        "image": "women_casual_shirt_4.jpg"
-      }
-    },
-    {
-      "pk": 5,
-      "model": "products.productimage",
-      "fields": {
-        "product": 2,
-        "image_url": "http://example.com/images/women_classic_shirt.jpg",
-        "image": "women_classic_shirt.jpg"
-      }
-    },
-    {
-      "pk": 6,
-      "model": "products.productimage",
-      "fields": {
-        "product": 2,
-        "image_url": "http://example.com/images/women_classic_shirt_2.jpg",
-        "image": "women_classic_shirt_2.jpg"
-      }
-    },
-    {
-      "pk": 7,
-      "model": "products.productimage",
-      "fields": {
-        "product": 2,
-        "image_url": "http://example.com/images/women_classic_shirt_3.jpg",
-        "image": "women_classic_shirt_3.jpg"
-      }
-    },
-    {
-      "pk": 8,
-      "model": "products.productimage",
-      "fields": {
-        "product": 2,
-        "image_url": "http://example.com/images/women_classic_shirt_4.jpg",
-        "image": "women_classic_shirt_4.jpg"
-      }
-    },
-    {
-      "pk": 9,
-      "model": "products.productimage",
-      "fields": {
-        "product": 3,
-        "image_url": "http://example.com/images/women_floral_blouse.jpg",
-        "image": "women_floral_blouse.jpg"
+        "pk": 1,
+        "model": "products.productimage",
+        "fields": {
+            "product": 1,
+            "image_url": "http://example.com/images/women_casual_shirt.jpg",
+            "image": "women_casual_shirt.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
-      "pk": 10,
-      "model": "products.productimage",
-      "fields": {
-        "product": 3,
-        "image_url": "http://example.com/images/women_floral_blouse_2.jpg",
-        "image": "women_floral_blouse_2.jpg"
+        "pk": 2,
+        "model": "products.productimage",
+        "fields": {
+            "product": 1,
+            "image_url": "http://example.com/images/women_casual_shirt_2.jpg",
+            "image": "women_casual_shirt_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
-      "pk": 11,
-      "model": "products.productimage",
-      "fields": {
-        "product": 3,
-        "image_url": "http://example.com/images/women_floral_blouse_3.jpg",
-        "image": "women_floral_blouse_3.jpg"
+        "pk": 3,
+        "model": "products.productimage",
+        "fields": {
+            "product": 1,
+            "image_url": "http://example.com/images/women_casual_shirt_3.jpg",
+            "image": "women_casual_shirt_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
-      "pk": 12,
-      "model": "products.productimage",
-      "fields": {
-        "product": 3,
-        "image_url": "http://example.com/images/women_floral_blouse_4.jpg",
-        "image":"women_floral_blouse_4.jpg"
+        "pk": 4,
+        "model": "products.productimage",
+        "fields": {
+            "product": 1,
+            "image_url": "http://example.com/images/women_casual_shirt_4.jpg",
+            "image": "women_casual_shirt_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
-      "pk": 13,
-      "model": "products.productimage",
-      "fields": {
-        "product": 4,
-        "image_url":  "http://example.com/images/women_linen_summer_top.jpg",
-        "image": "women_linen_summer_top.jpg"
+        "pk": 5,
+        "model": "products.productimage",
+        "fields": {
+            "product": 2,
+            "image_url": "http://example.com/images/women_classic_shirt.jpg",
+            "image": "women_classic_shirt.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
-      "pk": 14,
-      "model": "products.productimage",
-      "fields": {
-        "product": 4,
-        "image_url": "http://example.com/images/women_linen_summer_top_2.jpg",
-        "image": "women_linen_summer_top_2.jpg"
+        "pk": 6,
+        "model": "products.productimage",
+        "fields": {
+            "product": 2,
+            "image_url": "http://example.com/images/women_classic_shirt_2.jpg",
+            "image": "women_classic_shirt_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
-      "pk": 15,
-      "model": "products.productimage",
-      "fields": {
-        "product": 4,
-        "image_url": "http://example.com/images/women_linen_summer_top_3.jpg",
-        "image": "women_linen_summer_top_3.jpg"
+        "pk": 7,
+        "model": "products.productimage",
+        "fields": {
+            "product": 2,
+            "image_url": "http://example.com/images/women_classic_shirt_3.jpg",
+            "image": "women_classic_shirt_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
-      "pk": 16,
-      "model": "products.productimage",
-      "fields": {
-        "product": 4,
-        "image_url": "http://example.com/images/women_linen_summer_top_4.jpg",
-        "image":  "women_linen_summer_top_4.jpg"
+        "pk": 8,
+        "model": "products.productimage",
+        "fields": {
+            "product": 2,
+            "image_url": "http://example.com/images/women_classic_shirt_4.jpg",
+            "image": "women_classic_shirt_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
-      "pk": 17,
-      "model": "products.productimage",
-      "fields": {
-        "product": 5,
-        "image_url": "http://example.com/images/women_high_waist_skinny_jeans.jpg",
-        "image": "women_high_waist_skinny_jeans.jpg"
+        "pk": 9,
+        "model": "products.productimage",
+        "fields": {
+            "product": 3,
+            "image_url": "http://example.com/images/women_floral_blouse.jpg",
+            "image": "women_floral_blouse.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
-      "pk": 18,
-      "model": "products.productimage",
-      "fields": {
-        "product": 5,
-        "image_url": "http://example.com/images/women_high_waist_skinny_jeans_2.jpg",
-        "image": "women_high_waist_skinny_jeans_2.jpg"
+        "pk": 10,
+        "model": "products.productimage",
+        "fields": {
+            "product": 3,
+            "image_url": "http://example.com/images/women_floral_blouse_2.jpg",
+            "image": "women_floral_blouse_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
-      "pk": 19,
-      "model": "products.productimage",
-      "fields": {
-        "product": 5,
-        "image_url": "http://example.com/images/women_high_waist_skinny_jeans_3.jpg",
-        "image": "women_high_waist_skinny_jeans_3.jpg"
+        "pk": 11,
+        "model": "products.productimage",
+        "fields": {
+            "product": 3,
+            "image_url": "http://example.com/image/women_floral_blouse_3.jpg",
+            "image": "women_floral_blouse_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
-      "pk": 20,
-      "model": "products.productimage",
-      "fields": {
-        "product": 5,
-        "image_url": "http://example.com/images/women_high_waist_skinny_jeans_4.jpg",
-        "image": "women_high_waist_skinny_jeans_4.jpg"
+        "pk": 12,
+        "model": "products.productimage",
+        "fields": {
+            "product": 3,
+            "image_url": "http://example.com/images/women_floral_blouse_4.jpg",
+            "image": "women_floral_blouse_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
-      "pk": 21,
-      "model": "products.productimage",
-      "fields": {
-        "product": 6,
-        "image_url": "http://example.com/images/women_wide_leg_jeans.jpg", 
-        "image": "women_wide_leg_jeans.jpg"
+        "pk": 13,
+        "model": "products.productimage",
+        "fields": {
+            "product": 4,
+            "image_url": "http://example.com/images/women_linen_summer_top.jpg",
+            "image": "women_linen_summer_top.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
-      "pk": 22,
-      "model": "products.productimage",
-      "fields": {
-        "product": 6,
-        "image_url": "http://example.com/images/women_wide_leg_jeans_2.jpg",
-        "image": "women_wide_leg_jeans_2.jpg"
+        "pk": 14,
+        "model": "products.productimage",
+        "fields": {
+            "product": 4,
+            "image_url": "http://example.com/images/women_linen_summer_top_2.jpg",
+            "image": "women_linen_summer_top_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
-      "pk": 23,
-      "model": "products.productimage",
-      "fields": {
-        "product": 6,
-        "image_url": "http://example.com/images/women_wide_leg_jeans_3.jpg",
-        "image": "women_wide_leg_jeans_3.jpg"
+        "pk": 15,
+        "model": "products.productimage",
+        "fields": {
+            "product": 4,
+            "image_url": "http://example.com/images/women_linen_summer_top_3.jpg",
+            "image": "women_linen_summer_top_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
-      "pk": 24,
-      "model": "products.productimage",
-      "fields": {
-        "product": 6,
-        "image_url": "http://example.com/images/women_wide_leg_jeans_4.jpg",
-        "image": "women_wide_leg_jeans_4.jpg"
+        "pk": 16,
+        "model": "products.productimage",
+        "fields": {
+            "product": 4,
+            "image_url": "http://example.com/images/women_linen_summer_top_4.jpg",
+            "image": "women_linen_summer_top_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
-      "pk": 25,
-      "model": "products.productimage",
-      "fields": {
-        "product": 7,
-        "image_url": "http://example.com/images/women_distressed_skinny_jeans.jpg",
-        "image": "women_distressed_skinny_jeans.jpg"
+        "pk": 17,
+        "model": "products.productimage",
+        "fields": {
+            "product": 5,
+            "image_url": "http://example.com/images/women_high_waist_skinny_jeans.jpg",
+            "image": "women_high_waist_skinny_jeans.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
-      "pk": 26,
-      "model": "products.productimage",
-      "fields": {
-        "product": 7,
-        "image_url": "http://example.com/images/women_distressed_skinny_jeans_2.jpg",
-        "image": "women_distressed_skinny_jeans_2.jpg"
+        "pk": 18,
+        "model": "products.productimage",
+        "fields": {
+            "product": 5,
+            "image_url": "http://example.com/images/women_high_waist_skinny_jeans_2.jpg",
+            "image": "women_high_waist_skinny_jeans_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
-      "pk": 27,
-      "model": "products.productimage",
-      "fields": {
-        "product": 7,
-        "image_url": "http://example.com/images/women_distressed_skinny_jeans_3.jpg",
-        "image": "women_distressed_skinny_jeans_3.jpg"
+        "pk": 19,
+        "model": "products.productimage",
+        "fields": {
+            "product": 5,
+            "image_url": "http://example.com/images/women_high_waist_skinny_jeans_3.jpg",
+            "image": "women_high_waist_skinny_jeans_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
-      "pk": 28,
-      "model": "products.productimage",
-      "fields": {
-        "product": 7,
-        "image_url": "http://example.com/images/women_distressed_skinny_jeans_4.jpg",
-        "image": "women_distressed_skinny_jeans_4.jpg"
+        "pk": 20,
+        "model": "products.productimage",
+        "fields": {
+            "product": 5,
+            "image_url": "http://example.com/images/women_high_waist_skinny_jeans_4.jpg",
+            "image": "women_high_waist_skinny_jeans_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
-      "pk": 29,
-      "model": "products.productimage",
-      "fields": {
-        "product": 8,
-        "image_url": "http://example.com/images/women_straight-leg_jeans.jpg", 
-        "image": "women_straight-leg_jeans.jpg"
+        "pk": 21,
+        "model": "products.productimage",
+        "fields": {
+            "product": 6,
+            "image_url": "http://example.com/images/women_wide_leg_jeans.jpg",
+            "image": "women_wide_leg_jeans.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
-      "pk": 30,
-      "model": "products.productimage",
-      "fields": {
-        "product": 8,
-        "image_url": "http://example.com/images/women_straight-leg_jeans_2.jpg",
-        "image": "women_straight-leg_jeans_2.jpg"
+        "pk": 22,
+        "model": "products.productimage",
+        "fields": {
+            "product": 6,
+            "image_url": "http://example.com/images/women_wide_leg_jeans_2.jpg",
+            "image": "women_wide_leg_jeans_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
-      "pk": 31,
-      "model": "products.productimage",
-      "fields": {
-        "product": 8,
-        "image_url": "http://example.com/images/women_straight-leg_jeans_3.jpg",
-        "image": "women_straight-leg_jeans_3.jpg"
-        }
-
-    },
-    {
-      "pk": 32,
-      "model": "products.productimage",
-      "fields": {
-        "product": 8,
-        "image_url": "http://example.com/images/women_straight-leg_jeans_4.jpg",
-        "image": "women_straight-leg_jeans_4.jpg"
+        "pk": 23,
+        "model": "products.productimage",
+        "fields": {
+            "product": 6,
+            "image_url": "http://example.com/images/women_wide_leg_jeans_3.jpg",
+            "image": "women_wide_leg_jeans_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
-      "pk": 33,
-      "model": "products.productimage",
-      "fields": {
-        "product": 9,
-        "image_url": "http://example.com/images/women_classic_pumps_sh.jpg",
-        "image": "women_classic_pumps_sh.jpg"
+        "pk": 24,
+        "model": "products.productimage",
+        "fields": {
+            "product": 6,
+            "image_url": "http://example.com/images/women_wide_leg_jeans_4.jpg",
+            "image": "women_wide_leg_jeans_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
-      "pk": 34,
-      "model": "products.productimage",
-      "fields": {
-        "product": 9,
-        "image_url": "http://example.com/images/women_classic_pumps_sh_2.jpg",
-        "image": "women_classic_pumps_sh_2.jpg"
+        "pk": 25,
+        "model": "products.productimage",
+        "fields": {
+            "product": 7,
+            "image_url": "http://example.com/images/women_distressed_skinny_jeans.jpg",
+            "image": "women_distressed_skinny_jeans.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
-      "pk": 35,
-      "model": "products.productimage",
-      "fields": {
-        "product": 9,
-        "image_url": "http://example.com/images/women_classic_pumps_sh_3.jpg",
-        "image": "women_classic_pumps_sh_3.jpg"
+        "pk": 26,
+        "model": "products.productimage",
+        "fields": {
+            "product": 7,
+            "image_url": "http://example.com/images/women_distressed_skinny_jeans_2.jpg",
+            "image": "women_distressed_skinny_jeans_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
-      "pk": 36,
-      "model": "products.productimage",
-      "fields": {
-        "product": 9,
-        "image_url": "http://example.com/images/women_classic_pumps_sh_4.jpg",
-        "image": "women_classic_pumps_sh_4.jpg"
-        }   
-    },
-    {
-      "pk": 37,
-      "model": "products.productimage",
-      "fields": {
-        "product": 10,
-        "image_url": "http://example.com/images/women_sneakers_sh.jpg",
-        "image": "women_sneakers_sh.jpg"
-        }
-
-    },
-    {
-      "pk": 38,
-      "model": "products.productimage",
-      "fields": {
-        "product": 10,
-        "image_url": "http://example.com/images/women_sneakers_sh_2.jpg",
-        "image": "women_sneakers_sh_2.jpg"
-        }
-
-    },
-    {
-      "pk": 39,
-      "model": "products.productimage",
-      "fields": {
-        "product": 10,
-        "image_url": "http://example.com/images/women_sneakers_sh_3.jpg",
-        "image": "women_sneakers_sh_3.jpg"
+        "pk": 27,
+        "model": "products.productimage",
+        "fields": {
+            "product": 7,
+            "image_url": "http://example.com/images/women_distressed_skinny_jeans_3.jpg",
+            "image": "women_distressed_skinny_jeans_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
-      "pk": 40,
-      "model": "products.productimage",
-      "fields": {
-        "product": 10,
-        "image_url": "http://example.com/images/women_sneakers_sh_4.jpg",
-        "image": "women_sneakers_sh_4.jpg"
+        "pk": 28,
+        "model": "products.productimage",
+        "fields": {
+            "product": 7,
+            "image_url": "http://example.com/images/women_distressed_skinny_jeans_4.jpg",
+            "image": "women_distressed_skinny_jeans_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
-      "pk": 41,
-      "model": "products.productimage",
-      "fields": {
-        "product": 11,
-        "image_url": "http://example.com/images/women_ankle_boots_sh.jpg",
-        "image": "women_ankle_boots_sh.jpg"
+        "pk": 29,
+        "model": "products.productimage",
+        "fields": {
+            "product": 8,
+            "image_url": "http://example.com/images/women_straight-leg_jeans.jpg",
+            "image": "women_straight-leg_jeans.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
-      "pk": 42,
-      "model": "products.productimage",
-      "fields": {
-        "product": 11,
-        "image_url": "http://example.com/images/women_ankle_boots_sh_2.jpg",
-        "image": "women_ankle_boots_sh_2.jpg"
+        "pk": 30,
+        "model": "products.productimage",
+        "fields": {
+            "product": 8,
+            "image_url": "http://example.com/images/women_straight-leg_jeans_2.jpg",
+            "image": "women_straight-leg_jeans_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
-      "pk": 43,
-      "model": "products.productimage",
-      "fields": {
-        "product": 11,
-        "image_url": "http://example.com/images/women_ankle_boots_sh_3.jpg",
-        "image": "women_ankle_boots_sh_3.jpg"
+        "pk": 31,
+        "model": "products.productimage",
+        "fields": {
+            "product": 8,
+            "image_url": "http://example.com/images/women_straight-leg_jeans_3.jpg",
+            "image": "women_straight-leg_jeans_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
-      "pk": 44,
-      "model": "products.productimage",
-      "fields": {
-        "product": 11,
-        "image_url": "http://example.com/images/women_ankle_boots_sh_4.jpg",
-        "image": "women_ankle_boots_sh_4.jpg"
+        "pk": 32,
+        "model": "products.productimage",
+        "fields": {
+            "product": 8,
+            "image_url": "http://example.com/images/women_straight-leg_jeans_4.jpg",
+            "image": "women_straight-leg_jeans_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
-      "pk": 45,
-      "model": "products.productimage",
-      "fields": {
-        "product": 12,
-        "image_url": "http://example.com/images/women_espadrilles.jpg",
-        "image": "women_espadrilles.jpg"
-        }
-
-    },
-    {
-      "pk": 46,
-      "model": "products.productimage",
-      "fields": {
-        "product": 12,
-        "image_url": "http://example.com/images/women_espadrilles_2.jpg",
-        "image": "women_espadrilles_2.jpg"
+        "pk": 33,
+        "model": "products.productimage",
+        "fields": {
+            "product": 9,
+            "image_url": "http://example.com/images/women_classic_pumps_sh.jpg",
+            "image": "women_classic_pumps_sh.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
-      "pk": 47,
-      "model": "products.productimage",
-      "fields": {
-        "product": 12,
-        "image_url": "http://example.com/images/women_espadrilles_3.jpg",
-        "image": "women_espadrilles_3.jpg"
+        "pk": 34,
+        "model": "products.productimage",
+        "fields": {
+            "product": 9,
+            "image_url": "http://example.com/images/women_classic_pumps_sh_2.jpg",
+            "image": "women_classic_pumps_sh_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
-      "pk": 48,
-      "model": "products.productimage",
-      "fields": {
-        "product": 12,
-        "image_url": "http://example.com/images/women_espadrilles_4.jpg",
-        "image": "women_espadrilles_4.jpg"
+        "pk": 35,
+        "model": "products.productimage",
+        "fields": {
+            "product": 9,
+            "image_url": "http://example.com/images/women_classic_pumps_sh_3.jpg",
+            "image": "women_classic_pumps_sh_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
-      "pk": 49,
-      "model": "products.productimage",
-      "fields": {
-        "product": 13,
-        "image_url": "http://example/images/men_formal_shirt.jpg",
-        "image" : "men_formal_shirt.jpg"
+        "pk": 36,
+        "model": "products.productimage",
+        "fields": {
+            "product": 9,
+            "image_url": "http://example.com/images/women_classic_pumps_sh_4.jpg",
+            "image": "women_classic_pumps_sh_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
-      "pk": 50,
-      "model": "products.productimage",
-      "fields": {
-        "product": 13,
-        "image_url": "http://example/images/men_formal_shirt_2.jpg",
-        "image": "men_formal_shirt_2.jpg"
+        "pk": 37,
+        "model": "products.productimage",
+        "fields": {
+            "product": 10,
+            "image_url": "http://example.com/images/women_sneakers_sh.jpg",
+            "image": "women_sneakers_sh.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
-      "pk": 51,
-      "model": "products.productimage",
-      "fields": {
-        "product": 13,
-        "image_url": "http://example/images/men_formal_shirt_3.jpg",
-        "image": "men_formal_shirt_3.jpg"
+        "pk": 38,
+        "model": "products.productimage",
+        "fields": {
+            "product": 10,
+            "image_url": "http://example.com/images/women_sneakers_sh_2.jpg",
+            "image": "women_sneakers_sh_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
-      "pk": 52,
-      "model": "products.productimage",
-      "fields": {
-        "product": 13,
-        "image_url": "http://example/images/men_formal_shirt_4.jpg",
-        "image": "men_formal_shirt_4.jpg"
+        "pk": 39,
+        "model": "products.productimage",
+        "fields": {
+            "product": 10,
+            "image_url": "http://example.com/images/women_sneakers_sh_3.jpg",
+            "image": "women_sneakers_sh_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
-      "pk": 53,
-      "model": "products.productimage",
-      "fields": {
-        "product": 14,
-        "image_url": "http://example/images/men_casual_shirt.jpg",
-        "image": "men_casual_shirt.jpg"
+        "pk": 40,
+        "model": "products.productimage",
+        "fields": {
+            "product": 10,
+            "image_url": "http://example.com/images/women_sneakers_sh_4.jpg",
+            "image": "women_sneakers_sh_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
-      "pk": 54,
-      "model": "products.productimage",
-      "fields": {
-        "product": 14,
-        "image_url": "http://example/images/men_casual_shirt_2.jpg",
-        "image": "men_casual_shirt_2.jpg"
-        }   
-    },
-    {
-      "pk": 55,
-      "model": "products.productimage",
-      "fields": {
-        "product": 14,
-        "image_url": "http://example/images/men_casual_shirt_3.jpg",
-        "image": "men_casual_shirt_3.jpg"
+        "pk": 41,
+        "model": "products.productimage",
+        "fields": {
+            "product": 11,
+            "image_url": "http://example.com/images/women_ankle_boots_sh.jpg",
+            "image": "women_ankle_boots_sh.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
-      "pk": 56,
-      "model": "products.productimage",
-      "fields": {
-        "product": 14,
-        "image_url": "http://example/images/men_casual_shirt_4.jpg",
-        "image": "men_casual_shirt_4.jpg"
+        "pk": 42,
+        "model": "products.productimage",
+        "fields": {
+            "product": 11,
+            "image_url": "http://example.com/images/women_ankle_boots_sh_2.jpg",
+            "image": "women_ankle_boots_sh_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
-      "pk": 57,
-      "model": "products.productimage",
-      "fields": {
-        "product": 15,
-        "image_url": "http://example/images/men_plaid_flannel_shirt.jpg",
-        "image": "men_plaid_flannel_shirt.jpg"
+        "pk": 43,
+        "model": "products.productimage",
+        "fields": {
+            "product": 11,
+            "image_url": "http://example.com/images/women_ankle_boots_sh_3.jpg",
+            "image": "women_ankle_boots_sh_3.jpg",
+            "order": 3,
+            "is_featured": false
+        }
+    },
+    {
+        "pk": 44,
+        "model": "products.productimage",
+        "fields": {
+            "product": 11,
+            "image_url": "http://example.com/images/women_ankle_boots_sh_4.jpg",
+            "image": "women_ankle_boots_sh_4.jpg",
+            "order": 4,
+            "is_featured": false
+        }
+    },
+    {
+        "pk": 45,
+        "model": "products.productimage",
+        "fields": {
+            "product": 12,
+            "image_url": "http://example.com/images/women_espadrilles.jpg",
+            "image": "women_espadrilles.jpg",
+            "order": 1,
+            "is_featured": true
+        }
+    },
+    {
+        "pk": 46,
+        "model": "products.productimage",
+        "fields": {
+            "product": 12,
+            "image_url": "http://example.com/images/women_espadrilles_2.jpg",
+            "image": "women_espadrilles_2.jpg",
+            "order": 2,
+            "is_featured": false
+        }
+    },
+    {
+        "pk": 47,
+        "model": "products.productimage",
+        "fields": {
+            "product": 12,
+            "image_url": "http://example.com/images/women_espadrilles_3.jpg",
+            "image": "women_espadrilles_3.jpg",
+            "order": 3,
+            "is_featured": false
+        }
+    },
+    {
+        "pk": 48,
+        "model": "products.productimage",
+        "fields": {
+            "product": 12,
+            "image_url": "http://example.com/images/women_espadrilles_4.jpg",
+            "image": "women_espadrilles_4.jpg",
+            "order": 4,
+            "is_featured": false
+        }
+    },
+    {
+        "pk": 49,
+        "model": "products.productimage",
+        "fields": {
+            "product": 13,
+            "image_url": "http://example/images/men_formal_shirt.jpg",
+            "image": "men_formal_shirt.jpg",
+            "order": 1,
+            "is_featured": true
+        }
+    },
+    {
+        "pk": 50,
+        "model": "products.productimage",
+        "fields": {
+            "product": 13,
+            "image_url": "http://example/images/men_formal_shirt_2.jpg",
+            "image": "men_formal_shirt_2.jpg",
+            "order": 2,
+            "is_featured": false
+        }
+    },
+    {
+        "pk": 51,
+        "model": "products.productimage",
+        "fields": {
+            "product": 13,
+            "image_url": "http://example/images/men_formal_shirt_3.jpg",
+            "image": "men_formal_shirt_3.jpg",
+            "order": 3,
+            "is_featured": false
+        }
+    },
+    {
+        "pk": 52,
+        "model": "products.productimage",
+        "fields": {
+            "product": 13,
+            "image_url": "http://example/images/men_formal_shirt_4.jpg",
+            "image": "men_formal_shirt_4.jpg",
+            "order": 4,
+            "is_featured": false
+        }
+    },
+    {
+        "pk": 53,
+        "model": "products.productimage",
+        "fields": {
+            "product": 14,
+            "image_url": "http://example/images/men_casual_shirt.jpg",
+            "image": "men_casual_shirt.jpg",
+            "order": 1,
+            "is_featured": true
+        }
+    },
+    {
+        "pk": 54,
+        "model": "products.productimage",
+        "fields": {
+            "product": 14,
+            "image_url": "http://example/images/men_casual_shirt_2.jpg",
+            "image": "men_casual_shirt_2.jpg",
+            "order": 2,
+            "is_featured": false
+        }
+    },
+    {
+        "pk": 55,
+        "model": "products.productimage",
+        "fields": {
+            "product": 14,
+            "image_url": "http://example/images/men_casual_shirt_3.jpg",
+            "image": "men_casual_shirt_3.jpg",
+            "order": 3,
+            "is_featured": false
+        }
+    },
+    {
+        "pk": 56,
+        "model": "products.productimage",
+        "fields": {
+            "product": 14,
+            "image_url": "http://example/images/men_casual_shirt_4.jpg",
+            "image": "men_casual_shirt_4.jpg",
+            "order": 4,
+            "is_featured": false
+        }
+    },
+    {
+        "pk": 57,
+        "model": "products.productimage",
+        "fields": {
+            "product": 15,
+            "image_url": "http://example/images/men_plaid_flannel_shirt.jpg",
+            "image": "men_plaid_flannel_shirt.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -522,8 +632,10 @@
         "fields": {
             "product": 15,
             "image_url": "http://example/images/men_plaid_flannel_shirt_2.jpg",
-            "image": "men_plaid_flannel_shirt_2.jpg"
-    }
+            "image": "men_plaid_flannel_shirt_2.jpg",
+            "order": 2,
+            "is_featured": false
+        }
     },
     {
         "pk": 59,
@@ -531,8 +643,10 @@
         "fields": {
             "product": 15,
             "image_url": "http://example/images/men_plaid_flannel_shirt_3.jpg",
-            "image": "men_plaid_flannel_shirt_3.jpg"
-    }
+            "image": "men_plaid_flannel_shirt_3.jpg",
+            "order": 3,
+            "is_featured": false
+        }
     },
     {
         "pk": 60,
@@ -540,8 +654,10 @@
         "fields": {
             "product": 15,
             "image_url": "http://example/images/men_plaid_flannel_shirt_4.jpg",
-            "image": "men_plaid_flannel_shirt_4.jpg"
-    }
+            "image": "men_plaid_flannel_shirt_4.jpg",
+            "order": 4,
+            "is_featured": false
+        }
     },
     {
         "pk": 61,
@@ -549,8 +665,10 @@
         "fields": {
             "product": 16,
             "image_url": "http://example/images/men_denim_shirt.jpg",
-          "image": "men_denim_shirt.jpg"
-    }
+            "image": "men_denim_shirt.jpg",
+            "order": 1,
+            "is_featured": true
+        }
     },
     {
         "pk": 62,
@@ -558,8 +676,10 @@
         "fields": {
             "product": 16,
             "image_url": "http://example/images/men_denim_shirt_2.jpg",
-            "image": "men_denim_shirt_2.jpg"
-    }
+            "image": "men_denim_shirt_2.jpg",
+            "order": 2,
+            "is_featured": false
+        }
     },
     {
         "pk": 63,
@@ -567,8 +687,10 @@
         "fields": {
             "product": 16,
             "image_url": "http://example/images/men_denim_shirt_3.jpg",
-            "image": "men_denim_shirt_3.jpg"
-    }
+            "image": "men_denim_shirt_3.jpg",
+            "order": 3,
+            "is_featured": false
+        }
     },
     {
         "pk": 64,
@@ -576,8 +698,10 @@
         "fields": {
             "product": 16,
             "image_url": "http://example/images/men_denim_shirt_4.jpg",
-            "image": "men_denim_shirt_4.jpg"
-    }
+            "image": "men_denim_shirt_4.jpg",
+            "order": 4,
+            "is_featured": false
+        }
     },
     {
         "pk": 65,
@@ -585,8 +709,10 @@
         "fields": {
             "product": 17,
             "image_url": "http://example/images/men_slime_fit_jeans.jpg",
-            "image": "men_slime_fit_jeans.jpg"
-    }
+            "image": "men_slime_fit_jeans.jpg",
+            "order": 1,
+            "is_featured": true
+        }
     },
     {
         "pk": 66,
@@ -594,8 +720,10 @@
         "fields": {
             "product": 17,
             "image_url": "http://example/images/men_slime_fit_jeans_2.jpg",
-            "image": "men_slime_fit_jeans_2.jpg"
-    }
+            "image": "men_slime_fit_jeans_2.jpg",
+            "order": 2,
+            "is_featured": false
+        }
     },
     {
         "pk": 67,
@@ -603,8 +731,10 @@
         "fields": {
             "product": 17,
             "image_url": "http://example/images/men_slime_fit_jeans_3.jpg",
-            "image": "men_slime_fit_jeans_3.jpg"
-    }
+            "image": "men_slime_fit_jeans_3.jpg",
+            "order": 3,
+            "is_featured": false
+        }
     },
     {
         "pk": 68,
@@ -612,8 +742,10 @@
         "fields": {
             "product": 17,
             "image_url": "http://example/images/men_slime_fit_jeans_4.jpg",
-            "image": "men_slime_fit_jeans_4.jpg"
-    }
+            "image": "men_slime_fit_jeans_4.jpg",
+            "order": 4,
+            "is_featured": false
+        }
     },
     {
         "pk": 69,
@@ -621,8 +753,10 @@
         "fields": {
             "product": 18,
             "image_url": "http://example/images/men_relaxed_fit_jeans.jpg",
-            "image": "men_relaxed_fit_jeans.jpg"
-    }
+            "image": "men_relaxed_fit_jeans.jpg",
+            "order": 1,
+            "is_featured": true
+        }
     },
     {
         "pk": 70,
@@ -630,8 +764,10 @@
         "fields": {
             "product": 18,
             "image_url": "http://example/images/men_relaxed_fit_jeans_2.jpg",
-            "image": "men_relaxed_fit_jeans_2.jpg"
-    }
+            "image": "men_relaxed_fit_jeans_2.jpg",
+            "order": 2,
+            "is_featured": false
+        }
     },
     {
         "pk": 71,
@@ -639,8 +775,10 @@
         "fields": {
             "product": 18,
             "image_url": "http://example/images/men_relaxed_fit_jeans_3.jpg",
-            "image": "men_relaxed_fit_jeans_3.jpg"
-    }
+            "image": "men_relaxed_fit_jeans_3.jpg",
+            "order": 3,
+            "is_featured": false
+        }
     },
     {
         "pk": 72,
@@ -648,8 +786,10 @@
         "fields": {
             "product": 18,
             "image_url": "http://example/images/men_relaxed_fit_jeans_4.jpg",
-            "image": "men_relaxed_fit_jeans_4.jpg"
-    }
+            "image": "men_relaxed_fit_jeans_4.jpg",
+            "order": 4,
+            "is_featured": false
+        }
     },
     {
         "pk": 73,
@@ -657,8 +797,10 @@
         "fields": {
             "product": 19,
             "image_url": "http://example.com/images/men_straight-leg_jeans.jpg",
-            "image": "men_straight-leg_jeans.jpg"
-    }
+            "image": "men_straight-leg_jeans.jpg",
+            "order": 1,
+            "is_featured": true
+        }
     },
     {
         "pk": 74,
@@ -666,8 +808,10 @@
         "fields": {
             "product": 19,
             "image_url": "http://example.com/images/men_straight-leg_jeans_2.jpg",
-            "image": "men_straight-leg_jeans_2.jpg"
-    }
+            "image": "men_straight-leg_jeans_2.jpg",
+            "order": 2,
+            "is_featured": false
+        }
     },
     {
         "pk": 75,
@@ -675,8 +819,10 @@
         "fields": {
             "product": 19,
             "image_url": "http://example.com/images/men_straight-leg_jeans_3.jpg",
-            "image": "men_straight-leg_jeans_3.jpg"
-    }
+            "image": "men_straight-leg_jeans_3.jpg",
+            "order": 3,
+            "is_featured": false
+        }
     },
     {
         "pk": 76,
@@ -684,8 +830,10 @@
         "fields": {
             "product": 19,
             "image_url": "http://example.com/images/men_straight-leg_jeans_4.jpg",
-            "image": "men_straight-leg_jeans_4.jpg"
-    }
+            "image": "men_straight-leg_jeans_4.jpg",
+            "order": 4,
+            "is_featured": false
+        }
     },
     {
         "pk": 77,
@@ -693,8 +841,10 @@
         "fields": {
             "product": 20,
             "image_url": "http://example/images/men_bootcut_jeans.jpg",
-          "image": "men_bootcut_jeans.jpg"
-    }
+            "image": "men_bootcut_jeans.jpg",
+            "order": 1,
+            "is_featured": true
+        }
     },
     {
         "pk": 78,
@@ -702,8 +852,10 @@
         "fields": {
             "product": 20,
             "image_url": "http://example/images/men_bootcut_jeans_2.jpg",
-            "image": "men_bootcut_jeans_2.jpg"
-    }
+            "image": "men_bootcut_jeans_2.jpg",
+            "order": 2,
+            "is_featured": false
+        }
     },
     {
         "pk": 79,
@@ -711,8 +863,10 @@
         "fields": {
             "product": 20,
             "image_url": "http://example/images/men_bootcut_jeans_3.jpg",
-          "image": "men_bootcut_jeans_3.jpg"
-    }
+            "image": "men_bootcut_jeans_3.jpg",
+            "order": 3,
+            "is_featured": false
+        }
     },
     {
         "pk": 80,
@@ -720,8 +874,10 @@
         "fields": {
             "product": 20,
             "image_url": "http://example/images/men_bootcut_jeans_4.jpg",
-            "image": "men_bootcut_jeans_4.jpg"
-    }
+            "image": "men_bootcut_jeans_4.jpg",
+            "order": 4,
+            "is_featured": false
+        }
     },
     {
         "pk": 81,
@@ -729,45 +885,54 @@
         "fields": {
             "product": 21,
             "image_url": "http://example/images/men_classic_loafers.jpg",
-          "image": "men_classic_loafers.jpg"
+            "image": "men_classic_loafers.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
-        {
-            "pk": 82,
-            "model": "products.productimage",
-            "fields": {
-                "product": 21,
-                "image_url": "http://example/images/men_classic_loafers_2.jpg",
-                "image": "men_classic_loafers_2.jpg"
+    {
+        "pk": 82,
+        "model": "products.productimage",
+        "fields": {
+            "product": 21,
+            "image_url": "http://example/images/men_classic_loafers_2.jpg",
+            "image": "men_classic_loafers_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
-        {
-            "pk": 83,
-            "model": "products.productimage",
-            "fields": {
-                "product": 21,
-                "image_url": "http://example/images/men_classic_loafers_3.jpg",
-                "image": "men_classic_loafers_3.jpg"
+    {
+        "pk": 83,
+        "model": "products.productimage",
+        "fields": {
+            "product": 21,
+            "image_url": "http://example/images/men_classic_loafers_3.jpg",
+            "image": "men_classic_loafers_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
-        {
-            "pk": 84,
-            "model": "products.productimage",
-            "fields": {
-                "product": 21,
-                "image_url": "http://example/images/men_classic_loafers_4.jpg",
-                "image": "men_classic_loafers_4.jpg"
-            }
-        },
-        {
-            "pk": 85,
-            "model": "products.productimage",
-            "fields": {
-                "product": 22,
-                "image_url": "http://example/images/men_sneakers.jpg",
-                "image": "men_sneakers.jpg"
+    {
+        "pk": 84,
+        "model": "products.productimage",
+        "fields": {
+            "product": 21,
+            "image_url": "http://example/images/men_classic_loafers_4.jpg",
+            "image": "men_classic_loafers_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
-          
+    },
+    {
+        "pk": 85,
+        "model": "products.productimage",
+        "fields": {
+            "product": 22,
+            "image_url": "http://example/images/men_sneakers.jpg",
+            "image": "men_sneakers.jpg",
+            "order": 1,
+            "is_featured": true
+        }
     },
     {
         "pk": 86,
@@ -775,7 +940,9 @@
         "fields": {
             "product": 22,
             "image_url": "http://example/images/men_sneakers_2.jpg",
-            "image": "men_sneakers_2.jpg"
+            "image": "men_sneakers_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -784,7 +951,9 @@
         "fields": {
             "product": 22,
             "image_url": "http://example/images/men_sneakers_3.jpg",
-            "image": "men_sneakers_3.jpg"
+            "image": "men_sneakers_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -793,17 +962,20 @@
         "fields": {
             "product": 22,
             "image_url": "http://example/images/men_sneakers_4.jpg",
-            "image": "men_sneakers_4.jpg"
+            "image": "men_sneakers_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
-
     {
         "pk": 89,
         "model": "products.productimage",
         "fields": {
             "product": 23,
             "image_url": "http://example/images/men_chelsea_boots.jpg",
-            "image": "men_chelsea_boots.jpg"
+            "image": "men_chelsea_boots.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -812,7 +984,9 @@
         "fields": {
             "product": 23,
             "image_url": "http://example/images/men_chelsea_boots_2.jpg",
-            "image": "men_chelsea_boots_2.jpg"
+            "image": "men_chelsea_boots_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -821,7 +995,9 @@
         "fields": {
             "product": 23,
             "image_url": "http://example/images/men_chelsea_boots_3.jpg",
-            "image":"men_chelsea_boots_3.jpg"
+            "image": "men_chelsea_boots_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -830,7 +1006,9 @@
         "fields": {
             "product": 23,
             "image_url": "http://example/images/men_chelsea_boots_4.jpg",
-            "image": "men_chelsea_boots_4.jpg"
+            "image": "men_chelsea_boots_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
@@ -839,7 +1017,9 @@
         "fields": {
             "product": 24,
             "image_url": "http://example/images/men_leather_loafers.jpg",
-            "image": "men_leather_loafers.jpg"
+            "image": "men_leather_loafers.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -848,7 +1028,9 @@
         "fields": {
             "product": 24,
             "image_url": "http://example/images/men_leather_loafers_2.jpg",
-            "image": "men_leather_loafers_2.jpg"
+            "image": "men_leather_loafers_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -857,7 +1039,9 @@
         "fields": {
             "product": 24,
             "image_url": "http://example/images/men_leather_loafers_3.jpg",
-            "image" : "men_leather_loafers_3.jpg"
+            "image": "men_leather_loafers_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -866,7 +1050,9 @@
         "fields": {
             "product": 24,
             "image_url": "http://example/images/men_leather_loafers_4.jpg",
-            "image": "men_leather_loafers_4.jpg"
+            "image": "men_leather_loafers_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
@@ -875,7 +1061,9 @@
         "fields": {
             "product": 25,
             "image_url": "http://example/images/leather_backpack.jpg",
-            "image": "leather_backpack.jpg"
+            "image": "leather_backpack.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -884,7 +1072,9 @@
         "fields": {
             "product": 25,
             "image_url": "http://example/images/leather_backpack_2.jpg",
-            "image": "leather_backpack_2.jpg"
+            "image": "leather_backpack_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -893,7 +1083,9 @@
         "fields": {
             "product": 25,
             "image_url": "http://example/images/leather_backpack_3.jpg",
-            "image": "leather_backpack_3.jpg"
+            "image": "leather_backpack_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -902,7 +1094,9 @@
         "fields": {
             "product": 25,
             "image_url": "http://example/images/leather_backpack_4.jpg",
-            "image": "leather_backpack_4.jpg"
+            "image": "leather_backpack_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
@@ -911,7 +1105,9 @@
         "fields": {
             "product": 26,
             "image_url": "http://example/images/canvas_tote_bag.jpg",
-            "image": "canvas_tote_bag.jpg"
+            "image": "canvas_tote_bag.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -920,7 +1116,9 @@
         "fields": {
             "product": 26,
             "image_url": "http://example/images/canvas_tote_bag_2.jpg",
-            "image": "canvas_tote_bag_2.jpg"
+            "image": "canvas_tote_bag_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -929,7 +1127,9 @@
         "fields": {
             "product": 26,
             "image_url": "http://example/images/canvas_tote_bag_3.jpg",
-            "image": "canvas_tote_bag_3.jpg"
+            "image": "canvas_tote_bag_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -938,7 +1138,9 @@
         "fields": {
             "product": 26,
             "image_url": "http://example/images/canvas_tote_bag_4.jpg",
-            "image": "canvas_tote_bag_4.jpg"
+            "image": "canvas_tote_bag_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
@@ -947,7 +1149,9 @@
         "fields": {
             "product": 27,
             "image_url": "http://example/images/travel_duffel_bag.jpg",
-            "image": "travel_duffel_bag.jpg"
+            "image": "travel_duffel_bag.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -956,7 +1160,9 @@
         "fields": {
             "product": 27,
             "image_url": "http://example/images/travel_duffel_bag_2.jpg",
-            "image": "travel_duffel_bag_2.jpg"
+            "image": "travel_duffel_bag_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -965,7 +1171,9 @@
         "fields": {
             "product": 27,
             "image_url": "http://example/images/travel_duffel_bag_3.jpg",
-            "image": "travel_duffel_bag_3.jpg"
+            "image": "travel_duffel_bag_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -974,7 +1182,9 @@
         "fields": {
             "product": 27,
             "image_url": "http://example/images/travel_duffel_bag_4.jpg",
-            "image": "travel_duffel_bag_4.jpg"
+            "image": "travel_duffel_bag_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
@@ -983,7 +1193,9 @@
         "fields": {
             "product": 28,
             "image_url": "http://example/images/leather_messenger_bag.jpg",
-            "image": "leather_messenger_bag.jpg"
+            "image": "leather_messenger_bag.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -992,7 +1204,9 @@
         "fields": {
             "product": 28,
             "image_url": "http://example/images/leather_messenger_bag_2.jpg",
-            "image": "leather_messenger_bag_2.jpg"
+            "image": "leather_messenger_bag_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -1001,7 +1215,9 @@
         "fields": {
             "product": 28,
             "image_url": "http://example/images/leather_messenger_bag_3.jpg",
-            "image": "leather_messenger_bag_3.jpg"
+            "image": "leather_messenger_bag_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -1010,8 +1226,10 @@
         "fields": {
             "product": 28,
             "image_url": "http://example/images/leather_messenger_bag_4.jpg",
-            "image": "leather_messenger_bag_4.jpg" 
-    }
+            "image": "leather_messenger_bag_4.jpg",
+            "order": 4,
+            "is_featured": false
+        }
     },
     {
         "pk": 113,
@@ -1019,7 +1237,9 @@
         "fields": {
             "product": 29,
             "image_url": "http://example/images/canvas_backpack.jpg",
-            "image": "canvas_backpack.jpg"
+            "image": "canvas_backpack.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -1028,7 +1248,9 @@
         "fields": {
             "product": 29,
             "image_url": "http://example/images/canvas_backpack_2.jpg",
-            "image": "canvas_backpack_2.jpg"
+            "image": "canvas_backpack_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -1037,7 +1259,9 @@
         "fields": {
             "product": 29,
             "image_url": "http://example/images/canvas_backpack_3.jpg",
-            "image": "canvas_backpack_3.jpg"
+            "image": "canvas_backpack_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -1046,7 +1270,9 @@
         "fields": {
             "product": 29,
             "image_url": "http://example/images/canvas_backpack_4.jpg",
-            "image": "canvas_backpack_4.jpg"
+            "image": "canvas_backpack_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
@@ -1055,7 +1281,9 @@
         "fields": {
             "product": 30,
             "image_url": "http://example/images/leather_tote_bag.jpg",
-            "image": "leather_tote_bag.jpg"
+            "image": "leather_tote_bag.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -1064,7 +1292,9 @@
         "fields": {
             "product": 30,
             "image_url": "http://example/images/leather_tote_bag_2.jpg",
-            "image": "leather_tote_bag_2.jpg"
+            "image": "leather_tote_bag_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -1073,7 +1303,9 @@
         "fields": {
             "product": 30,
             "image_url": "http://example/images/leather_tote_bag_3.jpg",
-            "image": "leather_tote_bag_3.jpg"
+            "image": "leather_tote_bag_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -1082,7 +1314,9 @@
         "fields": {
             "product": 30,
             "image_url": "http://example/images/leather_tote_bag_4.jpg",
-            "image": "leather_tote_bag_4.jpg"
+            "image": "leather_tote_bag_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
@@ -1091,7 +1325,9 @@
         "fields": {
             "product": 31,
             "image_url": "http://example/images/luxury_gold_watch.jpg",
-            "image": "luxury_gold_watch.jpg"
+            "image": "luxury_gold_watch.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -1100,7 +1336,9 @@
         "fields": {
             "product": 31,
             "image_url": "http://example/images/luxury_gold_watch_2.jpg",
-            "image": "luxury_gold_watch_2.jpg"
+            "image": "luxury_gold_watch_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -1109,7 +1347,9 @@
         "fields": {
             "product": 31,
             "image_url": "http://example/images/luxury_gold_watch_3.jpg",
-            "image": "luxury_gold_watch_3.jpg"
+            "image": "luxury_gold_watch_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -1118,7 +1358,9 @@
         "fields": {
             "product": 31,
             "image_url": "http://example/images/luxury_gold_watch_4.jpg",
-            "image": "luxury_gold_watch_4.jpg"
+            "image": "luxury_gold_watch_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
@@ -1127,7 +1369,9 @@
         "fields": {
             "product": 32,
             "image_url": "http://example/images/classic_silver_watch.jpg",
-            "image": "classic_silver_watch.jpg"
+            "image": "classic_silver_watch.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -1136,7 +1380,9 @@
         "fields": {
             "product": 32,
             "image_url": "http://example/images/classic_silver_watch_2.jpg",
-            "image": "classic_silver_watch_2.jpg"
+            "image": "classic_silver_watch_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -1145,7 +1391,9 @@
         "fields": {
             "product": 32,
             "image_url": "http://example/images/classic_silver_watch_3.jpg",
-            "image": "classic_silver_watch_3.jpg"
+            "image": "classic_silver_watch_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -1154,7 +1402,9 @@
         "fields": {
             "product": 32,
             "image_url": "http://example/images/classic_silver_watch_4.jpg",
-            "image": "classic_silver_watch_4.jpg"
+            "image": "classic_silver_watch_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
@@ -1163,7 +1413,9 @@
         "fields": {
             "product": 33,
             "image_url": "http://example/images/sporty_black_watch.jpg",
-            "image": "sporty_black_watch.jpg"
+            "image": "sporty_black_watch.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -1172,7 +1424,9 @@
         "fields": {
             "product": 33,
             "image_url": "http://example/images/sporty_black_watch_2.jpg",
-            "image": "sporty_black_watch_2.jpg"
+            "image": "sporty_black_watch_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -1181,7 +1435,9 @@
         "fields": {
             "product": 33,
             "image_url": "http://example/images/sporty_black_watch_3.jpg",
-            "image": "sporty_black_watch_3.jpg"
+            "image": "sporty_black_watch_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -1190,7 +1446,9 @@
         "fields": {
             "product": 33,
             "image_url": "http://example/images/sporty_black_watch_4.jpg",
-            "image": "sporty_black_watch_4.jpg"
+            "image": "sporty_black_watch_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
@@ -1199,7 +1457,9 @@
         "fields": {
             "product": 34,
             "image_url": "http://example/images/digital_smartwatch.jpg",
-            "image": "digital_smartwatch.jpg"
+            "image": "digital_smartwatch.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -1208,7 +1468,9 @@
         "fields": {
             "product": 34,
             "image_url": "http://example/images/digital_smartwatch_2.jpg",
-            "image": "digital_smartwatch_2.jpg"
+            "image": "digital_smartwatch_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -1217,7 +1479,9 @@
         "fields": {
             "product": 34,
             "image_url": "http://example/images/digital_smartwatch_3.jpg",
-            "image": "digital_smartwatch_3.jpg"
+            "image": "digital_smartwatch_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -1226,7 +1490,9 @@
         "fields": {
             "product": 34,
             "image_url": "http://example/images/digital_smartwatch_4.jpg",
-            "image": "digital_smartwatch_4.jpg"
+            "image": "digital_smartwatch_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
@@ -1235,7 +1501,9 @@
         "fields": {
             "product": 35,
             "image_url": "http://example/images/designer_sunglasses.jpg",
-            "image": "designer_sunglasses.jpg"
+            "image": "designer_sunglasses.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -1244,7 +1512,9 @@
         "fields": {
             "product": 35,
             "image_url": "http://example/images/designer_sunglasses_2.jpg",
-            "image": "designer_sunglasses_2.jpg"
+            "image": "designer_sunglasses_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -1253,7 +1523,9 @@
         "fields": {
             "product": 35,
             "image_url": "http://example/images/designer_sunglasses_3.jpg",
-            "image": "designer_sunglasses_3.jpg"
+            "image": "designer_sunglasses_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -1262,7 +1534,9 @@
         "fields": {
             "product": 35,
             "image_url": "http://example/images/designer_sunglasses_4.jpg",
-            "image": "designer_sunglasses_4.jpg"
+            "image": "designer_sunglasses_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
@@ -1271,7 +1545,9 @@
         "fields": {
             "product": 36,
             "image_url": "http://example/images/retro_sunglasses.jpg",
-            "image": "retro_sunglasses.jpg"
+            "image": "retro_sunglasses.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -1280,7 +1556,9 @@
         "fields": {
             "product": 36,
             "image_url": "http://example/images/retro_sunglasses_2.jpg",
-            "image": "retro_sunglasses_2.jpg"
+            "image": "retro_sunglasses_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -1289,7 +1567,9 @@
         "fields": {
             "product": 36,
             "image_url": "http://example/images/retro_sunglasses_3.jpg",
-            "image": "retro_sunglasses_3.jpg"
+            "image": "retro_sunglasses_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -1298,7 +1578,9 @@
         "fields": {
             "product": 36,
             "image_url": "http://example/images/retro_sunglasses_4.jpg",
-            "image": "retro_sunglasses_4.jpg"
+            "image": "retro_sunglasses_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
@@ -1307,7 +1589,9 @@
         "fields": {
             "product": 37,
             "image_url": "http://example/images/aviator_sunglasses.jpg",
-            "image": "aviator_sunglasses.jpg"
+            "image": "aviator_sunglasses.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -1316,7 +1600,9 @@
         "fields": {
             "product": 37,
             "image_url": "http://example/images/aviator_sunglasses_2.jpg",
-            "image": "aviator_sunglasses_2.jpg"
+            "image": "aviator_sunglasses_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -1325,7 +1611,9 @@
         "fields": {
             "product": 37,
             "image_url": "http://example/images/aviator_sunglasses_3.jpg",
-            "image": "aviator_sunglasses_3.jpg"
+            "image": "aviator_sunglasses_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -1334,7 +1622,9 @@
         "fields": {
             "product": 37,
             "image_url": "http://example/images/aviator_sunglasses_4.jpg",
-            "image": "aviator_sunglasses_4.jpg"
+            "image": "aviator_sunglasses_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     },
     {
@@ -1343,7 +1633,9 @@
         "fields": {
             "product": 38,
             "image_url": "http://example/images/sports_sunglasses.jpg",
-            "image": "sports_sunglasses.jpg"
+            "image": "sports_sunglasses.jpg",
+            "order": 1,
+            "is_featured": true
         }
     },
     {
@@ -1352,7 +1644,9 @@
         "fields": {
             "product": 38,
             "image_url": "http://example/images/sports_sunglasses_2.jpg",
-            "image": "sports_sunglasses_2.jpg"
+            "image": "sports_sunglasses_2.jpg",
+            "order": 2,
+            "is_featured": false
         }
     },
     {
@@ -1361,7 +1655,9 @@
         "fields": {
             "product": 38,
             "image_url": "http://example/images/sports_sunglasses_3.jpg",
-            "image": "sports_sunglasses_3.jpg"
+            "image": "sports_sunglasses_3.jpg",
+            "order": 3,
+            "is_featured": false
         }
     },
     {
@@ -1370,7 +1666,9 @@
         "fields": {
             "product": 38,
             "image_url": "http://example/images/sports_sunglasses_4.jpg",
-            "image": "sports_sunglasses_4.jpg"
+            "image": "sports_sunglasses_4.jpg",
+            "order": 4,
+            "is_featured": false
         }
     }
 ]

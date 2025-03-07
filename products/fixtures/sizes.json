@@ -1,0 +1,13 @@
+[
+    {"pk": 1, "model": "products.size", "fields": {"name": "XS", "order": 1, "categories": [1, 2, 4, 5]}},
+    {"pk": 2, "model": "products.size", "fields": {"name": "S", "order": 2, "categories": [1, 2, 4, 5]}},
+    {"pk": 3, "model": "products.size", "fields": {"name": "M", "order": 3, "categories": [1, 2, 4, 5]}},
+    {"pk": 4, "model": "products.size", "fields": {"name": "L", "order": 4, "categories": [1, 2, 4, 5]}},
+    {"pk": 5, "model": "products.size", "fields": {"name": "XL", "order": 5, "categories": [1, 2, 4, 5]}},
+    {"pk": 6, "model": "products.size", "fields": {"name": "XXL", "order": 6, "categories": [1, 2, 4, 5]}},
+    {"pk": 7, "model": "products.size", "fields": {"name": "38/5", "order": 1, "categories": [3, 6]}},
+    {"pk": 8, "model": "products.size", "fields": {"name": "39/6", "order": 2, "categories": [3, 6]}},
+    {"pk": 9, "model": "products.size", "fields": {"name": "40/6.5", "order": 3, "categories": [3, 6]}},
+    {"pk": 10, "model": "products.size", "fields": {"name": "41/7", "order": 4, "categories": [3, 6]}},
+    {"pk": 11, "model": "products.size", "fields": {"name": "42/8", "order": 5, "categories": [3, 6]}}
+  ]  
