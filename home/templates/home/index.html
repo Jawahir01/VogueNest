@@ -7,21 +7,21 @@
         <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="media/slide-02.jpg" class="d-block w-100" alt="Summer Collection">
+                    <img src="{{ MEDIA_URL }}slide-02.jpg" class="d-block w-100" alt="Summer Collection">
                     <div class="carousel-caption d-none d-md-block">
                         <h2 class="display-4 fw-bold mb-4 animate__animated animate__fadeInDown">New Season Arrivals</h2>
                         <a href="{% url 'products' %}" class="btn btn-light btn-lg animate__animated animate__fadeInUp">Discover Now</a>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="media/slide-06.jpg" class="d-block w-100" alt="Accessories">
+                    <img src="{{ MEDIA_URL }}slide-06.jpg" class="d-block w-100" alt="Accessories">
                     <div class="carousel-caption d-none d-md-block">
                         <h2 class="display-4 fw-bold mb-4">Curated Elegance</h2>
                         <a href="{% url 'products' %}" class="btn btn-light btn-lg">Shop Accessories</a>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="media/blog-03.jpg" class="d-block w-100" alt="Accessories">
+                    <img src="{{ MEDIA_URL }}slide-07.jpg" class="d-block w-100" alt="Accessories">
                     <div class="carousel-caption d-none d-md-block">
                         <h2 class="display-4 fw-bold mb-4">New Collections</h2>
                         <a href="{% url 'products' %}" class="btn btn-light btn-lg">Shop Now</a>
