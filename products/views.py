@@ -80,12 +80,12 @@ def product_detail(request, product_id):
     """Display product details with images and reviews"""
     product = get_object_or_404(Product, pk=product_id)
     product_images = product.images.all().order_by('order')
-    # reviews = product.reviews.filter(product_id).order_by('-created_at')
+    reviews = product.reviews.all().order_by('-created_at')
 
     context = {
         'product': product,
         'product_images': product_images,
-        # 'reviews': reviews,
+        'reviews': reviews,
     }
     return render(request, 'products/product_detail.html', context)
 
@@ -198,28 +198,23 @@ def add_review(request, product_id):
     user = request.user
 
     if request.method == 'POST':
+        
         rating = int(request.POST.get('rating', 0))
         title = request.POST.get('title', '').strip()
-        content = request.POST.get('content', '').strip()
+        review_text = request.POST.get('review_text', '')
 
         if not (1 <= rating <= 5):
             messages.error(request, "Invalid rating value!")
             return redirect('product_detail', product_id=product.id)
 
-        review, created = Review.objects.get_or_create(
+        Review.objects.create(
             product=product,
             user=user,
-            defaults={
-                'rating': rating,
-                'title': title,
-                'content': content,
-            }
+            rating=rating,
+            title=title,
+            review_text=review_text
         )
-
-        if created:
-            product.update_average_rating()
-            messages.success(request, "Review submitted for approval!")
-        else:
-            messages.error(request, "You already reviewed this product")
+        
+        messages.success(request, "Review submitted successfully")
 
     return redirect('product_detail', product_id=product.id)

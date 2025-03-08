@@ -164,18 +164,22 @@
                     <!-- Existing Reviews -->
                     <div class="reviews-list">
                         {% for review in product.reviews.all %}
-                        <div class="review-item">
-                            <div class="review-header">
-                                <div class="review-author">{{ review.user.username }}</div>
-                                <div class="review-rating">
-                                    {% with ''|center:review.rating as range %}
-                                    {% for _ in range %}<i class="fas fa-star"></i>{% endfor %}
-                                    {% endwith %}
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="review-author">{{ review.user.username }}</div>
+                                    <div class="review-rating">
+                                        {% with ''|center:review.rating as range %}
+                                        {% for _ in range %}<i class="fas fa-star"></i>{% endfor %}
+                                        {% endwith %}
+                                    </div>
+                                    <div class="review-date">{{ review.created_at|date:"M d, Y" }}</div>
                                 </div>
-                                <div class="review-date">{{ review.created_at|date:"M d, Y" }}</div>
+                                <div class="review-body">
+                                    <p class="review-title">Title: {{ review.title }}</p>
+                                    <p class="review-text">Review: {{ review.review_text }}</p>
+                                </div>
                             </div>
-                            <p class="review-text">{{ review.review_text }}</p>
-                        </div>
+                        
                         {% empty %}
                         <div class="no-reviews">
                             <p>No reviews yet. Be the first to write one!</p>
@@ -201,8 +205,12 @@
                                 </div>
                             </div>
                             <div class="form-group mt-3 mb-3">
+                                <label>Title</label>
+                                <input type="text" class="form-control" name="title" placeholder="Enter a title for your review" required>
+                            </div>
+                            <div class="form-group mb-3">
                                 <label>Review</label>
-                                <textarea class="form-control" name="review" placeholder="Write your review..." required></textarea>
+                                <textarea class="form-control" name="review_text" placeholder="Write your review..." required></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary btn-sm mt-3">Submit Review</button>
                         </form>
