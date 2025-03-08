@@ -175,8 +175,8 @@
                                     <div class="review-date">{{ review.created_at|date:"M d, Y" }}</div>
                                 </div>
                                 <div class="review-body">
-                                    <p class="review-title">Title: {{ review.title }}</p>
-                                    <p class="review-text">Review: {{ review.review_text }}</p>
+                                    <p class="review-title"> <strong>{{ review.title }}</strong></p>
+                                    <p class="review-text">{{ review.review_text }}</p>
                                 </div>
                             </div>
                         
@@ -195,7 +195,7 @@
                             {% csrf_token %}
                             <div class="row rating-selector" style="left: 100%;">
                                 <div class="col-md-6">
-                                    <label>Rating</label>
+                                    <label>Rating: </label>
                                 </div>
                                 <div class="col-md-6 star-rating">
                                     {% for i in "54321" %}
@@ -205,11 +205,11 @@
                                 </div>
                             </div>
                             <div class="form-group mt-3 mb-3">
-                                <label>Title</label>
+                                <label>Title: </label>
                                 <input type="text" class="form-control" name="title" placeholder="Enter a title for your review" required>
                             </div>
                             <div class="form-group mb-3">
-                                <label>Review</label>
+                                <label>Review: </label>
                                 <textarea class="form-control" name="review_text" placeholder="Write your review..." required></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary btn-sm mt-3">Submit Review</button>
