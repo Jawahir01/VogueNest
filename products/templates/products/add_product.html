@@ -16,13 +16,14 @@
                     </div>
 
                     <!-- Product Form -->
-                    <form method="POST" action="{% url 'add_product' %}" class="product-form" id="product-form">
+                    <form method="POST" action="{% url 'add_product' %}" class="product-form" id="product-form" enctype="multipart/form-data">
                         {% csrf_token %}
                         
                         <!-- Form Fields -->
                         <div class="form-grid">
+                            
                             {% for field in form %}
-                                {% if field.name not in 'image,sizes,colors' %}
+                                {% if field.name not in 'sizes,colors,image1,image2,image3,image4' %}
                                     <div class="form-group">
                                         {{ field.label_tag }}
                                         {{ field }}
@@ -36,18 +37,18 @@
                                 {% endif %}
                             {% endfor %}
 
-                            <!-- Size Selection -->
-                            <div class="form-group">
+                            <!-- Dynamic Size Selection -->
+                            <div class="form-group size-section" style="display: none;">
                                 <label>Sizes</label>
                                 <div class="size-options row g-2">
-                                    {% for value, text in form.sizes.field.choices %}
-                                    <div class="col-auto">
+                                    {% for size in sizes %}
+                                    <div class="col-auto size-option" data-categories="{% for c in size.categories.all %}{{ c.id }}{% if not forloop.last %},{% endif %}{% endfor %}">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" 
-                                                   name="sizes" id="size_{{ value }}" value="{{ value }}"
-                                                   {% if value in form.sizes.value %}checked{% endif %}>
-                                            <label class="form-check-label" for="size_{{ value }}">
-                                                {{ text }}
+                                                name="sizes" id="size_{{ size.id }}" value="{{ size.id }}"
+                                                {% if size.id in form.sizes.value %}checked{% endif %}>
+                                            <label class="form-check-label" for="size_{{ size.id }}">
+                                                {{ size.name }}
                                             </label>
                                         </div>
                                     </div>
@@ -58,18 +59,18 @@
                                 {% endfor %}
                             </div>
 
-                            <!-- Color Selection -->
-                            <div class="form-group">
+                            <!-- Dynamic Color Selection -->
+                            <div class="form-group color-section" style="display: none;">
                                 <label>Colors</label>
                                 <div class="color-options row g-2">
-                                    {% for value, text in form.colors.field.choices %}
-                                    <div class="col-auto">
+                                    {% for color in colors %}
+                                    <div class="col-auto color-option" data-categories="{% for c in color.categories.all %}{{ c.id }}{% if not forloop.last %},{% endif %}{% endfor %}">
                                         <div class="color-pill position-relative">
                                             <input class="form-check-input" type="checkbox" 
-                                                   name="colors" id="color_{{ value }}" value="{{ value }}"
-                                                   {% if value in form.colors.value %}checked{% endif %}>
-                                            <label class="form-check-label" for="color_{{ value }}" >
-                                                {{ text }}
+                                                name="colors" id="color_{{ color.id }}" value="{{ color.id }}"
+                                                {% if color.id in form.colors.value %}checked{% endif %}>
+                                            <label class="form-check-label" for="color_{{ color.id }}" >
+                                                {{ color.name }}
                                             </label>
                                         </div>
                                     </div>
@@ -80,32 +81,59 @@
                                 {% endfor %}
                             </div>
 
-                            
                             <!-- Image Upload Section -->
-<div class="form-group image-upload-group">
-    <label>Product Images (4 required)</label>
-    <div class="image-input-container">
-        <!-- File Upload -->
-        <div class="custom-file-upload mb-3">
-            {{ form.image }}
-            <div class="upload-preview" id="image-preview">
-                <div class="preview-instruction">
-                    <i class="fas fa-cloud-upload-alt fa-2x"></i>
-                    <p>Drag & drop images or click to upload</p>
-                </div>
-                <div class="preview-grid" id="preview-grid"></div>
-            </div>
-            <small class="form-text text-muted">Upload up to 4 images</small>
-        </div>
-
-        <!-- URL Input -->
-        <div class="url-input-group">
-            {{ form.image_urls.label_tag }}
-            {{ form.image_urls }}
-            <small class="form-text text-muted">Or enter image URLs (one per line)</small>
-        </div>
-    </div>
-</div>
+                            <div class="form-group image-upload-group">
+                                <label>Product Images (Upload exactly 4 images)</label>
+                                <div class="row g-3">
+                                    {% for i in 1|make_list %}
+                                    <div class="col-12 col-md-12">
+                                        <div class="image-input-card">
+                                            {{ form.image1.label_tag }}
+                                            {{ form.image1 }}
+                                            {% for error in form.image1.errors %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    {% for i in 2|make_list %}
+                                    <div class="col-12 col-md-12">
+                                        <div class="image-input-card">
+                                            {{ form.image2.label_tag }}
+                                            {{ form.image2 }}
+                                            
+                                            {% for error in form.image2.errors %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    {% for i in 3|make_list %}
+                                    <div class="col-12 col-md-12">
+                                        <div class="image-input-card">
+                                            {{ form.image3.label_tag }}
+                                            {{ form.image3 }}
+                                            
+                                            {% for error in form.image3.errors %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    {% for i in 4|make_list %}
+                                    <div class="col-12  col-md-12">
+                                        <div class="image-input-card">
+                                            {{ form.image4.label_tag }}
+                                            {{ form.image4 }}
+                                            
+                                            {% for error in form.image4.errors %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Form Actions -->
@@ -123,4 +151,73 @@
         </div>
     </div>
 </div>
+
+<style>
+.size-option, .color-option { display: none; }
+.color-pill label {
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+.color-pill input:checked + label {
+    border: 2px solid #000;
+}
+.image-input-card {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+.image-input-card:hover {
+    border-color: #666;
+}
+.preview-instruction {
+    text-align: center;
+    color: #666;
+}
+</style>
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all category mappings from data attributes
+        const sizeOptions = document.querySelectorAll('.size-option');
+        const colorOptions = document.querySelectorAll('.color-option');
+        const categoryField = document.querySelector('#id_category');
+    
+        function updateOptions() {
+            const selectedCategory = categoryField.value;
+            
+            // Toggle size options
+            let showSizes = false;
+            sizeOptions.forEach(option => {
+                const categories = option.dataset.categories.split(',');
+                const shouldShow = categories.includes(selectedCategory);
+                option.style.display = shouldShow ? 'block' : 'none';
+                if (shouldShow) showSizes = true;
+            });
+            document.querySelector('.size-section').style.display = showSizes ? 'block' : 'none';
+    
+            // Toggle color options
+            let showColors = false;
+            colorOptions.forEach(option => {
+                const categories = option.dataset.categories.split(',');
+                const shouldShow = categories.includes(selectedCategory);
+                option.style.display = shouldShow ? 'block' : 'none';
+                if (shouldShow) showColors = true;
+            });
+            document.querySelector('.color-section').style.display = showColors ? 'block' : 'none';
+        }
+    
+        categoryField.addEventListener('change', updateOptions);
+        updateOptions(); // Initial update
+    });
+    </script>
+{% endblock %}
+
 {% endblock %}

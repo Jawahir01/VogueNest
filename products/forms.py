@@ -1,6 +1,6 @@
 from django import forms
-from .models import Product, Size, Color, ProductImage
-from .widgets import MultipleFileInput
+from django.core.validators import URLValidator
+from .models import Product, Size, Color, ProductImage, Category
 
 class ProductForm(forms.ModelForm):
     sizes = forms.ModelMultipleChoiceField(
@@ -13,26 +13,61 @@ class ProductForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=False
     )
-    images = forms.FileField(
-        widget=MultipleFileInput(attrs={
-            'accept': 'image/*',
-            'class': 'custom-file-input',
-            'aria-label': 'Upload product images'
-        }),
-        required=False,
-        help_text='Upload exactly 4 product images (600x600px minimum, 2MB max each)'
+    image1_url = forms.URLField(
+        label="Image 1 URL",
+        required=True,
+        help_text='Main product image URL'
+    )
+    image1 = forms.ImageField(
+        label="Image 1",
+        required=True,
+        help_text='Main product image (600x600px minimum, 2MB max)'
+    )
+    image2_url = forms.URLField(
+        label="Image 2 URL",
+        required=True,
+        help_text='Secondary product image URL'
+    )
+    image2 = forms.ImageField(
+        label="Image 2",
+        required=True,
+        help_text='Secondary product image'
+    )
+    image3_url = forms.URLField(
+        label="Image 3 URL",
+        required=True,
+        help_text='Additional product image URL'
+    )
+    image3 = forms.ImageField(
+        label="Image 3",
+        required=True,
+        help_text='Additional product image'
+    )
+    image4_url = forms.URLField(
+        label="Image 4 URL",
+        required=True,
+        help_text='Additional product image URL'
+    )
+    image4 = forms.ImageField(
+        label="Image 4",
+        required=True,
+        help_text='Additional product image'
     )
 
     class Meta:
         model = Product
         fields = [
-            'name', 'price', 'category', 'description', 
-            'rating', 'sizes', 'colors', 'images'
+            'category', 'sku', 'name', 'description',
+            'price', 'rating', 'sizes', 'colors',
+            'image1_url', 'image1', 'image2_url', 'image2',
+            'image3_url', 'image3', 'image4_url', 'image4'
         ]
+        exclude = ('slug',)
         widgets = {
             'category': forms.Select(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'rows': 4, 'class': 'form-control'}),
+            'sku': forms.TextInput(attrs={'class': 'form-control'}),
             'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'rows': 4, 'class': 'form-control'}),
             'price': forms.NumberInput(attrs={'class': 'form-control'}),
             'rating': forms.NumberInput(attrs={
                 'class': 'form-control',
@@ -40,79 +75,94 @@ class ProductForm(forms.ModelForm):
                 'max': 5,
                 'step': 0.1
             }),
+            'sizes': forms.CheckboxSelectMultiple(),
+            'colors': forms.CheckboxSelectMultiple(),
+            'image1_url': forms.URLInput(attrs={'class': 'form-control'}),
+            'image1': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'image2_url': forms.URLInput(attrs={'class': 'form-control'}),
+            'image2': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'image3_url': forms.URLInput(attrs={'class': 'form-control'}),
+            'image3': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'image4_url': forms.URLInput(attrs={'class': 'form-control'}),
+            'image4': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        categories = Category.objects.all()
+        friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
+        self.fields['category'].choices = friendly_names
+
+        # Make images optional when editing existing product
         if self.instance.pk:
-            # Initialize M2M fields
-            self.fields['sizes'].initial = self.instance.sizes.all()
-            self.fields['colors'].initial = self.instance.colors.all()
-            
-            # Get existing images count for validation
-            self.existing_images_count = self.instance.images.count()
-
-    def clean_images(self):
-        images = self.files.getlist('images')
-        total_images = len(images)
-        
-        if self.instance.pk:
-            # Calculate total images when editing
-            remaining_slots = 4 - self.existing_images_count
-            if total_images > remaining_slots:
-                raise forms.ValidationError(
-                    f"You can only add {remaining_slots} more images (4 total allowed)"
-                )
-        else:
-            # For new products, require exactly 4 images
-            if total_images != 4:
-                raise forms.ValidationError("Exactly 4 images are required")
-
-        for image in images:
-            # Validate file size
-            if image.size > 2 * 1024 * 1024:
-                raise forms.ValidationError(
-                    f"Image {image.name} exceeds 2MB limit"
-                )
-
-            # Validate image dimensions using Pillow
-            from PIL import Image
-            try:
-                with Image.open(image) as img:
-                    if img.width < 600 or img.height < 600:
-                        raise forms.ValidationError(
-                            f"Image {image.name} is too small (600x600px minimum)"
-                        )
-            except:
-                raise forms.ValidationError(
-                    f"Invalid image format for {image.name}"
-                )
-
-        return images
+            for i in range(1, 5):
+                self.fields[f'image{i}_url'].required = False
+                self.fields[f'image{i}'].required = False
 
     def clean(self):
         cleaned_data = super().clean()
-        # Ensure total images equals 4 (existing + new)
-        if self.instance.pk:
-            total_images = self.existing_images_count + len(cleaned_data.get('images', []))
-            if total_images != 4:
-                raise forms.ValidationError(
-                    f"Total images must be 4 (currently {self.existing_images_count} existing)"
-                )
+        images = [
+            (cleaned_data.get('image1_url'), cleaned_data.get('image1')),
+            (cleaned_data.get('image2_url'), cleaned_data.get('image2')),
+            (cleaned_data.get('image3_url'), cleaned_data.get('image3')),
+            (cleaned_data.get('image4_url'), cleaned_data.get('image4'))
+        ]
+
+        # Validate URLs
+        url_validator = URLValidator()
+        for url, _ in images:
+            if url:
+                try:
+                    url_validator(url)
+                except forms.ValidationError:
+                    raise forms.ValidationError(f"Enter a valid URL: {url}")
+
+        # Check image requirements
+        if not self.instance.pk:  # New product
+            if not all(url and img for url, img in images):
+                raise forms.ValidationError("All four images and their URLs are required for new products")
+        else:  # Existing product
+            if any(url or img for url, img in images) and not all(url and img for url, img in images):
+                raise forms.ValidationError("Provide all four images and their URLs or none to keep existing ones")
+
         return cleaned_data
 
-    def save(self, commit=True):
-        # Save product first
-        product = super().save(commit=commit)
+    def clean_price(self):
+        price = self.cleaned_data['price']
+        if price <= 10:
+            raise forms.ValidationError('Price must be greater than £10')
+        return price
+
+    def clean_rating(self):
+        rating = self.cleaned_data.get('rating')
         
-        # Handle image uploads
-        if commit and 'images' in self.cleaned_data:
+        # First check if rating exists
+        if rating is None:
+            raise forms.ValidationError('Rating is required')
+            
+        # Then check the numerical bounds
+        if not (0 <= rating <= 5):
+            raise forms.ValidationError('Rating must be between 0 and 5')
+            
+        return rating
+
+    def save(self, commit=True):
+        product = super().save(commit=commit)
+        images = [
+            (self.cleaned_data.get('image1_url'), self.cleaned_data.get('image1')),
+            (self.cleaned_data.get('image2_url'), self.cleaned_data.get('image2')),
+            (self.cleaned_data.get('image3_url'), self.cleaned_data.get('image3')),
+            (self.cleaned_data.get('image4_url'), self.cleaned_data.get('image4'))
+        ]
+
+        if any(url and img for url, img in images):
             # Delete existing images if we're uploading new ones
-            if self.instance.pk and self.cleaned_data['images']:
-                product.images.all().delete()
-                
+            product.images.all().delete()
+            
             # Create new ProductImage instances
-            for image in self.cleaned_data['images']:
-                ProductImage.objects.create(product=product, image=image)
+            for index, (url, img) in enumerate(images):
+                if url and img:
+                    is_featured = (index == 0)  # Set the first image as featured
+                    ProductImage.objects.create(product=product, image_url=url, image=img, is_featured=is_featured)
 
         return product

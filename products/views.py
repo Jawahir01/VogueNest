@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Max, F
 from django.db.models.functions import Lower
 from django.conf import settings
-from .models import Product, Category, Review, ProductImage
+from .models import Product, Category, Review, ProductImage, Size, Color
 from .forms import ProductForm
 
 def all_products(request):
@@ -97,59 +97,22 @@ def add_product(request):
         return redirect('products')
 
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
-            
-            # Handle image uploads and URLs
-            images = request.FILES.getlist('images')
-            image_urls = [url.strip() for url in request.POST.getlist('image_urls') if url.strip()]
-            
-            # Get current max order
-            current_max_order = product.images.aggregate(Max('order'))['order__max'] or 0
-
-            # Process uploaded images
-            new_images = []
-            for idx, image in enumerate(images, start=1):
-                if image.size > settings.MAX_UPLOAD_SIZE:
-                    messages.error(request, f"Image {image.name} exceeds 5MB limit")
-                    continue
-                if not image.name.lower().endswith(('.jpg', '.jpeg', '.png')):
-                    messages.error(request, f"Invalid format for {image.name}")
-                    continue
-                
-                new_images.append(ProductImage(
-                    product=product,
-                    image=image,
-                    order=current_max_order + idx
-                ))
-
-            # Process image URLs
-            for url_idx, url in enumerate(image_urls, start=len(images)+1):
-                new_images.append(ProductImage(
-                    product=product,
-                    image_url=url,
-                    order=current_max_order + url_idx
-                ))
-
-            # Bulk create images
-            ProductImage.objects.bulk_create(new_images)
-
-            # Set featured image if none
-            if not product.images.filter(is_featured=True).exists():
-                first_image = product.images.first()
-                if first_image:
-                    first_image.is_featured = True
-                    first_image.save()
-
             messages.success(request, "Product added successfully!")
-            return redirect('product_detail', product_id=product.id)
-        else:
-            messages.error(request, "Form validation failed. Please check inputs.")
+            return redirect(reverse('product_detail', args=[product.id]))
     else:
         form = ProductForm()
 
-    return render(request, 'products/add_product.html', {'form': form})
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+        'sizes': Size.objects.prefetch_related('categories').all(),
+        'colors': Color.objects.prefetch_related('categories').all()
+    }
+
+    return render(request, template, context)
 
 @login_required
 def edit_product(request, product_id):
@@ -163,6 +126,7 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
+            messages.success(request, "Product updated successfully!")
             return redirect(reverse('product_detail', args=[product.id]))
     else:
         form = ProductForm(instance=product)
