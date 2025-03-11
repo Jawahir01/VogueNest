@@ -21,7 +21,7 @@
                         <!-- Form Fields -->
                         <div class="form-grid">
                             {% for field in form %}
-                                {% if field.name not in 'image,sizes,colors' %}
+                                {% if field.name not in 'sizes,colors,image1,image2,image3,image4' %}
                                     <div class="form-group">
                                         {{ field.label_tag }}
                                         {{ field }}
@@ -81,29 +81,78 @@
                                 {% endfor %}
                             </div>
 
-                            <!-- Image Upload -->
-
+                            <!-- Image Upload Section -->
                             <div class="form-group image-upload-group">
-                                {{ formset.management_form }}
-                                <label>Product Images (4 required)</label>
-                                <div class="custom-file-upload">
-                                    <div class="upload-preview" id="image-preview">
-                                        <div class="preview-instruction">
-                                            <i class="fas fa-cloud-upload-alt fa-2x"></i>
-                                            <p>Drag & drop 4 product images</p>
-                                        </div>
-                                        <div class="preview-grid" id="preview-grid">
-                                            {% for form in formset %}
-                                            <div class="preview-slot">
-                                                {{ form.image }}
-                                                {% if form.instance.image %}
-                                                <img src="{{ form.instance.image.url }}" 
-                                                    alt="Current image {{ forloop.counter }}">
-                                                {% endif %}
-                                            </div>
+                                <label>Product Images (Upload exactly 4 images)</label>
+                                <div class="row g-3">
+                                    {% for i in 1|make_list %}
+                                    <div class="col-12 col-md-12">
+                                        <div class="image-input-card">
+                                            {{ form.image1.label_tag }}
+                                            {{ form.image1 }}
+                                            {% if form.image1.help_text %}
+                                                <small class="form-text text-muted">{{ form.image1.help_text }}</small>
+                                            {% endif %}
+                                            {% for error in form.image1.errors %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
                                             {% endfor %}
+                                            {% if product.images.count >= 1 %}
+                                                <img src="{{ product.images.all.0.image.url }}" alt="Current image 1">
+                                            {% endif %}
                                         </div>
                                     </div>
+                                    {% endfor %}
+                                    {% for i in 2|make_list %}
+                                    <div class="col-12 col-md-12">
+                                        <div class="image-input-card">
+                                            {{ form.image2.label_tag }}
+                                            {{ form.image2 }}
+                                            {% if form.image2.help_text %}
+                                                <small class="form-text text-muted">{{ form.image2.help_text }}</small>
+                                            {% endif %}
+                                            {% for error in form.image2.errors %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                            {% endfor %}
+                                            {% if product.images.count >= 2 %}
+                                                <img src="{{ product.images.all.1.image.url }}" alt="Current image 2">
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    {% for i in 3|make_list %}
+                                    <div class="col-12 col-md-12">
+                                        <div class="image-input-card">
+                                            {{ form.image3.label_tag }}
+                                            {{ form.image3 }}
+                                            {% if form.image3.help_text %}
+                                                <small class="form-text text-muted">{{ form.image3.help_text }}</small>
+                                            {% endif %}
+                                            {% for error in form.image3.errors %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                            {% endfor %}
+                                            {% if product.images.count >= 3 %}
+                                                <img src="{{ product.images.all.2.image.url }}" alt="Current image 3">
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    {% for i in 4|make_list %}
+                                    <div class="col-12 col-md-12">
+                                        <div class="image-input-card">
+                                            {{ form.image4.label_tag }}
+                                            {{ form.image4 }}
+                                            {% if form.image4.help_text %}
+                                                <small class="form-text text-muted">{{ form.image4.help_text }}</small>
+                                            {% endif %}
+                                            {% for error in form.image4.errors %}
+                                                <div class="invalid-feedback d-block">{{ error }}</div>
+                                            {% endfor %}
+                                            {% if product.images.count >= 4 %}
+                                                <img src="{{ product.images.all.3.image.url }}" alt="Current image 4">
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
