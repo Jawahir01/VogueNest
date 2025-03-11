@@ -156,13 +156,18 @@ class ProductForm(forms.ModelForm):
         ]
 
         if any(url and img for url, img in images):
-            # Delete existing images if we're uploading new ones
             product.images.all().delete()
             
-            # Create new ProductImage instances
+            # Create new ProductImage instances with unique order
             for index, (url, img) in enumerate(images):
                 if url and img:
-                    is_featured = (index == 0)  # Set the first image as featured
-                    ProductImage.objects.create(product=product, image_url=url, image=img, is_featured=is_featured)
+                    is_featured = (index == 0)
+                    ProductImage.objects.create(
+                        product=product,
+                        image_url=url,
+                        image=img,
+                        is_featured=is_featured,
+                        order=index
+                    )
 
         return product
