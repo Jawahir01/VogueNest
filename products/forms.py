@@ -161,7 +161,7 @@ class ProductForm(forms.ModelForm):
             # Create new ProductImage instances with unique order
             for index, (url, img) in enumerate(images):
                 if url and img:
-                    is_featured = (index == 1)
+                    is_featured = (index == 0)
                     ProductImage.objects.create(
                         product=product,
                         image_url=url,

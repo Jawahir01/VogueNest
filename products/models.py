@@ -97,7 +97,7 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='')
+    image = models.ImageField(upload_to='media/')
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     is_featured = models.BooleanField(default=False)
     order = models.PositiveIntegerField(default=0)
@@ -108,11 +108,6 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return f"Image {self.order} for {self.product.name}"
-    
-    def save(self, *args, **kwargs):
-        if self.is_featured:
-            ProductImage.objects.filter(product=self.product).update(is_featured=False)
-        super().save(*args, **kwargs)
 
 
 class Review(models.Model):
