@@ -147,7 +147,7 @@ class ProductForm(forms.ModelForm):
         return rating
 
     def save(self, commit=True):
-        product = super().save(commit=commit)
+        product = super().save(commit=False)
         images = [
             (self.cleaned_data.get('image1_url'), self.cleaned_data.get('image1')),
             (self.cleaned_data.get('image2_url'), self.cleaned_data.get('image2')),
@@ -155,19 +155,23 @@ class ProductForm(forms.ModelForm):
             (self.cleaned_data.get('image4_url'), self.cleaned_data.get('image4'))
         ]
 
+        if commit:
+            product.save()
+
         if any(url and img for url, img in images):
+            # Delete existing images if we're uploading new ones
             product.images.all().delete()
             
-            # Create new ProductImage instances with unique order
+            # Create new ProductImage instances
             for index, (url, img) in enumerate(images):
                 if url and img:
-                    is_featured = (index == 0)
+                    is_featured = (index == 0)  # Set the first image as featured
                     ProductImage.objects.create(
                         product=product,
                         image_url=url,
                         image=img,
                         is_featured=is_featured,
-                        order=index + 1
-                    )
+                        order=index+1
+                        )
 
         return product
