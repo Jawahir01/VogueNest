@@ -11,3 +11,16 @@ cloudinary_python.txt
 .venv
 superuser: jawahir
 password: Jawanest999
+
+
+
+# Important Notes:
+# 1- Never modify models after creating fixtures without migrating
+
+# 2- Always run migrate after makemigrations
+
+# 3- Use python manage.py showmigrations to check pending migrations
+
+# 4 in case of mistaken git add, use git reset <file> to unstage or typing
+# git commit <files> instead of git add , Open Task Manager (Windows) and kill any git processes.
+#Navigate to your repository's .git folder and manually delete the index.lock file

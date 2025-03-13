@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+.article-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.article-hero {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.article-hero:hover {
+    transform: scale(1.03);
+}
+
+.article-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #dc3546ae;
+}
+
+.article-content {
+    line-height: 1.8;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.trend-section {
+    margin: 2.5rem 0;
+    padding: 1.5rem;
+    background: #f9f9f9;
+    border-left: 4px solid #e0e0e0;
+}
+
+.trend-section h4{
+    color: #dc3546c9;
+}
+
+.comments-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.comment {
+    background: #fff;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.comment-form {
+    background: #fff;
+    border-radius: 8px;
+}
+
+.style-tip {
+    background: #e3f2fd;
+    padding: 10px;
+    border-left: 5px solid #007bff;
+    border-radius: 5px;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.comment-form button {
+    background: #007bff;
+    border: none;
+    transition: background 0.3s;
+}
+
+.comment-form button:hover {
+    background: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .article-hero {
+        height: 150px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4">
+    <div class="row">
+        <div class="col-12 col-md-10 mx-auto m-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'blog' %}">Blogs</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">5 Winter-to-Spring Fashion Trends to Try Now</li>
+                </ol>
+            </nav>
+        </div>
+    
+        <div class="col-12 col-md-10 mx-auto m-4">
+            <article class="full-article">
+                <div class="article-header">
+                    <img src="{{ MEDIA_URL }}blog-01.jpg" alt="Winter-Spring Fashion Transition" class="article-hero">
+                    <div class="article-meta">
+                        <span class="publish-date">January 15, 2024</span>
+                        <h1 class="article-title">5 Winter-to-Spring Fashion Trends to Try Now</h1>
+                        <div class="author-info">
+                            <span class="byline">By Admin</span>
+                            <span class="comment-count"><i class="far fa-comment"></i> 3 Comments</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-content m-4">
+                    <p class="lead">As the seasons shift from frosty mornings to blossoming afternoons, your wardrobe deserves a seamless transition. Our Vogue Nest stylists reveal five key trends to bridge winter and spring with effortless sophistication.</p>
+
+                    <section class="trend-section">
+                        <h4>1. Layered Lightweight Knits</h4>
+                        <p>Swap bulky sweaters for fine-gauge knits in pastel hues. Try a lilac cashmere turtleneck under a cropped blazer for a chic, modern look.</p>
+                        <div class="style-tip">
+                            <h6>Pro Tip:</h6>
+                            <p>Layer a sleeveless knit vest over floral midi dresses for unexpected texture play.</p>
+                        </div>
+                    </section>
+
+                    <section class="trend-section">
+                        <h4>2. Transitional Trench Coats</h4>
+                        <p>The timeless trench gets a 2024 update with bold silhouettes and fresh textures:</p>
+                        <ul class="trend-list">
+                            <li>Cropped lengths in honeyed leather</li>
+                            <li>Translucent PVC overlays for a futuristic touch</li>
+                            <li>Belted waistlines with oversized buckles</li>
+                        </ul>
+                        <div class="style-tip">
+                            <h6>Try This:</h6>
+                            <p>Pair a cropped trench with high-waisted tailored trousers and loafers for a polished city look.</p>
+                        </div>
+                    </section>
+
+                    <section class="trend-section">
+                        <h4>3. Statement Scarves</h4>
+                        <p>Scarves are more than just a cold-weather staple—they’re a styling essential this season:</p>
+                        <ul class="trend-list">
+                            <li>Graphic prints that add bold character</li>
+                            <li>Rich jewel tones for a touch of luxury</li>
+                            <li>Plush cashmere blends for cozy elegance</li>
+                        </ul>
+                        <div class="style-tip">
+                            <h6>How to Wear It:</h6>
+                            <p>Try a silk scarf as a headband or tie it around your handbag for a Parisian-inspired vibe.</p>
+                        </div>
+                    </section>
+
+                    <section class="trend-section">
+                        <h4>4. Bold Footwear Choices</h4>
+                        <p>Shoes can make or break an outfit—this season’s must-haves include:</p>
+                        <ul class="trend-list">
+                            <li>Chunky loafers for structured elegance</li>
+                            <li>Minimalist white sneakers for casual chic</li>
+                            <li>Strappy heels with metallic finishes</li>
+                        </ul>
+                        <div class="style-tip">
+                            <h6>Style Hack:</h6>
+                            <p>Pair chunky loafers with tailored shorts and a crisp white shirt for a modern take on preppy style.</p>
+                        </div>
+                    </section>
+
+                    <div class="article-end">
+                        <p class="signoff">
+                            ✨ Stay Tuned!
+We're excited to bring you more fashion insights! Two new articles are on their way—stay tuned for the latest trends and styling tips. Keep checking back or subscribe to get notified when they drop! 🚀💖</p> 
+                            <p>What transitional piece are you most excited to try? Share in the comments below!</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Poll Widget -->
+            <div class="poll-widget p-4 bg-light border rounded mt-4">
+                <h3>Which trend are you most excited to try?</h3>
+                <form>
+                    <input type="radio" name="trend" value="knits"> Layered Lightweight Knits <br>
+                    <input type="radio" name="trend" value="trench"> Transitional Trench Coats <br>
+                    <input type="radio" name="trend" value="scarves"> Statement Scarves <br>
+                    <input type="radio" name="trend" value="footwear"> Bold Footwear <br>
+                    <button type="submit" class="btn btn-primary mt-2">Vote</button>
+                </form>
+            </div>
+
+            <!-- Comment Section -->
+            <section class="comments-section mt-5">
+                <h2 class="comments-title mb-4">Join the Conversation (8 Comments)</h2>
+
+                <div class="comments-list mb-5">
+                    {% for comment in comments %}
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-author">{{ comment.user.username }}</span>
+                                <span class="comment-date">{{ comment.created_at|date:"F j, Y" }}</span>
+                            </div>
+                            <p class="comment-text">{{ comment.text }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                {% if user.is_authenticated %}
+                <div class="comment-form card p-4">
+                    <h3 class="mb-3">Post a Comment</h3>
+                    <form method="post" action="{% url 'post_comment' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="article_id" value="{{ article.id }}">
+                        <textarea name="comment" class="form-control mb-3" placeholder="Write your comment..." required rows="4"></textarea>
+                        <button type="submit" class="btn btn-primary">Post Comment</button>
+                    </form>
+                </div>
+                {% else %}
+                <div class="login-prompt">
+                    <p>Please <a href="{% url 'account_login' %}">sign in</a> or <a href="{% url 'account_signup' %}">register</a> to join the discussion.</p>
+                </div>
+                {% endif %}
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
