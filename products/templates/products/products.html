@@ -114,3 +114,55 @@
     </div>
 </div>
 {% endblock %}
+
+
+{% block extra_js %}
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            const wishlistCounter = document.querySelector('.wishlist-counter');
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            function updateWishlistCounter() {
+                wishlistCounter.textContent = wishlist.length;
+            }
+
+            function toggleWishlist(productId, button) {
+        const index = wishlist.indexOf(productId);
+        if (index > -1) {
+            wishlist.splice(index, 1);
+        } else {
+            wishlist.push(productId);
+        }
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        updateWishlistCounter();
+        updateWishlistButtons();
+    }
+
+        function updateWishlistButtons() {
+        document.querySelectorAll('.wishlist-btn').forEach(button => {
+            const productId = parseInt(button.dataset.productId, 10);
+            if (wishlist.includes(productId)) {
+                button.querySelector('.wishlist-icon').classList.add('text-danger');
+                button.querySelector('.wishlist-icon').classList.remove('text-muted');
+            } else {
+                button.querySelector('.wishlist-icon').classList.remove('text-danger');
+                button.querySelector('.wishlist-icon').classList.add('text-muted');
+            }
+        });
+    }
+
+    document.body.addEventListener('click', function (event) {
+        if (event.target.closest('.wishlist-btn')) {
+            const button = event.target.closest('.wishlist-btn');
+            const productId = parseInt(button.dataset.productId, 10);
+            toggleWishlist(productId, button);
+        }
+    });
+
+    updateWishlistCounter();
+    updateWishlistButtons();
+});
+
+    </script>
+
+    {% endblock %}
