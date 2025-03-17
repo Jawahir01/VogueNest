@@ -56,3 +56,6 @@ def noblog(request):
     """ A view to return the noblog page """
     return render(request, 'home/noblog.html')
 
+def contact(request):
+    """ A view to return the contact page """
+    return render(request, 'home/contact.html')
