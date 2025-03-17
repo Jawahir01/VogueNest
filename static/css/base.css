@@ -400,11 +400,7 @@ footer a:hover {
     bottom: 20px;
     z-index: 999;
     cursor: pointer;
-    width: 3rem;
-    background: var(--accent-color);
-    border-radius: 50%;
-    color: white;
-    text-align: center;
+    max-width: 4.5rem;
 }
 
 #signup_form, .form-group {

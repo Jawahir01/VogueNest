@@ -38,10 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(backToTop);
     
     window.addEventListener('scroll', function() {
-        backToTop = document.getElementById('backToTop');
+        backToTop = document.getElementById('#backToTop');
 
         if (window.scrollY > 300) {
-            document.getElementById('backToTop').style.display = 'block';
+            backToTop.style.display = 'block';
         } else {
             backToTop.style.display = 'none';
         }
