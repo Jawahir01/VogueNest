@@ -32,7 +32,7 @@
     </section>
 
     <!-- Featured Categories -->
-    <section class="py-5">
+    <section class="py-5 mt-5">
         <div class="container">
             <h3 class="text-center mb-5">Shop Collections</h3>
             <div class="row g-4">
@@ -65,14 +65,15 @@
     </section>
 
     <!-- Value Propositions -->
-    <section class="bg-light py-5">
+    <section class="bg-light py-5 mt-5">
         <div class="container">
             <div class="row g-4 text-center">
+                <h3 class="text-center mb-5">Why Choose Us?</h3>
                 <div class="col-md-3">
                     <div class="p-4 shadow-sm">
                         <i class="fas fa-truck fa-2x mb-3 text-primary"></i>
                         <h5>Fast Shipping</h5>
-                        <p class="mb-0">Free delivery on orders over £50</p>
+                        <p class="mb-0">Free delivery on orders over £100</p>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -100,18 +101,37 @@
         </div>
     </section>
 
-    <!-- Featured Products -->
-    <section class="py-5">
+    <!-- New Customer Discount Banner -->
+    <section class="py-5 discount-banner mt-5">
         <div class="container">
-            <h3 class="text-center mb-5">Featured Products</h3>
-            <div class="row g-4">
-                
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center p-5 rounded-4 shadow-lg position-relative overflow-hidden">
+                    <div class="discount-content position-relative z-2">
+                        <h3 class="display-4 fw-bold mb-3 text-white">Our New Customers!</h2>
+                        <div class="offer-text mb-4">
+                            <p class="lead text-white mb-1">Get <span class="discount-percent">15% OFF</span> your first order</p>
+                            <p class="text-white mb-3">Use code at checkout:</p>
+                            <div class="promo-code d-inline-block bg-white text-dark px-4 py-2 rounded-pill fs-4 fw-bold animate__animated animate__pulse animate__infinite">
+                                VOGE15
+                            </div>
+                        </div>
+                        <a href="{% url 'products' %}" class="btn btn-light btn-lg mt-3">
+                            <i class="fas fa-gift me-2"></i>Start Shopping
+                        </a>
+                    </div>
+                    <!-- Animated Confetti -->
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Latest Blog Posts -->
-    <section class="blog-posts py-5 bg-light">
+    <section class="blog-posts py-5 bg-light mt-5">
         <div class="container">
             <h3 class="text-center mb-5">Latest Blog Posts</h3>
             <div class="row g-4">
@@ -124,7 +144,7 @@
                         <div class="blog-content p-3">
                             <h5 class="blog-title">5 Winter-to-Spring Fashion Trends to Try Now</h5>
                             <p class="blog-excerpt">>Discover how to transition your wardrobe seamlessly between seasons with these expert tips from Vogue Nest stylists...</p>
-                            <a href="{% url 'blog1' article_id=1 %}" class="btn btn-read-more">Read More</a>
+                            <a href="{% url 'blog' %}" class="btn btn-read-more">Read More</a>
                         </div>
                     </article>
                 </div>
@@ -138,7 +158,7 @@
                         <div class="blog-content p-3">
                             <h5 class="blog-title">Creative Ways to Style Dresses in Cold Weather</h5>
                             <p class="blog-excerpt">Learn how to layer your favorite dresses for winter while maintaining style and comfort. Our fashion experts share...</p>
-                            <a href="#" class="btn btn-read-more">Read More</a>
+                            <a href="{% url 'blog' %}" class="btn btn-read-more">Read More</a>
                         </div>
                     </article>
                 </div>
@@ -152,12 +172,60 @@
                         <div class="blog-content p-3">
                             <h5 class="blog-title">Essential Holiday Gift Guide for Fashion-Conscious Men</h5>
                             <p class="blog-excerpt">Curated list of perfect gifts for the stylish man in your life. From accessories to wardrobe staples...</p>
-                            <a href="#" class="btn btn-read-more">Read More</a>
+                            <a href="{% url 'blog' %}" class="btn btn-read-more">Read More</a>
                         </div>
                     </article>
                 </div>
             </div>
         </div>
     </section>
+
+{% endblock %}
+
+<!-- extra_css -->
+{% block extra_css %}
+
+<style>
+    .discount-banner {
+        background: linear-gradient(135deg, #e84252ae, #2a2a2a);
+        position: relative;
+    }
+
+    .discount-percent {
+        font-size: 2.5rem;
+        vertical-align: middle;
+        color: #ffd700;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .promo-code {
+        transition: transform 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .promo-code:hover {
+        transform: scale(1.05);
+    }
+
+    .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: #ffd700;
+        animation: confetti-fall 3s infinite;
+    }
+
+    @keyframes confetti-fall {
+        0% { transform: translateY(-100%) rotate(0deg); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .confetti:nth-child(2) { left: 10%; animation-delay: 0.5s; }
+    .confetti:nth-child(3) { left: 30%; animation-delay: 1.2s; background: #4f46e5; }
+    .confetti:nth-child(4) { left: 50%; animation-delay: 0.8s; }
+    .confetti:nth-child(5) { left: 70%; animation-delay: 1.5s; background: #4f46e5; }
+    .confetti:nth-child(6) { left: 90%; animation-delay: 2s; }
+</style>
 
 {% endblock %}
