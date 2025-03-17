@@ -8,6 +8,7 @@ def cart_contents(request):
     cart = request.session.get('cart', {})
     cart_items = []
     total = 0
+    subtotal = 0
     product_count = 0
 
     for item_id, item_data in cart.items():
@@ -30,6 +31,7 @@ def cart_contents(request):
                     'color': color,
                 })
                 total += quantity * product.price
+                subtotal += quantity * product.price
                 product_count += quantity
         else:
             product = Product.objects.get(pk=item_id)
@@ -41,6 +43,7 @@ def cart_contents(request):
                 'color': None,
             })
             total += item_data * product.price
+            subtotal += item_data * product.price
             product_count += item_data
 
     # Add discount calculation
@@ -53,7 +56,7 @@ def cart_contents(request):
                 discount = {
                     'code': code_obj.code,
                     'percent': float(code_obj.discount_percent),
-                    'amount': round(total * float(code_obj.discount_percent) / 100, 2)
+                    'amount': round(total * (code_obj.discount_percent) / 100, 2)
                 }
                 total -= discount['amount']
         except DiscountCode.DoesNotExist:
@@ -71,8 +74,11 @@ def cart_contents(request):
     context = {
         'cart_items': cart_items,
         'total': total,
+        'subtotal': subtotal,
         'product_count': product_count,
         'discount': discount,
+        'discount_amount': discount['amount'] if discount else 0,
+        'discount_percent': discount['percent'] if discount else 0,
         'discount_code': discount_code,
         'delivery': delivery,
         'free_delivery_delta': free_delivery_delta,

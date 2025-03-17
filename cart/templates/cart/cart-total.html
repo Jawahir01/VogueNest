@@ -1,25 +1,25 @@
 <div class="cart-totals">
     <div class="total-item d-flex justify-content-between mb-2">
         <span class="text-muted">Subtotal:</span>
-        <span>£ {{ total|floatformat:2 }}</span>
+        <span>£ {{ subtotal|floatformat:2 }}</span>
     </div>
     
-    <div class="total-item d-flex justify-content-between mb-3">
+    <div class="total-item d-flex justify-content-between mb-2">
         <span class="text-muted">Delivery:</span>
         <span>£ {{ delivery|floatformat:2 }}</span>
     </div>
-
-    <!-- Discount Display -->
-    {% if discount %}
-    <div class="total-item d-flex justify-content-between mb-3 text-success">
-        <span>
-            Discount ({{ discount.percent|floatformat:0 }}%):
-            <small class="text-muted">(CODE: {{ discount.code }})</small>
-        </span>
-        <span>- £{{ discount.amount|floatformat:2 }}</span>
+{% if discount_code %}
+    <div class="total-item d-flex justify-content-between mb-2 text-success">
+        <span class="text-muted">Discount Code: </span>
+        <span class="text-muted">{{ discount_code }}</span>
     </div>
-    {% endif %}
 
+    <div class="total-item d-flex justify-content-between mb-2">
+        <span class="text-muted">Discount:</span>
+        <span>-£ {{ discount_amount }}</span>
+    </div>
+{% endif %}
+    
     <div class="grand-total d-flex justify-content-between py-3 border-top">
         <strong>Total:</strong>
         <strong>£{{ grand_total|floatformat:2 }}</strong>

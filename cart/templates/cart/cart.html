@@ -77,26 +77,26 @@
                         <!-- Discount Code Section -->
                         <div class="row mt-4">
                             <div class="col-12 col-md-6">
-                                {% if not discount %}
-                                <form method="POST" action="{% url 'apply_discount' %}">
-                                    {% csrf_token %}
-                                    <div class="input-group" style="max-width: 100%;">
-                                        <input type="text" 
-                                            name="discount_code" 
-                                            class="form-control" 
-                                            placeholder="Enter discount code"
-                                            aria-label="Discount code">
-                                        <input type="hidden" name="redirect_url" value="{% url 'view_cart' %}">
-                                        <button class="btn btn-outline-primary" type="submit">Apply</button>
-                                    </div>
-                                </form>
+                                {% if not discount_code %}
+                                    <form method="POST" action="{% url 'apply_discount' %}">
+                                        {% csrf_token %}
+                                        <div class="input-group" style="max-width: 100%;">
+                                            <input type="text" 
+                                                name="discount_code" 
+                                                class="form-control" 
+                                                placeholder="Enter discount code"
+                                                aria-label="Discount code">
+                                            <input type="hidden" name="redirect_url" value="{% url 'view_cart' %}">
+                                            <button class="btn btn-outline-primary" type="submit">Apply</button>
+                                        </div>
+                                    </form>
                                 {% else %}
-                                <div class="alert alert-success">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span>15% Discount Applied (Code: {{ discount.code }})</span>
-                                        <a href="{% url 'remove_discount' %}" class="btn btn-sm btn-link">Remove</a>
+                                    <div class="alert alert-success">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span>Discount Applied (Code: {{ discount_code }})</span>
+                                            <a href="{% url 'remove_discount' %}" class="btn btn-sm btn-link">Remove</a>
+                                        </div>
                                     </div>
-                                </div>
                                 {% endif %}
                             </div>
                         </div>

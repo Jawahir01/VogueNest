@@ -10,7 +10,6 @@ def view_cart(request):
     """ A view that renders the cart contents page """
     context = {
         'profile': request.user,
-        'discount_code': request.session.get('discount_code', ''),
         'cart': request.session.get('cart'),
         'discount': request.session.get('discount'),
         'discount_amount': request.session.get('discount_amount'),
