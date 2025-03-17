@@ -8,4 +8,5 @@ urlpatterns = [
     path('post-comment/', views.post_comment, name='post_comment'),
     path('noblog/', views.noblog, name='noblog'),
     path('contact/', views.contact, name='contact'),
+    path('thanks/', views.thank_you, name='thank_you'),
 ]
