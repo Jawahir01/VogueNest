@@ -36,40 +36,40 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 {% endif %}
 
 <div class="vn-login-container">
-  <div class="vn-login-card">
-      <form class="vn-login-form" method="POST" action="{% url 'account_login' %}">
-          <h2 class="vn-login-title">Access Your Account</h2>
-          <p class="vn-login-subtitle">Welcome back to Vogue Nest</p>
-          
-          {% csrf_token %}
-          
-          <div class="vn-form-group">
-              {{ form.login|as_crispy_field }}
-          </div>
-          
-          <div class="vn-form-group">
-              {{ form.password|as_crispy_field }}
-          </div>
-          
-          {% if redirect_field_value %}
-          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-          {% endif %}
-          
-          <div class="vn-form-actions">
-              <button class="vn-signin-btn" type="submit">
-                  <span class="vn-btn-text">{% trans "Sign In" %}</span>
-                  <i class="fas fa-arrow-right"></i>
-              </button>
-              <a class="vn-forgot-password" href="{% url 'account_reset_password' %}">
-                  {% trans "Forgot Password?" %}
-              </a>
-          </div>
-          
-          <p class="vn-signup-link">
-              Don't have an account? <a href="{% url 'account_signup' %}">Join Vogue Nest</a>
-          </p>
-      </form>
-  </div>
+    <div class="vn-login-card">
+        <form class="vn-login-form" method="POST" action="{% url 'account_login' %}">
+            <h2 class="vn-login-title">Access Your Account</h2>
+            <p class="vn-login-subtitle">Welcome back to Vogue Nest</p>
+            
+            {% csrf_token %}
+            
+            <div class="vn-form-group">
+                {{ form.login|as_crispy_field }}
+            </div>
+            
+            <div class="vn-form-group">
+                {{ form.password|as_crispy_field }}
+            </div>
+            
+            {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            
+            <div class="vn-form-actions">
+                <button class="vn-signin-btn" type="submit">
+                    <span class="vn-btn-text">{% trans "Sign In" %}</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <a class="vn-forgot-password" href="{% url 'account_reset_password' %}">
+                    {% trans "Forgot Password?" %}
+                </a>
+            </div>
+            
+            <p class="vn-signup-link">
+                Don't have an account? <a href="{% url 'account_signup' %}">Join Vogue Nest</a>
+            </p>
+        </form>
+    </div>
 </div>
 
 <style>
@@ -77,7 +77,6 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   background: #f9f9f9;
   padding: 2rem;
 }
@@ -216,7 +215,6 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   text-decoration: none;
 }
 
-/* Add Font Awesome CDN in your base template */
 </style>
 
 {% endblock %}
