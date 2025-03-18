@@ -182,3 +182,10 @@ def add_review(request, product_id):
         messages.success(request, "Review submitted successfully")
 
     return redirect('product_detail', product_id=product.id)
+
+@login_required
+def wishlist(request):
+    """Display user wishlist"""
+    user = request.user
+    wishlist = user.wishlist.all()
+    return render(request, {'wishlist': wishlist})

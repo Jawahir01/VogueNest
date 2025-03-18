@@ -56,7 +56,7 @@
                         </a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link btn position-relative" href="#">
+                        <a class="nav-link position-relative" role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="wishlist-toggle">
                             <i class="fas fa-heart"></i>
                             <span  class="wishlist-counter cart-badge" >0</span>
                         </a>
@@ -84,6 +84,30 @@
         </div>
     </nav>
 
+    <!-- Wishlist Offcanvas-->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h5 id="offcanvasRightLabel">My Wishlist</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          {% if wishlist %}
+            {% for item in wishlist %}
+                <div class="wishlist-item">
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="wishlist-img">
+                    <div class="ms-2">
+                        <p class="wishlist-name">{{ item.product.name }}</p>
+                        <p class="text-muted small">£{{ item.product.price }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+          {% else %}
+            <p class="text-muted text-center">Your wishlist is empty.</p>
+          {% endif %}
+        </div>
+    </div>
+    
+    <!-- Messages -->
     {% if messages %}
     <div class="message-container position-fixed top-0 end-0 p-3" style="z-index: 9999">
         {% for message in messages %}
@@ -140,6 +164,24 @@
     {% endblock %}
 
     {% block extra_css %}
+        <style>
+            .offcanvas {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 300px;
+                height: 100%;
+                background: white;
+                box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+                transition: right 0.3s ease-in-out;
+                display: flex;
+                flex-direction: column;
+            }
+            .offcanvas.show { right: 0; }
+            .wishlist-img { width: 50px; height: 50px; object-fit: cover; border-radius: 5px; }
+            .wishlist-name { font-size: 14px; font-weight: bold; }
+            .wishlist-item { display: flex; align-items: center; }
+        </style>
         
     {% endblock %}
 

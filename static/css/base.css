@@ -413,7 +413,6 @@ footer a:hover {
 .cart-badge {
     position: absolute;
     top: -8px;
-    right: -8px;
     background: var(--accent-color);
     color: white;
     border-radius: 50%;

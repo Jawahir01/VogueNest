@@ -89,7 +89,7 @@
                             <!-- Wishlist Button -->
                             <span 
                                 class="wishlist-btn btn btn-icon position-absolute top-0 end-0 translate-middle-y mt-2" 
-                                data-product-id="{{ product.id }}"
+                                data-product-id="{{ product.id }}" data-product-name="{{ product.name }}" data-product-image="{{ product.image.url }}" data-product-price="{{ product.price }}" data-product-url="{% url 'product_detail' product.id %}"
                             >
                                 <i class="fas fa-heart wishlist-icon {% if product.id in wishlist %}text-danger{% else %}text-muted{% endif %}"></i>
                             </span>
@@ -116,7 +116,8 @@
 {% endblock %}
 
 
-{% block extra_js %}
+{% block postloadjs %}
+{{ block.super }}
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             const wishlistCounter = document.querySelector('.wishlist-counter');
@@ -161,6 +162,48 @@
 
     updateWishlistCounter();
     updateWishlistButtons();
+
+    
+    // Wishlist counter click event (toggle offcanvas)
+    if (wishlistCounter) {
+        wishlistCounter.addEventListener("click", function () {
+            document.getElementById("wishlistOffcanvas").classList.toggle("show");
+        });
+    }
+
+    // Render wishlist items inside offcanvas
+    function renderWishlist() {
+        const wishlistContainer = document.getElementById("wishlist-items");
+        wishlistContainer.innerHTML = "";
+        if (wishlist.length === 0) {
+            wishlistContainer.innerHTML = "<p class='text-center mt-3'>No items in wishlist</p>";
+            return;
+        }
+
+        wishlist.forEach((item) => {
+            const wishlistItem = document.createElement("div");
+            wishlistItem.classList.add("wishlist-item", "d-flex", "align-items-center", "mb-2");
+            wishlistItem.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="wishlist-img me-2">
+                <span class="wishlist-name flex-grow-1">${item.name}</span>
+                <button class="btn btn-sm btn-danger remove-wishlist" data-product-id="${item.id}">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            wishlistContainer.appendChild(wishlistItem);
+        });
+
+        // Remove from wishlist when clicking X button
+        document.querySelectorAll(".remove-wishlist").forEach((button) => {
+            button.addEventListener("click", function () {
+                const productId = this.dataset.productId;
+                wishlist = wishlist.filter((item) => item.id !== productId);
+                localStorage.setItem("wishlist", JSON.stringify(wishlist));
+                updateWishlistCounter();
+                renderWishlist();
+            });
+        });
+    }
 });
 
     </script>

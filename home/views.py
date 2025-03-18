@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from profiles.models import UserProfile
 from .models import Comment
 
 
@@ -74,5 +76,4 @@ def thank_you(request):
         }
         return render(request, 'home/thank_you.html', context)
     return redirect('home')
-        
 
