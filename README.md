@@ -6,13 +6,15 @@
 ## Table of Contents
 - [Vogue Nest 🌟](#vogue-nest-)
   - [Table of Contents](#table-of-contents)
-- [**About**](#about)
+- [👗 About](#-about)
 - [✨ Key Features](#-key-features)
 - [🛠️ Tech Stack](#️-tech-stack)
+- [🛢️ Database:](#️-database)
+    - [Key Relationships:](#key-relationships)
 
 
-# **About**
-👗 About
+# 👗 About
+
 Vogue Nest is a cutting-edge fashion e-commerce platform that combines modern web technologies with AI-powered recommendations to deliver a personalized shopping experience. Designed for fashion enthusiasts who value both style and convenience, our platform offers:
 
 - Curated collections from emerging designers
@@ -53,3 +55,20 @@ Vogue Nest is a cutting-edge fashion e-commerce platform that combines modern we
   - **Storage:** AWS S3
   - **CI/CD:** GitHub Actions
   - **Wireframes:** Miro/ Figma
+  - **mermaidchart:** Entry-Relationship Diagram Design (ERD)
+  
+# 🛢️ Database:
+  ![RED](./Documents/images/ERD.png)
+
+  ### Key Relationships:
+  - User has one UserProfile (1:1)
+  - User can have many Reviews and Comments (1:M)
+  - UserProfile can have many Orders (1:M)
+  - Order contains multiple OrderLineItems (1:M)
+  - Product can appear in multiple OrderLineItems (1:M)
+  - Product belongs to a Category (M:1)
+  - Category can have sub-categories (self-referential)
+  - Product has M:M relationships with Size and Color
+  - Category defines available Sizes and Colors (M:M)
+  - Product has multiple ProductImages (1:M)
+  - Product can have multiple Reviews (1:M)
