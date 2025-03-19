@@ -6,6 +6,10 @@
     {% block meta %}
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
+        <meta name="description" content="Vogue Nest - Elevating your style with curated fashion essentials since 1999.">
+        <meta name="keywords" content="fashion, clothing, accessories, style, trends, vogue, nest">
+        <meta name="author" content="Vogue Nest">
+        <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="theme-color" content="#0d0d0d">
     {% endblock %}
@@ -91,19 +95,7 @@
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          {% if wishlist %}
-            {% for item in wishlist %}
-                <div class="wishlist-item">
-                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="wishlist-img">
-                    <div class="ms-2">
-                        <p class="wishlist-name">{{ item.product.name }}</p>
-                        <p class="text-muted small">£{{ item.product.price }}</p>
-                    </div>
-                </div>
-            {% endfor %}
-          {% else %}
-            <p class="text-muted text-center">Your wishlist is empty.</p>
-          {% endif %}
+            {{ wishlist }}
         </div>
     </div>
     
