@@ -9,18 +9,24 @@
 - [👗 About](#-about)
 - [✨ Key Features](#-key-features)
 - [🛠️ Tech Stack](#️-tech-stack)
+- [👥 User Stories](#-user-stories)
+    - [🎯 First Time Visitor Goals](#-first-time-visitor-goals)
+    - [🔄 Regular User (Customer) Goals](#-regular-user-customer-goals)
+    - [👔 Manager/Admin Goals](#-manageradmin-goals)
 - [🛢️ Database:](#️-database)
     - [Key Relationships:](#key-relationships)
+  - [🚀 Installation](#-installation)
+    - [Prerequisites](#prerequisites)
+    - [Setup Instructions](#setup-instructions)
+- [💌 Acknowledgments](#-acknowledgments)
 
 
 # 👗 About
-
 Vogue Nest is a cutting-edge fashion e-commerce platform that combines modern web technologies with AI-powered recommendations to deliver a personalized shopping experience. Designed for fashion enthusiasts who value both style and convenience, our platform offers:
 
 - Curated collections from emerging designers
-- AI-powered style matching
-- Virtual try-on features (coming soon)
 - Sustainable fashion marketplace
+- 
 
 **Live Demo:** [https://vogue-nest-bb4c62d54744.herokuapp.com/]
 
@@ -56,7 +62,100 @@ Vogue Nest is a cutting-edge fashion e-commerce platform that combines modern we
   - **CI/CD:** GitHub Actions
   - **Wireframes:** Miro/ Figma
   - **mermaidchart:** Entry-Relationship Diagram Design (ERD)
+
+# 👥 User Stories
+### 🎯 First Time Visitor Goals
+  As a first time visitor, I want to be able to:
+  -  **Discover the Platform**
+      - Browse products without creating an account.
+      - View featured collections, trending items and promotions.
+      - Explore the blog for fashion tips, trends, and inspiration.
+
+  - **Registration & Onboarding**
+    - Easily create an account (email)
+    - Receive welcome email with style guide
+    - Access quick tour of platform features, including the blog and contact page.
+
+  - **Initial Exploration**
+    - Filter products by category/price/size
+    - View detailed product descriptions, images, and specifications.
+    - Read customer reviews and ratings for products.
+    - Explore blog posts for additional insights and recommendations.
+
+  - **Trust Building**
+    - View SSL security verification
+    - See recognized payment method icons for secure transactions.
+    - Access the contact page to reach out for inquiries or support.
   
+  - **Engagement with Blog**
+    - Read articles on fashion trends, styling tips, and product highlights.
+    - Read customer comments and thier contributions.
+
+  - **Contact and Support**
+    - Easily find the contact page for customer support or inquiries.
+    - Use a contact form to submit questions or feedback.
+
+
+### 🔄 Regular User (Customer) Goals
+As a Regular User, I want to be able to:
+  - **Shopping Experience**
+    - Browse and search for products using filters (category, price, size, etc.).
+    - Add products to the shopping cart and wishlist.
+    - View detailed product descriptions, images, and reviews.
+    - Place orders with a secure checkout process.
+    - Track order status and view order history.
+  
+  - **Account Management**
+    - Log in using email or social login.
+    - Update personal information, shipping address, and payment details.
+    - Manage wishlist and saved items.
+
+  - **Engagement with Blog**
+    - Read blog posts for fashion tips, trends, and product recommendations.
+    - Comment on blog posts and engage with other users.
+  
+  - **Customer Support**
+    - Access the contact page for inquiries or support.
+    - Use the contact form to submit questions or feedback.
+
+  - **Trust and Security**
+    - View SSL security verification and trusted payment icons.
+    - Receive email notifications for order confirmation and updates.
+
+### 👔 Manager/Admin Goals
+- **Product Management**
+  - Add, update, or delete products in the catalog.
+  - Manage product categories, sizes, and colors.
+  - Upload and manage product images.
+
+- **Order Management**
+  - View and manage customer orders.
+  - Update order statuses (e.g., processing, shipped, delivered).
+  - Handle order cancellations and refunds.
+
+- **User Management**
+  - View and manage customer accounts.
+  - Handle user inquiries or complaints submitted via the contact form.
+
+- **Blog Management**
+  - Create, edit, or delete blog posts.
+  - Moderate comments on blog posts.
+  - Analyze blog engagement metrics (e.g., views, shares, comments).
+
+- Security and Compliance
+  - Ensure SSL certificates and secure payment integrations are active.
+  - Monitor for suspicious activities or fraudulent transactions.
+
+- **Customer Support**
+  - Respond to customer inquiries submitted via the contact page.
+  - Resolve escalated issues or disputes.
+  - Provide updates to customers regarding their orders or concerns.
+
+- **Platform Maintenance**
+  - Manage website settings and configurations.
+  - Perform regular backups and updates to the platform
+  - Ensure uptime and resolve technical issues promptly.
+
 # 🛢️ Database:
   ![RED](./Documents/images/ERD.png)
 
@@ -72,3 +171,50 @@ Vogue Nest is a cutting-edge fashion e-commerce platform that combines modern we
   - Category defines available Sizes and Colors (M:M)
   - Product has multiple ProductImages (1:M)
   - Product can have multiple Reviews (1:M)
+
+## 🚀 Installation
+### Prerequisites
+- Python 3.10+
+- PostgreSQL 15
+- Redis Server
+
+### Setup Instructions
+1. Clone the repository:
+     ```bash
+     git clone https://github.com/Jawahir01/VogueNest
+     cd vogue-nest
+
+2. Create virtual environment:
+    ```
+    python -m venv venv
+    source venv/bin/activate  # Linux/MacOS
+    venv\Scripts\activate     # Windows
+    ```
+3. Install dependencies:
+    ```
+    pip install -r requirements.txt
+    ```
+4. Configure environment variables (create .env file):
+    ```
+    DEBUG=False
+    SECRET_KEY=your-secret-key
+    DATABASE_URL=postgres://user:password@localhost/voguenest
+    STRIPE_PUBLIC_KEY=your-stripe-key
+    STRIPE_SECRET_KEY=your-stripe-secret
+    AWS_ACCESS_KEY_ID=your-aws-key
+    AWS_SECRET_ACCESS_KEY=your-aws-secret
+    ```
+5. Run migrations:
+    ```
+    python manage.py migrate
+    ```
+6. Create superuser:
+    ```
+    python manage.py createsuperuser
+    ```
+7. Start development server:
+    ```
+    python manage.py runserver
+    ```
+
+# 💌 Acknowledgments
