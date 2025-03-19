@@ -1,7 +1,6 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
-{% load account socialaccount %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
@@ -11,33 +10,17 @@
 <h2 class="logo-font mb-4">{% trans "Sign In" %}</h2>
 <hr>
 
-{% get_providers as socialaccount_providers %}
-
-{% if socialaccount_providers %}
-<p>{% blocktrans with site.name as site_name %}Please sign in with one
-of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
-
-<div class="socialaccount_ballot">
-
-  <ul class="socialaccount_providers">
-    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-  </ul>
-
-  <div class="login-or">{% trans 'or' %}</div>
-
-</div>
-
-<!-- {% include "socialaccount/snippets/login_extra.html" %} -->
-
-{% else %}
 <p>{% blocktrans %}If you have not created an account yet, then please
 <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-{% endif %}
 
 <div class="vn-login-container">
     <div class="vn-login-card">
         <form class="vn-login-form" method="POST" action="{% url 'account_login' %}">
+            {% if form.non_field_errors %}
+                <div class="vn-error-messages">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
             <h2 class="vn-login-title">Access Your Account</h2>
             <p class="vn-login-subtitle">Welcome back to Vogue Nest</p>
             
@@ -67,7 +50,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
             
             <p class="vn-signup-link">
                 Don't have an account? <a href="{% url 'account_signup' %}">Join Vogue Nest</a>
-            </p>
+
         </form>
     </div>
 </div>
@@ -104,6 +87,13 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   text-align: center;
   margin-bottom: 2rem;
   font-size: 0.95rem;
+}
+
+.vn-error-messages {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .vn-form-group {
