@@ -61,7 +61,8 @@ Vogue Nest is a cutting-edge fashion e-commerce platform that combines modern we
   - **Storage:** AWS S3
   - **CI/CD:** GitHub Actions
   - **Wireframes:** Miro/ Figma
-  - **mermaidchart:** Entry-Relationship Diagram Design (ERD)
+  - **[mermaidchart](https://www.mermaidchart.com):** Entry-Relationship Diagram Design (ERD)
+  - **[chatbots](https://app.fastbots.ai/)** AI chatbots
 
 # 👥 User Stories
 ### 🎯 First Time Visitor Goals
