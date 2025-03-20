@@ -182,7 +182,7 @@ We're excited to bring you more fashion insights! Two new articles are on their 
             </article>
 
             <!-- Poll Widget -->
-            <div class="poll-widget p-4 bg-light border rounded mt-4">
+            <!-- <div class="poll-widget p-4 bg-light border rounded mt-4">
                 <h3>Which trend are you most excited to try?</h3>
                 <form>
                     <input type="radio" name="trend" value="knits"> Layered Lightweight Knits <br>
@@ -191,7 +191,7 @@ We're excited to bring you more fashion insights! Two new articles are on their 
                     <input type="radio" name="trend" value="footwear"> Bold Footwear <br>
                     <button type="submit" class="btn btn-primary mt-2">Vote</button>
                 </form>
-            </div>
+            </div> -->
 
             <!-- Comment Section -->
             <section class="comments-section mt-5">
@@ -208,7 +208,9 @@ We're excited to bring you more fashion insights! Two new articles are on their 
                         </div>
                     {% endfor %}
                 </div>
-
+                <div class="comment-note mb-4">
+                    <p class="text-muted">Note: Once you post a comment, it cannot be edited or deleted. Please ensure your comment adheres to our community guidelines.</p>
+                </div>
                 {% if user.is_authenticated %}
                 <div class="comment-form card p-4">
                     <h3 class="mb-3">Post a Comment</h3>
