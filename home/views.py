@@ -57,23 +57,3 @@ def post_comment(request):
 def noblog(request):
     """ A view to return the noblog page """
     return render(request, 'home/noblog.html')
-
-def contact(request):
-    """ A view to return the contact page """
-    return render(request, 'home/contact.html')
-
-def thank_you(request):
-    """ A view to return the thank_you page """
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
-
-        context = {
-            'name': name,
-            'email': email,
-            'message': message
-        }
-        return render(request, 'home/thank_you.html', context)
-    return redirect('home')
-
