@@ -22,7 +22,7 @@ def blog1(request, article_id):
     if not article_id:
         return redirect('blog') 
     
-    comments = Comment.objects.filter(article_id=article_id, approved=True)
+    comments = Comment.objects.filter(article_id=1, approved=True)
     
     context = {
         'article_id': article_id,
