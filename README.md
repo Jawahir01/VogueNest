@@ -38,7 +38,6 @@ Vogue Nest is a cutting-edge fashion e-commerce platform that combines modern we
     - **Secure Checkout** with Stripe integration
     - **Order Tracking & History**
     - **Product Reviews & Ratings**
-    - **Wishlist Management**
     - **Admin Dashboard** with analytics
 
 
@@ -61,8 +60,10 @@ Vogue Nest is a cutting-edge fashion e-commerce platform that combines modern we
   - **Storage:** AWS S3
   - **CI/CD:** GitHub Actions
   - **Wireframes:** Miro/ Figma
-  - **[mermaidchart](https://www.mermaidchart.com):** Entry-Relationship Diagram Design (ERD)
-  - **[chatbots](https://app.fastbots.ai/)** AI chatbots
+  - **Entry-Relationship Diagram Design (ERD):** [mermaidchart](https://www.mermaidchart.com)
+  - **AI chatbots:** [chatbots](https://app.fastbots.ai/)
+  - **Creating and styling the logo:** [Canva](https://www.canva.com/)
+  - **Converting logo image into favicon:** [Favicon](https://favicon.io/)
 
 # 👥 User Stories
 ### 🎯 First Time Visitor Goals
@@ -101,7 +102,7 @@ Vogue Nest is a cutting-edge fashion e-commerce platform that combines modern we
 As a Regular User, I want to be able to:
   - **Shopping Experience**
     - Browse and search for products using filters (category, price, size, etc.).
-    - Add products to the shopping cart and wishlist.
+    - Add products to the shopping cart.
     - View detailed product descriptions, images, and reviews.
     - Place orders with a secure checkout process.
     - Track order status and view order history.
@@ -109,7 +110,6 @@ As a Regular User, I want to be able to:
   - **Account Management**
     - Log in using email or social login.
     - Update personal information, shipping address, and payment details.
-    - Manage wishlist and saved items.
 
   - **Engagement with Blog**
     - Read blog posts for fashion tips, trends, and product recommendations.
