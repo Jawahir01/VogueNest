@@ -178,9 +178,9 @@ As a Regular User, I want to be able to:
 
   All pages have:
   - #### A header:
-    ![Home](static/img/Doc/Features/home-1.png)
+    ![Home](/documents/images/header.png)
   - #### A Footer
-    ![Home](static/img/Doc/Features/home-1.png)
+    ![Home](/documents/images/footer.png)
   - #### Home page
       - ![Home](/documents/images/home1.png)
       - ![Home](/documents/images/home2.png)
@@ -206,16 +206,20 @@ As a Regular User, I want to be able to:
     ![Delete product](/documents/images/delete-product.png)
   - #### Cart
     ![Cart](/documents/images/cart.png)
+    ![Discount](/documents/images/adding%20discount.png)
+    ![Discount](/documents/images/remove-discount.png)
     ![Checkout](/documents/images/checkout.png)
     ![Checkout](/documents/images/checkout2.png)
     ![Checkout](/documents/images/checkout.png)
     ![invoice](/documents/images/invoice.png)
-    ![Discount](/documents/images/d)
+
+    
+
   - #### Contact Us Page
     ![Contact-us](/documents/images/contact.png)
   - #### Thank You Page
-    ![Thank-you-page](/documents/images/thankyou.png)
-    ![Admin](/documents/images/admin)
+    ![Thank-you-page](/documents/images/thank-you.png)
+    ![Admin](/documents/images/admin%20panel.png)
 
 
 - #### **The Live Link:** https://vogue-nest-bb4c62d54744.herokuapp.com/
