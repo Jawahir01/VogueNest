@@ -1,0 +1,140 @@
+.discount-banner {
+    background: linear-gradient(135deg, #e84252ae, #2a2a2a);
+    position: relative;
+}
+
+.discount-percent {
+    font-size: 2.5rem;
+    vertical-align: middle;
+    color: #ffd700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.promo-code {
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.promo-code:hover {
+    transform: scale(1.05);
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ffd700;
+    animation: confetti-fall 3s infinite;
+}
+
+.article-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.article-hero {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.article-hero:hover {
+    transform: scale(1.03);
+}
+
+.article-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #dc3546ae;
+}
+
+.article-content {
+    line-height: 1.8;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.trend-section {
+    margin: 2.5rem 0;
+    padding: 1.5rem;
+    background: #f9f9f9;
+    border-left: 4px solid #e0e0e0;
+}
+
+.trend-section h4{
+    color: #dc3546c9;
+}
+
+.comments-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.comment {
+    background: #fff;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.comment-form {
+    background: #fff;
+    border-radius: 8px;
+}
+
+.style-tip {
+    background: #e3f2fd;
+    padding: 10px;
+    border-left: 5px solid #007bff;
+    border-radius: 5px;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.comment-form button {
+    background: #007bff;
+    border: none;
+    transition: background 0.3s;
+}
+
+.comment-form button:hover {
+    background: #0056b3;
+}
+
+.coming-soon {
+    animation: fadeIn 1.5s ease-in-out;
+}
+                
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .article-hero {
+        height: 150px;
+    }
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(-100%) rotate(0deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+.confetti:nth-child(2) { left: 10%; animation-delay: 0.5s; }
+.confetti:nth-child(3) { left: 30%; animation-delay: 1.2s; background: #4f46e5; }
+.confetti:nth-child(4) { left: 50%; animation-delay: 0.8s; }
+.confetti:nth-child(5) { left: 70%; animation-delay: 1.5s; background: #4f46e5; }
+.confetti:nth-child(6) { left: 90%; animation-delay: 2s; }

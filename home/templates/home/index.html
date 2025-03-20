@@ -1,6 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">
+                <h1 class="display-4 fw-bold text-white">Welcome to Vogue Nest</h1>
+                <p class="lead text-white">Discover the latest fashion trends and shop our curated collections</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
     <!-- Hero Carousel -->
     <section class="hero">
@@ -179,53 +194,5 @@
             </div>
         </div>
     </section>
-
-{% endblock %}
-
-<!-- extra_css -->
-{% block extra_css %}
-
-<style>
-    .discount-banner {
-        background: linear-gradient(135deg, #e84252ae, #2a2a2a);
-        position: relative;
-    }
-
-    .discount-percent {
-        font-size: 2.5rem;
-        vertical-align: middle;
-        color: #ffd700;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-    }
-
-    .promo-code {
-        transition: transform 0.3s ease;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .promo-code:hover {
-        transform: scale(1.05);
-    }
-
-    .confetti {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background: #ffd700;
-        animation: confetti-fall 3s infinite;
-    }
-
-    @keyframes confetti-fall {
-        0% { transform: translateY(-100%) rotate(0deg); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-    }
-
-    .confetti:nth-child(2) { left: 10%; animation-delay: 0.5s; }
-    .confetti:nth-child(3) { left: 30%; animation-delay: 1.2s; background: #4f46e5; }
-    .confetti:nth-child(4) { left: 50%; animation-delay: 0.8s; }
-    .confetti:nth-child(5) { left: 70%; animation-delay: 1.5s; background: #4f46e5; }
-    .confetti:nth-child(6) { left: 90%; animation-delay: 2s; }
-</style>
 
 {% endblock %}
