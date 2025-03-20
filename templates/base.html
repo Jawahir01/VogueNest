@@ -128,22 +128,37 @@
 
     <!-- Footer -->
     <footer class="bg-dark text-white mt-4">
-        <div class="container-lg py-1 py-md-1 text-center text-md-start">
+        <div class="container-lg py-2 py-md-3 text-center text-md-start">
             <div class="row flex-grow-1 justify-content-between">
                 <div class="col-md-4">
                     <h5 class="fw-bold mb-3">Vogue Nest</h5>
                     <p>Elevating your style with curated fashion essentials since 1999.</p>
                 </div>
-                <div class="col-md-8">
-                    <p class="copyright mt-5 text-muted text-center text-md-end">
-                        &copy; 2024 Vogue Nest. All rights reserved.
-                    </p>
-                </div> 
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3 ">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'products' %}" class="text-white text-decoration-none">Shop</a></li>
+                        <li><a href="{% url 'contact' %}" class="text-white text-decoration-none">Contact</a></li>
+                        <li><a href="{% url 'blog' %}" class="text-white text-decoration-none">Blogs</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3 text-cener">Follow Us</h5>
+                    <div class="social-links d-flex justify-content-center justify-content-md-start">
+                        <a href="https://www.twitter.com" target="_blank" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com" target="_blank" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.pinterest.com" target="_blank" class="text-white me-3"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
             </div>
-            
+            <div class="col-12 mt-2 ">
+                <div class="copyright text-muted text-center text-md-end mt-4 mt-md-0">
+                    <p>&copy; 2024 Vogue Nest. All rights reserved.</p>
+                </div>
+            </div>
         </div>
     </footer>
-
     {% block corejs %}
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
