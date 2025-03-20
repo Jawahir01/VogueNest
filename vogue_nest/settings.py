@@ -204,14 +204,6 @@ if 'USE_AWS' in os.environ:
         "CacheControl": "max-age=94608000",
     }
 
-else:
-    # Local settings for static/media (development)
-    STATIC_URL = '/static/'
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
 FREE_DELIVERY_THRESHOLD = 100
 STANDARD_DELIVERY_PERCENTAGE = 10# 1 day in seconds
 MAX_UPLOAD_SIZE = 1024 * 1024 * 5  #Maximum file upload size 5MB
