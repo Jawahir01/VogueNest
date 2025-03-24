@@ -123,22 +123,28 @@
                         <!-- Quantity Selector -->
                         <div class="quantity-selector">
                             <label>Quantity</label>
-                            <div class="input-group">
-                                <button class="btn btn-outline-secondary decrement-qty" 
+                            <div class="form-group">
+                                <div class="input-group input-group-{{ product.id }}">
+                                    <div class="input-group-prepend">
+                                        <button class="decrement-qty btn btn-black rounded-0 decrement-qty_{{ product.id }}" 
+                                            data-item_id="{{ product.id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-minus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <input class="form-control qty_input id_qty_{{ product.id }}" type="number"
+                                        name="quantity" value="1" min="1" max="99"
                                         data-item_id="{{ product.id }}">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <input 
-                                    class="form-control qty-input" 
-                                    type="number" 
-                                    name="quantity" 
-                                    value="1" 
-                                    min="1" 
-                                    max="99">
-                                <button class="btn btn-outline-secondary increment-qty"
-                                        data-item_id="{{ product.id }}">
-                                    <i class="fas fa-plus"></i>
-                                </button>
+                                    <div class="input-group-append">
+                                        <button class="increment-qty btn btn-black rounded-0 increment-qty_{{ product.id }}"
+                                            data-item_id="{{ product.id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-plus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -225,4 +231,26 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+        <script type="text/javascript">
+            // Change the main product image when a thumbnail is clicked
+            function changeMainImage(thumbnail) {
+                const mainImage = document.getElementById('main-product-image');
+                const mainImageLink = document.getElementById('main-image-link');
+                mainImage.src = thumbnail.dataset.fullsize;
+                mainImageLink.href = thumbnail.dataset.fullsize;
+            }
+
+            // Increment and decrement quantity buttons
+            document.querySelectorAll('.increment-qty').forEach(button => {
+                button.addEventListener('click', function() {
+                    const item_id = this.dataset.item_id;
+                    const qtyInput = document.querySelector(`.id_qty_${item_id}`);
+                    qtyInput.stepUp();
+                });
+            });
+        </script>
 {% endblock %}
