@@ -16,7 +16,7 @@
 
     <div class="total-item d-flex justify-content-between mb-2">
         <span class="text-muted">Discount:</span>
-        <span>-£ {{ discount_amount }}</span>
+        <span>-£ {{ discount_amount|floatformat:2 }}</span>
     </div>
 {% endif %}
     

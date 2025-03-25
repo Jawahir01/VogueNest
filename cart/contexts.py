@@ -1,4 +1,4 @@
-from decimal import Decimal
+from decimal import Decimal, ROUND_HALF_UP
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
@@ -7,9 +7,10 @@ from .models import DiscountCode
 def cart_contents(request):
     cart = request.session.get('cart', {})
     cart_items = []
-    total = 0
-    subtotal = 0
+    total = Decimal('0')
+    subtotal = Decimal('0')
     product_count = 0
+    discount_amount = Decimal('0')
 
     for item_id, item_data in cart.items():
         if isinstance(item_data, dict):
@@ -30,8 +31,9 @@ def cart_contents(request):
                     'size': size,
                     'color': color,
                 })
-                total += quantity * product.price
-                subtotal += quantity * product.price
+                item_price = product.price * quantity
+                total += item_price
+                subtotal += item_price
                 product_count += quantity
         else:
             product = Product.objects.get(pk=item_id)
@@ -42,34 +44,38 @@ def cart_contents(request):
                 'size': None,
                 'color': None,
             })
-            total += item_data * product.price
-            subtotal += item_data * product.price
+            item_price = product.price * item_data
+            total += item_price
+            subtotal += item_price
             product_count += item_data
 
-    # Add discount calculation
     discount_code = request.session.get('discount_code')
     discount = None
     if discount_code:
         try:
             code_obj = DiscountCode.objects.get(code=discount_code)
             if code_obj.is_valid():
+                discount_amount = (total * code_obj.discount_percent / 100).quantize(
+                    Decimal('0.00'), rounding=ROUND_HALF_UP
+                )
                 discount = {
                     'code': code_obj.code,
                     'percent': float(code_obj.discount_percent),
-                    'amount': round(total * (code_obj.discount_percent) / 100, 2)
+                    'amount': discount_amount
                 }
-                total -= discount['amount']
+                total -= discount_amount
         except DiscountCode.DoesNotExist:
             pass
 
+    # Delivery calculation (based on discounted total)
     if total < settings.FREE_DELIVERY_THRESHOLD:
-        delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
-        free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
+        delivery = (total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)).quantize(Decimal('0.00'))
+        free_delivery_delta = (settings.FREE_DELIVERY_THRESHOLD - total).quantize(Decimal('0.00'))
     else:
-        delivery = 0
-        free_delivery_delta = 0
+        delivery = Decimal('0')
+        free_delivery_delta = Decimal('0')
     
-    grand_total = delivery + total
+    grand_total = (delivery + total).quantize(Decimal('0.00'))
     
     context = {
         'cart_items': cart_items,
@@ -77,8 +83,7 @@ def cart_contents(request):
         'subtotal': subtotal,
         'product_count': product_count,
         'discount': discount,
-        'discount_amount': discount['amount'] if discount else 0,
-        'discount_percent': discount['percent'] if discount else 0,
+        'discount_amount': discount_amount,
         'discount_code': discount_code,
         'delivery': delivery,
         'free_delivery_delta': free_delivery_delta,
