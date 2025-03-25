@@ -32,40 +32,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Back to Top Button
-    const backToTop = document.createElement('div');
-    backToTop.innerHTML = '<button class="btn btn-primary rounded-circle shadow" id="backToTop"><i class="fas fa-arrow-up"></i></button>';
-    document.body.appendChild(backToTop);
-    
-    window.addEventListener('scroll', function() {
-        backToTop = document.getElementById('#backToTop');
-
-        if (window.scrollY > 300) {
-            backToTop.style.display = 'block';
-        } else {
-            backToTop.style.display = 'none';
-        }
+// Create BackTop Button
+if (!document.getElementById('backToTopContainer')) {
+    const container = document.createElement('div');
+    container.id = 'backToTopContainer'; // Unique ID for container
+    container.innerHTML = `
+      <button class="btn btn-primary rounded-circle shadow">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+    `;
+    container.style.display = 'none'; // Hidden initially
+    container.style.transition = '0.3s'; // Set transition once
+    document.body.appendChild(container);
+  
+    // Scroll handler
+    window.addEventListener('scroll', () => {
+      container.style.display = window.scrollY > 300 ? 'block' : 'none';
     });
-
-    document.getElementById('backToTop').addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+  
+    // Click handler
+    container.querySelector('button').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-});
+  }
 
 // Product Image Zoom
 document.querySelectorAll('.product-image').forEach(image => {
     image.addEventListener('click', function() {
         this.classList.toggle('zoomed');
     });
-});
-
-//  reload the page with the new category
-document.getElementById('#id_category').addEventListener('change', function() {
-    
-    this.form.submit();
 });
 
 // Blog Card Hover Effect
@@ -77,4 +72,5 @@ document.querySelectorAll('.blog-card').forEach(card => {
     card.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0)';
     });
+})
 });

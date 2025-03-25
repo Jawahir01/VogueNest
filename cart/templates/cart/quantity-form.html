@@ -1,37 +1,39 @@
 <form class="update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
     {% csrf_token %}
-    <div class="quantity-controls">
-        <div class="input-group">
-            <button class="btn btn-outline-secondary decrement-qty" 
-                    data-item_id="{{ item.item_id }}" 
-                    id="decrement-qty_{{ item.item_id }}">
-                <i class="fas fa-minus"></i>
-            </button>
-            
-            <input class="form-control qty_input" 
-                   type="number"
-                   name="quantity" 
-                   value="{{ item.quantity }}" 
-                   min="1" 
-                   max="99"
-                   data-item_id="{{ item.item_id }}"
-                   id="id_qty_{{ item.item_id }}">
-            
-            <button class="btn btn-outline-secondary increment-qty"
-                    data-item_id="{{ item.item_id }}" 
-                    id="increment-qty_{{ item.item_id }}">
-                <i class="fas fa-plus"></i>
-            </button>
-        </div>
+    <div class="input-group">
+        <button class="btn btn-outline-secondary decrement-qty" 
+                data-item_id="{{ item.item_id }}" 
+                id="decrement-qty_{{ item.item_id }}">
+            <i class="fas fa-minus"></i>
+        </button>
         
-        {% if item.product.has_sizes %}
-            <input type="hidden" name="product_size" value="{{ item.size }}">
-        {% endif %}
+        <input class="form-control qty_input" 
+               type="number"
+               name="quantity" 
+               value="{{ item.quantity }}" 
+               min="1" 
+               max="99"
+               data-item_id="{{ item.item_id }}"
+               id="id_qty_{{ item.item_id }}">
         
-        <div class="mt-2">
-            <button type="submit" class="btn btn-link text-primary update-link p-0">
-                <i class="fas fa-sync-alt me-2"></i>Update
-            </button>
-        </div>
+        <button class="btn btn-outline-secondary increment-qty"
+                data-item_id="{{ item.item_id }}" 
+                id="increment-qty_{{ item.item_id }}">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+    
+    {% if item.size %}
+        <input type="hidden" name="product_size" value="{{ item.size }}">
+    {% endif %}
+    
+    {% if item.color %}
+        <input type="hidden" name="product_color" value="{{ item.color }}">
+    {% endif %}
+    
+    <div class="mt-2">
+        <button type="submit" class="btn btn-link text-primary update-link p-0">
+            <i class="fas fa-sync-alt me-2"></i>Update
+        </button>
     </div>
 </form>

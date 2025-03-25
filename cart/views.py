@@ -90,54 +90,91 @@ def remove_discount(request):
 
 
 def adjust_cart(request, item_id):
-    """Adjust the quantity of the specified product to the specified amount"""
-
+    """Adjust the quantity of items in the cart"""
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
-    size = None
-    if 'product_size' in request.POST:
-        size = request.POST['product_size']
+    size = request.POST.get('product_size')
+    color = request.POST.get('product_color')
     cart = request.session.get('cart', {})
 
-    if size:
-        if quantity > 0:
-            cart[item_id]['items_by_size'][size] = quantity
-            messages.success(request, f'Updated size {size.upper()} {product.name} quantity to {cart[item_id]["items_by_size"][size]}')
-        else:
-            del cart[item_id]['items_by_size'][size]
-            if not cart[item_id]['items_by_size']:
-                cart.pop(item_id)
-            messages.success(request, f'Removed size {size.upper()} {product.name} from your cart')
-    else:
-        if quantity > 0:
-            cart[item_id] = quantity
-            messages.success(request, f'Updated {product.name} quantity to {cart[item_id]}')
-        else:
-            cart.pop(item_id)
-            messages.success(request, f'Removed {product.name} from your cart')
+    try:
+        # Handle products with variants
+        if size or color:
+            variant_key = f"{size}_{color}" if size and color else str(size) if size else str(color)
+            
+            if cart.get(str(item_id)) and cart[str(item_id)].get('variants'):
+                if variant_key in cart[str(item_id)]['variants']:
+                    if quantity > 0:
+                        cart[str(item_id)]['variants'][variant_key] = quantity
+                        messages.success(request, 
+                            f'Updated {product.name} '
+                            f'{"Size: " + size.upper() + " " if size else ""}'
+                            f'{"Color: " + color.title() if color else ""} quantity to {quantity}'
+                        )
+                    else:
+                        # Remove variant if quantity is 0 or less
+                        del cart[str(item_id)]['variants'][variant_key]
+                        messages.success(request, 
+                            f'Removed {product.name} '
+                            f'{"Size: " + size.upper() + " " if size else ""}'
+                            f'{"Color: " + color.title() if color else ""} from cart'
+                        )
+                        
+                        # Remove entire product entry if no variants left
+                        if not cart[str(item_id)]['variants']:
+                            del cart[str(item_id)]
+                else:
+                    messages.error(request, 'Variant not found in cart')
+            else:
+                messages.error(request, 'Product not found in cart')
 
-    request.session['cart'] = cart
-    return redirect(reverse('view_cart'))
+        # Handle products without variants
+        else:
+            if str(item_id) in cart:
+                if quantity > 0:
+                    cart[str(item_id)] = quantity
+                    messages.success(request, f'Updated {product.name} quantity to {quantity}')
+                else:
+                    del cart[str(item_id)]
+                    messages.success(request, f'Removed {product.name} from cart')
+
+        request.session['cart'] = cart
+        return redirect(reverse('view_cart'))
+
+    except Exception as e:
+        messages.error(request, f'Error adjusting cart: {e}')
+        return redirect(reverse('view_cart'))
 
 
 def remove_from_cart(request, item_id):
     """Remove the item from the shopping cart"""
-
     try:
         product = get_object_or_404(Product, pk=item_id)
-        size = None
-        if 'product_size' in request.POST:
-            size = request.POST['product_size']
+        size = request.POST.get('product_size')
+        color = request.POST.get('product_color')
         cart = request.session.get('cart', {})
 
-        if size:
-            del cart[item_id]['items_by_size'][size]
-            if not cart[item_id]['items_by_size']:
-                cart.pop(item_id)
-            messages.success(request, f'Removed size {size.upper()} {product.name} from your cart')
+        variant_key = f"{size}_{color}" if size and color else str(size) if size else str(color)
+
+        # Handle products with variants
+        if size or color:
+            if str(item_id) in cart and 'variants' in cart[str(item_id)]:
+                if variant_key in cart[str(item_id)]['variants']:
+                    del cart[str(item_id)]['variants'][variant_key]
+                    messages.success(request, 
+                        f'Removed {product.name} '
+                        f'{"Size: " + size.upper() + " " if size else ""}'
+                        f'{"Color: " + color.title() if color else ""} from cart'
+                    )
+                    
+                    # Remove entire product entry if no variants left
+                    if not cart[str(item_id)]['variants']:
+                        del cart[str(item_id)]
+        # Handle products without variants
         else:
-            cart.pop(item_id)
-            messages.success(request, f'Removed {product.name} from your cart')
+            if str(item_id) in cart:
+                del cart[str(item_id)]
+                messages.success(request, f'Removed {product.name} from cart')
 
         request.session['cart'] = cart
         return HttpResponse(status=200)

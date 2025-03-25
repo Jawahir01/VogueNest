@@ -64,8 +64,9 @@
                                 <div class="row mt-1">
                                     <div class="col-12 text-end">
                                         <button class="btn btn-link text-danger remove-item" 
-                                                id="remove_{{ item.item_id }}" 
-                                                data-product_size="{{ item.size }}">
+                                            id="remove_{{ item.item_id }}"
+                                            data-product_size="{{ item.size|default:'' }}"
+                                            data-product_color="{{ item.color|default:'' }}">
                                             <i class="fas fa-trash-alt me-2"></i>Remove
                                         </button>
                                     </div>
@@ -135,11 +136,7 @@
 {% block postloadjs %}
 {{ block.super }}
 <script type="text/javascript">
-    // Back to top button
-    $('.btt-link').click(function(e) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
+    
     // Quantity control functions
     function handleEnableDisable(itemId) {
         const currentValue = parseInt($(`#id_qty_${itemId}`).val());
@@ -178,26 +175,20 @@
 
     // Remove item
     $('.remove-item').click(function(e) {
-        const csrfToken = "{{ csrf_token }}";
-        const itemId = $(this).attr('id').split('remove_')[1];
-        const size = $(this).data('product_size');
-        
-        $.post(`/cart/remove/${itemId}/`, {
-            'csrfmiddlewaretoken': csrfToken,
-            'product_size': size
-        }).done(() => {
-            location.reload();
-        }).fail(() => {
-            alert('Error removing item. Please try again.');
-        });
+    const csrfToken = "{{ csrf_token }}";
+    const itemId = $(this).attr('id').split('remove_')[1];
+    const size = $(this).data('product_size') || '';
+    const color = $(this).data('product_color') || '';
+    
+    $.post(`/cart/remove/${itemId}/`, {
+        'csrfmiddlewaretoken': csrfToken,
+        'product_size': size,
+        'product_color': color
+    }).done(() => {
+        location.reload();
+    }).fail(() => {
+        alert('Error removing item. Please try again.');
     });
-
-    // Smooth scroll for anchor links
-    $('a[href^="#"]').on('click', function(e) {
-        e.preventDefault();
-        $('html, body').animate({
-            scrollTop: $($(this).attr('href')).offset().top
-        }, 500);
     });
 </script>
 {% endblock %}
