@@ -1,7 +1,7 @@
 # Vogue Nest 🌟
 
 **Redefining Fashion E-Commerce**  
-
+![main-page](/documents/images/responsive.png)
 
 ## Table of Contents
 - [Vogue Nest 🌟](#vogue-nest-)
@@ -178,13 +178,13 @@ As a Regular User, I want to be able to:
 
   All pages have:
   - #### A header:
-    ![Home](/documents/images/header.png)
+  ![Home](/documents/images/header.png)
   - #### A Footer
-    ![Home](/documents/images/footer.png)
+  ![Home](/documents/images/footer.png)
   - #### Home page
-      - ![Home](/documents/images/home1.png)
-      - ![Home](/documents/images/home2.png)
-      - ![Home](/documents/images/home3.png)
+  ![Home](/documents/images/home1.png)
+  ![Home](/documents/images/home2.png)
+  ![Home](/documents/images/home3.png)
 
   - #### Shops Page
   ![Shops](/documents/images/products.png)
@@ -194,32 +194,39 @@ As a Regular User, I want to be able to:
   ![signin](/documents/images/signin.png)
 
   - #### Profile Page
-  - ![Profie](/documents/images/profile.png)
+  ![Profie](/documents/images/profile.png)
   - #### Product Detail
-   ![Product Detail](/documents/images/product_detail.png)
-  - #### Add Product
-   ![Add Product](/documents/images/add-product.png)
-  - #### Edit Product 
-    ![Edit product](/documents/images/edit-product.png)
-  - #### Delete Product 
-    ![Delete product](/documents/images/confirmdelet.png)
-    ![Delete product](/documents/images/delete-product.png)
+  ![Product Detail](/documents/images/product_detail.png)
+  - #### Add Product as an dmin
+  ![Add Product](/documents/images/add-product.png)
+  - #### Edit Product as an admin
+  ![Edit product](/documents/images/edit-product.png)
+  - #### Confirm/Delete Product as an admin
+  ![Delete product](/documents/images/confirmdelet.png)
+  - #### Delete Product as an admin
+  ![Delete product](/documents/images/delete-product.png)
   - #### Cart
-    ![Cart](/documents/images/cart.png)
-    ![Discount](/documents/images/adding%20discount.png)
-    ![Discount](/documents/images/remove-discount.png)
-    ![Checkout](/documents/images/checkout.png)
-    ![Checkout](/documents/images/checkout2.png)
-    ![Checkout](/documents/images/checkout.png)
-    ![invoice](/documents/images/invoice.png)
-
-    
-
+  ![Cart](/documents/images/cart.png)
+  - #### Cart/ Adding Discount
+  ![Discount](/documents/images/adding-discount.png)
+  - #### Cart/ Removing Discount
+  ![Discount](/documents/images/remove-discount.png)
+  - #### Checkout process
+  ![Checkout](/documents/images/checkout.png)
+  - #### Checkout Success
+  ![Checkout](/documents/images/checkout-success.png)
+  - #### Invoice
+  ![invoice](/documents/images/invoice.png)
+  - #### Blog Page
+  ![Contact-us](/documents/images/blog.png)
+  - #### Article Page
+  ![Article](/documents/images/article1.png)
   - #### Contact Us Page
-    ![Contact-us](/documents/images/contact.png)
+  ![Contact-us](/documents/images/contact.png)
   - #### Thank You Page
-    ![Thank-you-page](/documents/images/thank-you.png)
-    ![Admin](/documents/images/admin%20panel.png)
+  ![Thank-you-page](/documents/images/thank-you.png)
+  - #### Admin Page
+  ![Admin](/documents/images/admin-panel.png)
 
 
 - #### **The Live Link:** https://vogue-nest-bb4c62d54744.herokuapp.com/
