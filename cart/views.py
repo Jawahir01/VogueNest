@@ -3,19 +3,20 @@ from django.contrib import messages
 
 from products.models import Product
 from .models import DiscountCode
+from .contexts import cart_contents
+
 
 # Create your views here.
 
 def view_cart(request):
     """ A view that renders the cart contents page """
+    user = request.user
+    cart = cart_contents(request)
     context = {
-        'profile': request.user,
-        'cart': request.session.get('cart'),
-        'discount': request.session.get('discount'),
-        'discount_amount': request.session.get('discount_amount'),
-        'discount_percent': request.session.get('discount_percent'),
-        'discount_code': request.session.get('discount_code'),
+        'user': user,
+        'cart': cart,
         }
+    print(context)
     return render(request, 'cart/cart.html', context)
 
 def add_to_cart(request, item_id):
