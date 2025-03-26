@@ -16,7 +16,7 @@ def view_cart(request):
         'user': user,
         'cart': cart,
         }
-    print(context)
+    
     return render(request, 'cart/cart.html', context)
 
 def add_to_cart(request, item_id):
