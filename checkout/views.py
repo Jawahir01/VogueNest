@@ -9,6 +9,7 @@ from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
 from products.models import Product
 from cart.contexts import cart_contents
+from cart.models import DiscountCode
 
 import stripe
 import json
@@ -25,20 +26,15 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be \
-            processed right now. Please try again later.')
-        return HttpResponse(content=e, status=400)
+        messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again later.')
+        return HttpResponse(status=400)
 
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
-        size = request.POST.get('product_size')
-        color = request.POST.get('product_color')
         cart = request.session.get('cart', {})
-
-        variant_key = f"{size}_{color}" if size and color else str(size) if size else str(color)
 
         form_data = {
             'full_name': request.POST['full_name'],
@@ -57,140 +53,136 @@ def checkout(request):
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_cart = json.dumps(cart)
+            
+            # Add discount info
+            current_cart = cart_contents(request)
+            order.discount_code = current_cart.get('discount_code')
+            order.discount_amount = current_cart['discount_amount']
+            
             order.save()
 
             for item_id, item_data in cart.items():
                 try:
-                    product = Product.objects.get(id=item_id)
-                    if isinstance(item_data, int):
-                        order_line_item = OrderLineItem(
-                            order=order,
-                            product=product,
-                            quantity=item_data,
-                        )
-                        order_line_item.save()
-                    else:
-                        if size or color:
-                            if item_id in cart:
-                                if variant_key in cart[item_id]['variants']:
-                                    cart[item_id]['variants'][variant_key] += quantity
-                                else:
-                                    cart[item_id]['variants'][variant_key] = quantity
+                    product = Product.objects.get(pk=item_id)
+                    
+                    # Handle products with variants
+                    if isinstance(item_data, dict) and 'variants' in item_data:
+                        for variant_key, quantity in item_data['variants'].items():
+                            # Parse size and color from variant key
+                            size, color = None, None
+                            if '_' in variant_key:
+                                size, color = variant_key.split('_', 1)
                             else:
-                                cart[item_id] = {'variants': {variant_key: quantity}}
-    
-                            order_line_item = OrderLineItem(
+                                # Handle single attribute variants
+                                size = variant_key if product.sizes.exists() else None
+                                color = variant_key if product.colors.exists() else None
+                            
+                            OrderLineItem.objects.create(
                                 order=order,
                                 product=product,
-                                quantity=item_data['variants'][variant_key],
-                                product_color=color,
+                                quantity=quantity,
                                 product_size=size,
+                                product_color=color,
                             )
-                            order_line_item.save()
+                    
+                    # Handle products without variants
+                    else:
+                        quantity = item_data
+                        OrderLineItem.objects.create(
+                            order=order,
+                            product=product,
+                            quantity=quantity,
+                        )
 
                 except Product.DoesNotExist:
-                    messages.error(request, (
-                        "One of the products in your cart wasn't found in our database. "
-                        "Please call us for assistance!")
-                    )
+                    messages.error(request, "One of the products wasn't found. Please contact us!")
                     order.delete()
                     return redirect(reverse('view_cart'))
 
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
-            messages.error(request, 'There was an error with your form. \
-                Please double check your information.')
+            messages.error(request, 'There was an error with your form. Please check your information.')
     else:
         cart = request.session.get('cart', {})
         if not cart:
-            messages.error(request, "There's nothing in your cart at the moment")
+            messages.error(request, "Your cart is empty")
             return redirect(reverse('products'))
 
         current_cart = cart_contents(request)
         total = current_cart['grand_total']
-        stripe_total = round(total * 100)
+        stripe_total = int(total * 100)
+        
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
 
+        # Prefill form for authenticated users
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
                 order_form = OrderForm(initial={
-                    'full_name': profile.user,
+                    'full_name': profile.user.get_full_name(),
                     'email': profile.user.email,
                     'phone_number': profile.default_phone_number,
                     'street_address1': profile.default_street_address1,
                     'street_address2': profile.default_street_address2,
                     'town_or_city': profile.default_town_or_city,
                     'country': profile.default_country,
-                    'postcode': profile.default_postcode,    
+                    'postcode': profile.default_postcode,
                 })
-
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
         else:
             order_form = OrderForm()
-
-    if not stripe_public_key:
-        messages.warning(request, 'Stripe public key is missing. \
-            Did you forget to set it in your environment?')
 
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
-        'profile': request.user,
     }
 
     return render(request, template, context)
 
-
 def checkout_success(request, order_number):
-    """
-    Handle successful checkouts
-    """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
+    # Handle discount usage tracking
+    if order.discount_code:
+        try:
+            discount = DiscountCode.objects.get(code=order.discount_code)
+            discount.used_count += 1
+            discount.save()
+        except DiscountCode.DoesNotExist:
+            pass
+
+    # Attach profile and clean session
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        
-        # Save the user's info
+        order.user_profile = profile
+        order.save()
+
         if save_info:
+            # Save address logic here
             profile_data = {
                 'default_phone_number': order.phone_number,
                 'default_street_address1': order.street_address1,
                 'default_street_address2': order.street_address2,
                 'default_town_or_city': order.town_or_city,
-                'default_postcode': order.postcode,
                 'default_country': order.country,
+                'default_postcode': order.postcode,
             }
-            user_profile_form = UserProfileForm(profile_data, instance=profile)
-            if user_profile_form.is_valid():
-                user_profile_form.save()
-    else:
-        profile = None
-        # Attach the user's profile to the order
-        order.user_profile = profile
-        order.save()
 
-
-    messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
-
+    # Clear session data
     if 'cart' in request.session:
         del request.session['cart']
+    if 'discount_code' in request.session:
+        del request.session['discount_code']
 
-    template = 'checkout/checkout_success.html'
-    context = {
-        'order': order,
-        'profile': profile,
-    }
-
-    return render(request, template, context)
+    messages.success(request, f'Order {order_number} processed successfully! \
+        A confirmation email will be sent to {order.email}.')
+    return render(request, 'checkout/checkout_success.html', {'order': order})

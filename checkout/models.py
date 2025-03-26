@@ -3,6 +3,7 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
+from decimal import Decimal
 
 from products.models import Product
 from profiles.models import UserProfile
@@ -21,6 +22,8 @@ class Order(models.Model):
     postcode = models.CharField(max_length=20, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
+    discount_code = models.CharField(max_length=20, null=True, blank=True)
+    discount_amount = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     original_cart = models.TextField(null=False, blank=False, default='')
@@ -34,22 +37,38 @@ class Order(models.Model):
 
     def update_total(self):
         """
-        Update grand total each time a line item is added, accounting for delivery costs.
+        Update grand total accounting for delivery costs and discounts
         """
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
-        if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
-            self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+        self.order_total = self.lineitems.aggregate(
+            Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        
+        # Convert settings to Decimal
+        free_delivery_threshold = Decimal(settings.FREE_DELIVERY_THRESHOLD)
+        delivery_percentage = Decimal(settings.STANDARD_DELIVERY_PERCENTAGE) / 100
+        
+        if self.order_total < free_delivery_threshold:
+            self.delivery_cost = self.order_total * delivery_percentage
         else:
-            self.delivery_cost = 0
-        self.grand_total = self.order_total + self.delivery_cost
+            self.delivery_cost = Decimal(0)
+        
+        # Apply discount before calculating grand total
+        self.grand_total = (self.order_total - self.discount_amount) + self.delivery_cost
+        self.grand_total = self.grand_total.quantize(Decimal('0.00'))
         self.save()
 
     def save(self, *args, **kwargs):
         """
-        Override the original save method to set the order number if it hasn't been set already.
+        Override save method to set order number and handle decimals
         """
         if not self.order_number:
             self.order_number = self._generate_order_number()
+        
+        # Ensure all decimal fields are properly quantized
+        self.delivery_cost = Decimal(self.delivery_cost).quantize(Decimal('0.00'))
+        self.order_total = Decimal(self.order_total).quantize(Decimal('0.00'))
+        self.discount_amount = Decimal(self.discount_amount).quantize(Decimal('0.00'))
+        self.grand_total = Decimal(self.grand_total).quantize(Decimal('0.00'))
+    
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -57,16 +76,14 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
-    order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
-    product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
-    product_size = models.CharField(max_length=2, null=True, blank=True) # XS, S, M, L, XL
-    quantity = models.IntegerField(null=False, blank=False, default=0)
-    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='lineitems')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    product_size = models.CharField(max_length=20, null=True, blank=True)
+    product_color = models.CharField(max_length=20, null=True, blank=True)
+    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, editable=False)
 
     def save(self, *args, **kwargs):
-        """
-        Override the original save method to set the lineitem total and update the order total.
-        """
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
 
