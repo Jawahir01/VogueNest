@@ -183,6 +183,5 @@ def checkout_success(request, order_number):
     if 'discount_code' in request.session:
         del request.session['discount_code']
 
-    messages.success(request, f'Order {order_number} processed successfully! \
-        A confirmation email will be sent to {order.email}.')
+    messages.success(request, f' Your Order {order_number} processed successfully!')
     return render(request, 'checkout/checkout_success.html', {'order': order})
