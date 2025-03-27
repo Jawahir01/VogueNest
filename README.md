@@ -1,7 +1,7 @@
 # Vogue Nest 🌟
 
 **Redefining Fashion E-Commerce**  
-![main-page](documents/images/responsive.png)
+![main-page](docs/images/responsive.png)
 
 ### ***Note***: 
 In checkout please use this credit card number 4242 4242 4242 4242 with any later date and a CVC.
@@ -181,55 +181,55 @@ As a Regular User, I want to be able to:
 
   All pages have:
   - #### A header:
-  ![Home](documents/images/header.png)
+  ![Home](docs/images/header.png)
   - #### A Footer
-  ![Home](documents/images/footer.png)
+  ![Home](docs/images/footer.png)
   - #### Home page
-  ![Home](documents/images/home1.png)
-  ![Home](documents/images/home2.png)
-  ![Home](documents/images/home3.png)
+  ![Home](docs/images/home1.png)
+  ![Home](docs/images/home2.png)
+  ![Home](docs/images/home3.png)
 
   - #### Shops Page
-  ![Shops](documents/images/products.png)
+  ![Shops](docs/images/products.png)
   - #### Register Page
-  ![Register](documents/images/signup.png)
+  ![Register](docs/images/signup.png)
   - #### Sign in Page
-  ![signin](documents/images/signin.png)
+  ![signin](docs/images/signin.png)
 
   - #### Profile Page
-  ![Profie](documents/images/profile.png)
+  ![Profie](docs/images/profile.png)
   - #### Product Detail
-  ![Product Detail](documents/images/product_detail.png)
+  ![Product Detail](docs/images/product_detail.png)
   - #### Add Product as an dmin
-  ![Add Product](documents/images/add-product.png)
+  ![Add Product](docs/images/add-product.png)
   - #### Edit Product as an admin
-  ![Edit product](documents/images/edit-product.png)
+  ![Edit product](docs/images/edit-product.png)
   - #### Confirm/Delete Product as an admin
-  ![Delete product](documents/images/confirmdelet.png)
+  ![Delete product](docs/images/confirmdelet.png)
   - #### Delete Product as an admin
-  ![Delete product](documents/images/delete-product.png)
+  ![Delete product](docs/images/delete-product.png)
   - #### Cart
-  ![Cart](documents/images/cart.png)
+  ![Cart](docs/images/cart.png)
   - #### Cart/ Adding Discount
-  ![Discount](documents/images/adding-discount.png)
+  ![Discount](docs/images/adding-discount.png)
   - #### Cart/ Removing Discount
-  ![Discount](documents/images/remove-discount.png)
+  ![Discount](docs/images/remove-discount.png)
   - #### Checkout process
-  ![Checkout](documents/images/checkout.png)
+  ![Checkout](docs/images/checkout.png)
   - #### Checkout Success
-  ![Checkout](documents/images/checkout-success.png)
+  ![Checkout](docs/images/checkout-success.png)
   - #### Invoice
-  ![invoice](documents/images/invoice.png)
+  ![invoice](docs/images/invoice.png)
   - #### Blog Page
-  ![Contact-us](documents/images/blog.png)
+  ![Contact-us](docs/images/blog.png)
   - #### Article Page
-  ![Article](documents/images/article1.png)
+  ![Article](docs/images/article1.png)
   - #### Contact Us Page
-  ![Contact-us](documents/images/contact.png)
+  ![Contact-us](docs/images/contact.png)
   - #### Thank You Page
-  ![Thank-you-page](documents/images/thank-you.png)
+  ![Thank-you-page](docs/images/thank-you.png)
   - #### Admin Page
-  ![Admin](documents/images/admin-panel.png)
+  ![Admin](docs/images/admin-panel.png)
 
 
 - #### **The Live Link:** https://vogue-nest-bb4c62d54744.herokuapp.com/
@@ -237,7 +237,7 @@ As a Regular User, I want to be able to:
 
 
 # 🛢️ Database:
-  ![RED](.documents/images/ERD.png)
+  ![RED](.docs/images/ERD.png)
 
   ### Key Relationships:
   - User has one UserProfile (1:1)
