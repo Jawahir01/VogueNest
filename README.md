@@ -1,10 +1,14 @@
 # Vogue Nest 🌟
 
 **Redefining Fashion E-Commerce**  
-![main-page](/documents/images/responsive.png)
+![main-page](documents/images/responsive.png)
+
+### ***Note***: 
+In checkout please use this credit card number 4242 4242 4242 4242 with any later date and a CVC.
 
 ## Table of Contents
 - [Vogue Nest 🌟](#vogue-nest-)
+    - [***Note***:](#note)
   - [Table of Contents](#table-of-contents)
 - [👗 About](#-about)
 - [✨ Key Features](#-key-features)
@@ -30,9 +34,8 @@ Vogue Nest is a cutting-edge fashion e-commerce platform that combines modern we
 
 - Curated collections from emerging designers
 - Sustainable fashion marketplace
-- 
 
-**Live Demo:** [https://vogue-nest-bb4c62d54744.herokuapp.com/]
+**Live Demo:** https://vogue-nest-bb4c62d54744.herokuapp.com/
 
 # ✨ Key Features
   - ## 🛍️ Core Functionality
@@ -178,61 +181,63 @@ As a Regular User, I want to be able to:
 
   All pages have:
   - #### A header:
-  ![Home](/documents/images/header.png)
+  ![Home](documents/images/header.png)
   - #### A Footer
-  ![Home](/documents/images/footer.png)
+  ![Home](documents/images/footer.png)
   - #### Home page
-  ![Home](/documents/images/home1.png)
-  ![Home](/documents/images/home2.png)
-  ![Home](/documents/images/home3.png)
+  ![Home](documents/images/home1.png)
+  ![Home](documents/images/home2.png)
+  ![Home](documents/images/home3.png)
 
   - #### Shops Page
-  ![Shops](/documents/images/products.png)
+  ![Shops](documents/images/products.png)
   - #### Register Page
-  ![Register](/documents/images/signup.png)
+  ![Register](documents/images/signup.png)
   - #### Sign in Page
-  ![signin](/documents/images/signin.png)
+  ![signin](documents/images/signin.png)
 
   - #### Profile Page
-  ![Profie](/documents/images/profile.png)
+  ![Profie](documents/images/profile.png)
   - #### Product Detail
-  ![Product Detail](/documents/images/product_detail.png)
+  ![Product Detail](documents/images/product_detail.png)
   - #### Add Product as an dmin
-  ![Add Product](/documents/images/add-product.png)
+  ![Add Product](documents/images/add-product.png)
   - #### Edit Product as an admin
-  ![Edit product](/documents/images/edit-product.png)
+  ![Edit product](documents/images/edit-product.png)
   - #### Confirm/Delete Product as an admin
-  ![Delete product](/documents/images/confirmdelet.png)
+  ![Delete product](documents/images/confirmdelet.png)
   - #### Delete Product as an admin
-  ![Delete product](/documents/images/delete-product.png)
+  ![Delete product](documents/images/delete-product.png)
   - #### Cart
-  ![Cart](/documents/images/cart.png)
+  ![Cart](documents/images/cart.png)
   - #### Cart/ Adding Discount
-  ![Discount](/documents/images/adding-discount.png)
+  ![Discount](documents/images/adding-discount.png)
   - #### Cart/ Removing Discount
-  ![Discount](/documents/images/remove-discount.png)
+  ![Discount](documents/images/remove-discount.png)
   - #### Checkout process
-  ![Checkout](/documents/images/checkout.png)
+  ![Checkout](documents/images/checkout.png)
   - #### Checkout Success
-  ![Checkout](/documents/images/checkout-success.png)
+  ![Checkout](documents/images/checkout-success.png)
   - #### Invoice
-  ![invoice](/documents/images/invoice.png)
+  ![invoice](documents/images/invoice.png)
   - #### Blog Page
-  ![Contact-us](/documents/images/blog.png)
+  ![Contact-us](documents/images/blog.png)
   - #### Article Page
-  ![Article](/documents/images/article1.png)
+  ![Article](documents/images/article1.png)
   - #### Contact Us Page
-  ![Contact-us](/documents/images/contact.png)
+  ![Contact-us](documents/images/contact.png)
   - #### Thank You Page
-  ![Thank-you-page](/documents/images/thank-you.png)
+  ![Thank-you-page](documents/images/thank-you.png)
   - #### Admin Page
-  ![Admin](/documents/images/admin-panel.png)
+  ![Admin](documents/images/admin-panel.png)
 
 
 - #### **The Live Link:** https://vogue-nest-bb4c62d54744.herokuapp.com/
-- 
+
+
+
 # 🛢️ Database:
-  ![RED](./Documents/images/ERD.png)
+  ![RED](.documents/images/ERD.png)
 
   ### Key Relationships:
   - User has one UserProfile (1:1)
@@ -299,10 +304,14 @@ As a Regular User, I want to be able to:
 - [ThemeWagon](https://themewagon.com/themes/): For providing a free Responsive HTML5 Bootstrap 5 Educational Website Templates.
 - [ChatGPT](https://chat.openai.com/): was used to write the update form code, username joind with user-icon and to give more formal sentences for the website and README file.
 - [Favicon.io](https://favicon.io/): was used to convert the logo image into favicon.
-- [Stack Overflow](www.stackoverflow.com) - was used to search for code related errors and bugs.
+- [Stack Overflow](www.stackoverflow.com): was used to search for code related errors and bugs.
+- [Stripe](https://stripe.com/gb): was used to accept credit and debit card test payments. 
+- [Amazon](www.amazon.com): for the produts images and products data.
+- [amazon AWS](https://aws.amazon.com/): for cloud storages to the static and media files.
+- [Heroku](https://dashboard.heroku.com/apps): for deployment
+
 
 
 # 💌 Acknowledgments
-   - **[Iuliia Konovalova](https://github.com/IuliiaKonovalova)** :My Mentor Guidance at Code Institute for her professional teaching and helping throughout the project time.
+  - **[Iuliia Konovalova](https://github.com/IuliiaKonovalova)** :My Mentor Guidance at Code Institute for her professional teaching and helping throughout the project time.
   - **[Manu Perez](https://github.com/Manuperezro)** : My supervisor at City of Bristol College for his patience, support and encouragement all the time.
-  - **[Amazon]**: for the produts products data
