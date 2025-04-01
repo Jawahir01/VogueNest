@@ -30,14 +30,13 @@ In checkout, please use this credit card number
 - [©️ Credits](#️-credits)
 - [💌 Acknowledgments](#-acknowledgments)
 
-
 # 👗 About
 Vogue Nest is a cutting-edge fashion e-commerce platform that combines modern web technologies with AI-powered recommendations to deliver a personalized shopping experience. Designed for fashion enthusiasts who value both style and convenience, our platform offers:
 
 - Curated collections from emerging designers
 - Sustainable fashion marketplace
 
-**Live Demo:** https://vogue-nest-bb4c62d54744.herokuapp.com/
+**Live Link:** https://vogue-nest-bb4c62d54744.herokuapp.com/
 
 # ✨ Key Features
   - ## 🛍️ Core Functionality
@@ -77,34 +76,33 @@ Vogue Nest is a cutting-edge fashion e-commerce platform that combines modern we
 # 👥 User Stories
   - ## 🎯 First Time Visitor Goals
   As a first time visitor, I want to be able to:
-    -  **Discover the Platform**
-        - Browse products without creating an account.
-        - View featured collections, trending items and promotions.
-        - Explore the blog for fashion tips, trends, and inspiration.
+-  **Discover the Platform**
+    - Browse products without creating an account.
+    - View featured collections, trending items and promotions.
+    - Explore the blog for fashion tips, trends, and inspiration.
+- **Registration & Onboarding**
+    - Easily create an account (email)
+    - Receive welcome email with style guide
+    - Access quick tour of platform features, including the blog and contact page.
 
-    - **Registration & Onboarding**
-      - Easily create an account (email)
-      - Receive welcome email with style guide
-      - Access quick tour of platform features, including the blog and contact page.
+- **Initial Exploration**
+    - Filter products by category/pricesize
+    - View detailed product descriptions, images, and specifications.
+    - Read customer reviews and ratings for products.
+    - Explore blog posts for additional insights and recommendations.
 
-    - **Initial Exploration**
-      - Filter products by category/price/size
-      - View detailed product descriptions, images, and specifications.
-      - Read customer reviews and ratings for products.
-      - Explore blog posts for additional insights and recommendations.
-
-    - **Trust Building**
-      - View SSL security verification
-      - See recognized payment method icons for secure transactions.
-      - Access the contact page to reach out for inquiries or support.
+- **Trust Building**
+    - View SSL security verification
+    - See recognized payment method icons for secure transactions.
+    - Access the contact page to reach out for inquiries or support.
     
-    - **Engagement with Blog**
-      - Read articles on fashion trends, styling tips, and product highlights.
-      - Read customer comments and thier contributions.
+- **Engagement with Blog**
+    - Read articles on fashion trends, styling tips, and product highlights.
+    - Read customer comments and thier contributions.
 
-    - **Contact and Support**
-      - Easily find the contact page for customer support or inquiries.
-      - Use a contact form to submit questions or feedback.
+- **Contact and Support**
+    - Easily find the contact page for customer support or inquiries.
+    - Use a contact form to submit questions or feedback.
 
 
   - ## 🔄 Regular User (Customer) Goals
